@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 from pathlib import Path
 
@@ -15,6 +16,25 @@ def _positive(value: str) -> int:
     if number < 1:
         raise argparse.ArgumentTypeError("expected a positive integer")
     return number
+
+
+def _constrained_advice(model_path: Path, adapter: Path | None, telemetry: dict) -> dict:
+    from .choice_data import INTERVENTIONS, compact_intervention
+    from .choice_model import _load, _score_rows
+
+    prompt = compact_intervention(telemetry)
+    payload = json.dumps({"prompt": prompt, "choices": INTERVENTIONS}, sort_keys=True)
+    case_id = hashlib.sha256(payload.encode("utf-8")).hexdigest()
+    row = {"case_id": case_id, "track": "training", "prompt": prompt, "choices": INTERVENTIONS}
+
+    model, tokenizer = _load(model_path, adapter)
+    record = next(_score_rows(model, tokenizer, [row], 2, 2, progress=False))
+    return {
+        "action": record["prediction"],
+        "policy": "constrained",
+        "variants": record["variants"],
+        "probabilities": record["probabilities"],
+    }
 
 
 def main(argv: list[str] | None = None) -> None:
@@ -69,6 +89,9 @@ def main(argv: list[str] | None = None) -> None:
     advise.add_argument("--adapter", type=Path)
     advise.add_argument("--train-cases", type=Path)
     advise.add_argument("--valid-cases", type=Path)
+    advise.add_argument("--constrained", action="store_true",
+                        help="Score the constrained QLoRA model on pre-action telemetry "
+                             "(requires --model and --telemetry)")
     case = advise.add_mutually_exclusive_group(required=True)
     case.add_argument("--scenario")
     case.add_argument("--telemetry", type=Path)
@@ -104,6 +127,8 @@ def main(argv: list[str] | None = None) -> None:
 
         print(json.dumps(write_comparison(args.base, args.candidate, args.output), indent=2))
     elif args.command == "advise":
+        if args.constrained and (args.model is None or args.telemetry is None):
+            advise.error("--constrained requires --model and --telemetry")
         if args.policy and args.adapter:
             advise.error("--adapter requires --model")
         if args.policy and (not args.train_cases or not args.valid_cases):
@@ -119,6 +144,10 @@ def main(argv: list[str] | None = None) -> None:
                 telemetry = json.loads(args.telemetry.read_text(encoding="utf-8"))
                 if not isinstance(telemetry, dict):
                     raise ValueError("--telemetry must contain a JSON object")
+                if args.constrained:
+                    report = _constrained_advice(args.model, args.adapter, telemetry)
+                    print(json.dumps(report, indent=2))
+                    return
                 row = {"track": "training", "prompt": format_telemetry(telemetry)}
             if args.policy:
                 from .learned import make_baseline
