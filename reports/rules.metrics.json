@@ -1,0 +1,76 @@
+{
+  "engine": "rules",
+  "model_dir": null,
+  "adapter_dir": null,
+  "inference_batch_size": null,
+  "versions": {},
+  "by_track": {
+    "training": {
+      "n": 144,
+      "accuracy": 0.2986111111111111,
+      "valid_rate": 1.0,
+      "predictions": {
+        "clip_grad": 65,
+        "resume": 58,
+        "lower_lr": 14,
+        "accumulate": 7
+      },
+      "gold": {
+        "resume": 70,
+        "lower_lr": 63,
+        "accumulate": 9,
+        "clip_grad": 2
+      },
+      "mean_seconds": 0.0,
+      "macro_accuracy": 0.20317460317460317,
+      "mean_relative_regret": 28.98933832523148,
+      "median_relative_regret": 0.0906724404195588,
+      "mean_log_relative_regret": 1.2299539907680077,
+      "mean_normalized_regret": 0.4249623683855177
+    }
+  },
+  "by_family": {
+    "training/rank_cross_section": {
+      "n": 72,
+      "accuracy": 0.5,
+      "valid_rate": 1.0,
+      "predictions": {
+        "resume": 52,
+        "lower_lr": 13,
+        "accumulate": 7
+      },
+      "gold": {
+        "resume": 45,
+        "accumulate": 9,
+        "lower_lr": 16,
+        "clip_grad": 2
+      },
+      "mean_seconds": 0.0,
+      "macro_accuracy": 0.26458333333333334,
+      "mean_relative_regret": 0.026788414199753283,
+      "median_relative_regret": 0.0009488978278461611,
+      "mean_log_relative_regret": 0.02565034766904884,
+      "mean_normalized_regret": 0.38659561645176316
+    },
+    "training/tabular_regime_shift": {
+      "n": 72,
+      "accuracy": 0.09722222222222222,
+      "valid_rate": 1.0,
+      "predictions": {
+        "clip_grad": 65,
+        "resume": 6,
+        "lower_lr": 1
+      },
+      "gold": {
+        "resume": 25,
+        "lower_lr": 47
+      },
+      "mean_seconds": 0.0,
+      "macro_accuracy": 0.1306382978723404,
+      "mean_relative_regret": 57.951888236263194,
+      "median_relative_regret": 6.153410153871273,
+      "mean_log_relative_regret": 2.4342576338669666,
+      "mean_normalized_regret": 0.46332912031927215
+    }
+  }
+}

@@ -1,0 +1,22 @@
+# MLX-LM 0.31.3 on Apple Silicon. Relative paths are from the repository root.
+model: models/Qwen3-8B-MLX-4bit
+data: data/generated/mixed
+adapter_path: adapters/m4-pilot
+train: true
+fine_tune_type: lora
+mask_prompt: true
+num_layers: 8
+batch_size: 1
+iters: 180
+val_batches: 16
+steps_per_report: 10
+steps_per_eval: 30
+save_every: 30
+learning_rate: 0.0001
+max_seq_length: 1024
+seed: 425
+grad_checkpoint: true
+lora_parameters:
+  rank: 8
+  scale: 16.0
+  dropout: 0.0

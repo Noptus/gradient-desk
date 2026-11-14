@@ -1,0 +1,21 @@
+{
+  "device": "cpu",
+  "dtype": "float32",
+  "model": "6-12-1 tanh MLP",
+  "optimizer": "SGD",
+  "momentum": 0.8,
+  "objective": "mean_squared_error",
+  "training_steps": 12,
+  "training_examples": 192,
+  "train_loss_history": [0.8, 0.83, 0.92, 0.66, 0.71, 0.69, 0.49, 0.7, 0.61, 0.47, 0.59, 0.48],
+  "validation_loss_history": [{"step": 0, "loss": 0.86}, {"step": 4, "loss": 0.76}, {"step": 8, "loss": 0.67}, {"step": 12, "loss": 0.62}],
+  "gradient_norm_history": [0.6, 0.59, 0.7, 0.51, 0.68, 0.62, 0.71, 0.67, 0.48, 0.61, 0.63, 0.57],
+  "gradient_norm": 0.57,
+  "lr": 0.03,
+  "clip_grad_norm": null,
+  "microbatch_size": 16,
+  "batch_size": 16,
+  "accumulation_steps": 1,
+  "data": {"observed_examples": 192, "features": 6, "missing_fraction": 0.0},
+  "target": {"mean": 0.14, "std": 0.78, "min": -1.14, "max": 1.39, "positive_fraction": null}
+}

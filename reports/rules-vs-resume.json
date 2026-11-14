@@ -1,0 +1,28 @@
+{
+  "baseline": "resume.jsonl",
+  "candidate": "rules.jsonl",
+  "by_family": {
+    "training/rank_cross_section": {
+      "n": 72,
+      "newly_correct": 4,
+      "newly_wrong": 13,
+      "accuracy_delta": -0.125,
+      "mean_normalized_regret_delta": 0.09450654202127791,
+      "seed_block_bootstrap_95": [
+        -0.00667256596380942,
+        0.19193076337930948
+      ]
+    },
+    "training/tabular_regime_shift": {
+      "n": 72,
+      "newly_correct": 1,
+      "newly_wrong": 19,
+      "accuracy_delta": -0.25,
+      "mean_normalized_regret_delta": 0.02286514831058815,
+      "seed_block_bootstrap_95": [
+        -0.05909207868054816,
+        0.10788856129489567
+      ]
+    }
+  }
+}

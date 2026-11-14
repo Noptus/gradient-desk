@@ -1,0 +1,24 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "gradient-desk"
+version = "0.1.0"
+description = "A local language-model coach for neural training interventions and investment research review"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.optional-dependencies]
+traces = ["torch>=2.8,<3"]
+mlx = ["mlx-lm>=0.31.3,<0.32", "huggingface-hub>=0.34,<2"]
+test = ["pytest>=8,<10"]
+
+[project.scripts]
+gradient-desk = "gradient_desk.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/gradient_desk"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

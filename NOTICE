@@ -1,0 +1,9 @@
+Gradient Desk
+
+Uses the Qwen project's 4-bit MLX checkpoint derived from Qwen3-8B.
+Base checkpoint: https://huggingface.co/Qwen/Qwen3-8B-MLX-4bit
+Revision: 383413e909f3bc5303ce195ebbdf0339c5a1a2a3
+
+The optional local adapter adds LoRA weights learned from generated
+checkpoint interventions and fictional review scenarios. The base
+model weights are downloaded separately under Apache License 2.0.

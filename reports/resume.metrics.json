@@ -1,0 +1,69 @@
+{
+  "engine": "resume",
+  "model_dir": null,
+  "adapter_dir": null,
+  "inference_batch_size": null,
+  "versions": {},
+  "by_track": {
+    "training": {
+      "n": 144,
+      "accuracy": 0.4861111111111111,
+      "valid_rate": 1.0,
+      "predictions": {
+        "resume": 144
+      },
+      "gold": {
+        "resume": 70,
+        "lower_lr": 63,
+        "accumulate": 9,
+        "clip_grad": 2
+      },
+      "mean_seconds": 0.0,
+      "macro_accuracy": 0.25,
+      "mean_relative_regret": 2554191259.550959,
+      "median_relative_regret": 0.004398896254984893,
+      "mean_log_relative_regret": 3.2969073180773094,
+      "mean_normalized_regret": 0.36627652321958465
+    }
+  },
+  "by_family": {
+    "training/rank_cross_section": {
+      "n": 72,
+      "accuracy": 0.625,
+      "valid_rate": 1.0,
+      "predictions": {
+        "resume": 72
+      },
+      "gold": {
+        "resume": 45,
+        "accumulate": 9,
+        "lower_lr": 16,
+        "clip_grad": 2
+      },
+      "mean_seconds": 0.0,
+      "macro_accuracy": 0.25,
+      "mean_relative_regret": 0.022754118107404585,
+      "median_relative_regret": 0.0,
+      "mean_log_relative_regret": 0.02167378884855933,
+      "mean_normalized_regret": 0.29208907443048526
+    },
+    "training/tabular_regime_shift": {
+      "n": 72,
+      "accuracy": 0.3472222222222222,
+      "valid_rate": 1.0,
+      "predictions": {
+        "resume": 72
+      },
+      "gold": {
+        "resume": 25,
+        "lower_lr": 47
+      },
+      "mean_seconds": 0.0,
+      "macro_accuracy": 0.5,
+      "mean_relative_regret": 5108382519.0791645,
+      "median_relative_regret": 1.4864829398965393,
+      "mean_log_relative_regret": 6.572140847306059,
+      "mean_normalized_regret": 0.44046397200868403
+    }
+  }
+}

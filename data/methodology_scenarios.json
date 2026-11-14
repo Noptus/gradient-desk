@@ -1,0 +1,514 @@
+[
+  {
+    "id": "inventory_revisions_vintage",
+    "family": "inventory_pressure",
+    "split": "train",
+    "scenario": "A fictional industrial-futures study argues that unexpected inventory accumulation predicts next-week weakness. Positions use Thursday's reported change, and fees and leverage are conservative. The input table contains the agency's latest historical estimates rather than archived releases; several large historical observations were revised months later. The reviewer must choose the next step before interpreting an otherwise strong chronological holdout.",
+    "label": "audit_timing",
+    "rationale": "Reconstructing the values actually available at each decision is prerequisite to trusting the holdout."
+  },
+  {
+    "id": "inventory_overlapping_targets",
+    "family": "inventory_pressure",
+    "split": "train",
+    "scenario": "An inventory-surprise strategy uses archived releases after a documented publication delay and trades liquid contracts at small size. Its claimed significance comes from randomly assigning daily observations to folds even though every target covers the following twenty sessions. The mechanism and transaction assumptions are credible, but neighboring training and test observations share most of their outcome window.",
+    "label": "improve_validation",
+    "rationale": "Chronological folds with separation for overlapping outcomes are needed before the reported predictive evidence is credible."
+  },
+  {
+    "id": "inventory_small_demonstration",
+    "family": "inventory_pressure",
+    "split": "train",
+    "scenario": "A predeclared inventory-surprise rule has been replicated using release archives, next-session fills, and three untouched market regimes. Results remain positive after doubled execution charges and removing the largest five trades. Position caps fit conservative stressed liquidity, and a small paper-to-live comparison has fixed exposure ceilings, reconciliation checks, and stop criteria. No unresolved data or selection issue is identified.",
+    "label": "run_pilot",
+    "rationale": "The evidence supports a bounded operational experiment rather than another redesign of the research."
+  },
+  {
+    "id": "inventory_delivery_concentration",
+    "family": "inventory_pressure",
+    "split": "train",
+    "scenario": "An inventory strategy passes vintage-data replication and predeclared rolling evaluation with conservative spread assumptions. At the proposed allocation, most profit and exposure come from one delivery month approaching notice, and a plausible limit-move sequence would require twice the available margin reserve. Lowering participation barely changes that loss scenario because the directional concentration remains.",
+    "label": "limit_risk",
+    "rationale": "Delivery-month concentration and insufficient stressed margin capacity must be constrained before deployment."
+  },
+  {
+    "id": "auction_small_edge",
+    "family": "closing_imbalance",
+    "split": "train",
+    "scenario": "A closing-auction imbalance proposal uses correctly timestamped public feeds and a locked out-of-period sample. Expected gross gain is 3 basis points per completed position. Broker fee estimates are 1 basis point for entry and 1 for exit, while measured auction slippage contributes another 2 per round trip; the report presents only gross results. Exposure is otherwise small and diversified.",
+    "label": "model_costs",
+    "rationale": "Estimated round-trip friction of 4 basis points exceeds the 3-basis-point gross edge, so executable net economics are the immediate question."
+  },
+  {
+    "id": "auction_final_message",
+    "family": "closing_imbalance",
+    "split": "train",
+    "scenario": "A researcher predicts auction reversals using the final imbalance message and assumes orders submitted before the exchange's cancellation cutoff. Historical files are sorted by exchange event time, but the final message often arrives after that cutoff and local receipt times have not been reconciled. A separate fee study is adequate and position size is immaterial to auction volume.",
+    "label": "audit_timing",
+    "rationale": "The reviewer must establish whether each feature was observable before the modeled order deadline."
+  },
+  {
+    "id": "auction_unstated_target",
+    "family": "closing_imbalance",
+    "split": "train",
+    "scenario": "A proposed auction dashboard combines imbalance direction, spread, and volume into a score. Its authors alternately describe success as forecasting the closing price, reducing implementation shortfall, and earning next-day returns, without specifying an order policy or baseline. All feeds have documented receipt times and there is no fitted performance claim yet. The reviewer is asked which analysis should come first.",
+    "label": "clarify_thesis",
+    "rationale": "A single decision objective and benchmark must be defined before selecting targets or evaluating the score."
+  },
+  {
+    "id": "auction_freeze_and_observe",
+    "family": "closing_imbalance",
+    "split": "train",
+    "scenario": "An auction execution rule seeks lower shortfall rather than directional profit. A frozen policy beats a matched arrival-price baseline in sequential holdouts, using receipt-time replay, realistic rejection rules, and measured fees. A capacity review permits only tiny orders, and the proposed monitored rollout includes randomized eligible orders, an unchanged control, and automatic reversion when execution quality deteriorates.",
+    "label": "run_pilot",
+    "rationale": "A controlled small-scale execution experiment can now test the remaining operational uncertainty."
+  },
+  {
+    "id": "language_many_dictionaries",
+    "family": "filing_language",
+    "split": "train",
+    "scenario": "A filing-language study proposes that unexpectedly cautious wording predicts slow earnings reassessment. Publication timestamps and next-day trading are verified, and implementation charges are conservative. The selected dictionary was the best of 240 combinations examined on the same six-year evaluation period; the reported confidence interval treats it as if specified in advance. No untouched period has been reserved.",
+    "label": "improve_validation",
+    "rationale": "Selection-aware inference and genuinely untouched chronological evidence are needed to distinguish discovery from generalization."
+  },
+  {
+    "id": "language_missing_mechanism",
+    "family": "filing_language",
+    "split": "train",
+    "scenario": "A team wants to trade a document embedding because nearby firms have similar future returns in a descriptive plot. They have not decided whether the embedding represents shared sector exposure, delayed information processing, or compensation for distress, and give no predicted sign after controlling for standard factors. The proposal is pre-model, with verified document availability and a feasible low-turnover universe.",
+    "label": "clarify_thesis",
+    "rationale": "An explicit economic mechanism and falsifiable incremental prediction should precede fitting a trading rule."
+  },
+  {
+    "id": "language_replaced_documents",
+    "family": "filing_language",
+    "split": "train",
+    "scenario": "A low-turnover language strategy has a coherent underreaction argument and a strict date-based holdout. The document vendor supplies one text per filing identifier, overwriting original exhibits when corrected versions appear. The experiment associates that text with the original filing timestamp, and the strongest signals occur in corrected exhibits. Costs and factor exposures would not explain this discrepancy.",
+    "label": "audit_timing",
+    "rationale": "Original public document versions must replace later corrections before the historical signal can be assessed."
+  },
+  {
+    "id": "language_borrow_economics",
+    "family": "filing_language",
+    "split": "train",
+    "scenario": "A preregistered negative-language rule survives sequential testing on original filings and earns 6 percent annualized gross on the short book. Its matched historical borrow indications imply 7 percent annually before trading fees, but the paper substitutes a universal 0.5 percent financing charge. Name-level loss caps and sector limits already pass the proposed stress budget.",
+    "label": "model_costs",
+    "rationale": "Historical borrow economics alone exceed the short book's gross return and must be incorporated before claiming a viable edge."
+  },
+  {
+    "id": "curve_common_funding_shock",
+    "family": "curve_carry",
+    "split": "train",
+    "scenario": "A carry portfolio across fictional rate curves uses tradable quotes and passes rolling tests after financing and spread charges. Equal volatility weights appear diversified in normal months, but a simultaneous funding shock makes all legs lose together and produces a 28 percent drawdown against a stated 10 percent budget. More precise execution estimates would not materially change that stressed exposure.",
+    "label": "limit_risk",
+    "rationale": "The portfolio needs exposure and liquidity constraints consistent with its explicit stress-loss budget."
+  },
+  {
+    "id": "curve_roll_definition_search",
+    "family": "curve_carry",
+    "split": "train",
+    "scenario": "A curve-carry paper accurately models roll dates, cash flows, and collateral interest. The preferred signal was chosen after repeatedly comparing thirty maturity definitions against the final two-year sample, yet that period is still called out of sample. Position sizes are modest and stress losses are within mandate. The reviewer must resolve the strongest remaining weakness before approving an experiment.",
+    "label": "improve_validation",
+    "rationale": "The repeatedly consulted evaluation period cannot provide independent evidence for the selected maturity definition."
+  },
+  {
+    "id": "curve_compensation_or_error",
+    "family": "curve_carry",
+    "split": "train",
+    "scenario": "A curve proposal advertises both a market-neutral pricing mistake and compensation for bearing recession exposure. It does not say whether returns should persist after hedging level and slope, or whether hedging would remove the intended premium. Quotes and financing conventions are documented, but no strategy specification has been frozen. Reviewers need a testable interpretation before commissioning a large backtest.",
+    "label": "clarify_thesis",
+    "rationale": "The team must distinguish a hedged mispricing claim from an intentional risk-premium claim to define a meaningful falsification test."
+  },
+  {
+    "id": "curve_operational_trial",
+    "family": "curve_carry",
+    "split": "train",
+    "scenario": "A narrowly specified carry rule has independent replication, archived tradable inputs, and positive net results across untouched rising- and falling-rate periods. Returns withstand adverse financing assumptions, while joint curve shocks remain inside approved limits at the proposed small allocation. The remaining question is whether daily collateral and roll reconciliation work reliably; a capped trial includes explicit failure thresholds.",
+    "label": "run_pilot",
+    "rationale": "A bounded deployment is justified to test operational reconciliation after the substantive research gates have been met."
+  },
+  {
+    "id": "freight_backfilled_routes",
+    "family": "freight_nowcast",
+    "split": "train",
+    "scenario": "A freight nowcast predicts regional demand and maps surprises to diversified sector baskets. The vendor's route history is keyed to departure date, although destination classifications are assigned only after arrival and sometimes changed weeks later. The team trades the departure-date signal and reports strong rolling performance. An otherwise credible economic mechanism and conservative costs do not resolve this availability mismatch.",
+    "label": "audit_timing",
+    "rationale": "Feature construction must respect when route classifications first became available rather than when voyages began."
+  },
+  {
+    "id": "freight_accuracy_without_decision",
+    "family": "freight_nowcast",
+    "split": "train",
+    "scenario": "A proposal improves freight-volume prediction error by 12 percent using public port statistics. It requests a trading research budget without identifying what market expectation the forecast differs from, which instrument expresses that difference, or when repricing should occur. Inputs are available with conservative delays, and the forecast evaluation itself is sound. The missing piece is not another model comparison.",
+    "label": "clarify_thesis",
+    "rationale": "The reviewer needs a falsifiable link from forecast improvement to a market decision and incremental expected return."
+  },
+  {
+    "id": "freight_thin_hedge_leg",
+    "family": "freight_nowcast",
+    "split": "train",
+    "scenario": "A demand-surprise basket passes first-release reconstruction and a frozen sequential holdout. Most gross gains require hedging through a thin regional contract, but fills are booked at its daily settlement even on days with little trading. Proposed exposure is small enough for the loss budget, yet there is no quote-based spread or participation analysis for that essential hedge leg.",
+    "label": "model_costs",
+    "rationale": "Executable prices and size-dependent friction for the thin hedge are necessary to establish net feasibility."
+  },
+  {
+    "id": "freight_independent_replication",
+    "family": "freight_nowcast",
+    "split": "train",
+    "scenario": "A public freight-surprise indicator predicts a predeclared demand-sensitive basket relative to a matched control. Archived releases, delayed orders, and independent rolling replication support modest net gains, including during disrupted shipping periods. Impact estimates at the proposed tiny allocation are conservative, and stress exposures are capped. The team proposes a monitored shadow phase followed by limited capital only if fill and forecast checks pass.",
+    "label": "run_pilot",
+    "rationale": "The remaining uncertainty is best addressed with the specified bounded operational trial."
+  },
+  {
+    "id": "dispersion_midquote_hedges",
+    "family": "option_dispersion",
+    "split": "train",
+    "scenario": "A dispersion strategy has a clear correlation-premium rationale, timestamped option chains, and a truly untouched evaluation year. The simulation enters each option at the midpoint and rebalances many delta hedges without spread charges. A separate conservative gap-loss assessment already fits the proposed exposure budget. The marginal statistical edge is positive, but there is no evidence it survives paying for all legs.",
+    "label": "model_costs",
+    "rationale": "Multi-leg spreads and repeated hedge execution must be charged before the reported edge is economically meaningful."
+  },
+  {
+    "id": "dispersion_jump_budget",
+    "family": "option_dispersion",
+    "split": "train",
+    "scenario": "A dispersion book remains profitable in locked holdouts after executable option spreads and discrete hedge costs. At the requested allocation, a joint index jump and volatility-surface twist produces a modeled loss four times the desk's maximum permitted drawdown. Historical average correlations made the original volatility target appear safe; reducing ordinary spread estimates cannot address the nonlinear exposure.",
+    "label": "limit_risk",
+    "rationale": "Nonlinear joint-shock exposure requires tighter sizing or structural hedges before further deployment work."
+  },
+  {
+    "id": "dispersion_six_independent_events",
+    "family": "option_dispersion",
+    "split": "train",
+    "scenario": "A dispersion rule uses conservative executable prices and stays within severe jump-loss limits. Its t-statistic is calculated from thousands of daily marks, but nearly all incremental profit comes from six overlapping earnings clusters, with positions held for a month. The mechanism was stated beforehand and no unavailable data were used. Reviewers need evidence about repeatability rather than a new position limit.",
+    "label": "improve_validation",
+    "rationale": "Event-cluster-aware inference and additional independent periods are needed because daily marks exaggerate the effective sample size."
+  },
+  {
+    "id": "dispersion_ambiguous_payoff",
+    "family": "option_dispersion",
+    "split": "train",
+    "scenario": "An early dispersion proposal says it will monetize disagreement but alternates between buying and selling single-name volatility without stating the index hedge. It offers no prediction for realized correlation or explanation of which side pays compensation. No backtest has been selected, and the available chain data include reliable timestamps and executable quotes. Reviewers must decide what to request before implementation.",
+    "label": "clarify_thesis",
+    "rationale": "The payoff direction, hedge, and economic prediction must be specified before this becomes a testable strategy."
+  },
+  {
+    "id": "retail_refreshed_history",
+    "family": "retail_flow",
+    "split": "train",
+    "scenario": "A strategy uses anonymized aggregate spending totals to anticipate retailer revenue surprises. The supplier refreshes old weeks when merchant classifications change, but the research table uses the current merchant map throughout history. Stronger signals coincide with firms added to a category after public earnings news. Low turnover and conservative exposure limits are already documented.",
+    "label": "audit_timing",
+    "rationale": "Historical merchant mappings and first-delivered totals are needed to exclude information introduced by later revisions."
+  },
+  {
+    "id": "retail_sector_holdout",
+    "family": "retail_flow",
+    "split": "train",
+    "scenario": "An aggregate spending model uses saved weekly deliveries and delayed trading, with realistic fees and strict name caps. It is tuned on randomly held-out firms, although firms in the same retail category share promotions and nearly identical spending features in the same week. The claimed use case is forecasting new periods across changing consumer regimes, which the current evaluation does not simulate.",
+    "label": "improve_validation",
+    "rationale": "Time-forward evaluation with appropriate category grouping is required to test the actual deployment setting."
+  },
+  {
+    "id": "retail_shared_exit",
+    "family": "retail_flow",
+    "split": "train",
+    "scenario": "A spending-surprise strategy has verified delivery archives and positive net results in frozen holdouts. Proposed holdings overlap heavily with a crowded public factor, and a joint redemption scenario forces several positions to require twelve trading days to unwind under the desk's participation cap. The approved liquidation horizon is three days, even though ordinary execution charges are fully modeled.",
+    "label": "limit_risk",
+    "rationale": "Crowded exposure must be resized or constrained to meet the explicit stressed liquidation horizon."
+  },
+  {
+    "id": "retail_capped_launch",
+    "family": "retail_flow",
+    "split": "train",
+    "scenario": "A category-neutral spending-surprise rule has a documented expectation benchmark and predeclared holding period. Saved supplier deliveries, independent replication, and untouched calendar blocks support net performance after stressed borrow and execution charges. Crowding limits and concentration checks pass at a small proposed allocation. A monitored trial will compare predicted and realized fills and stop if feed coverage departs from the validated range.",
+    "label": "run_pilot",
+    "rationale": "The completed research and exposure checks justify a small monitored test of real-time reliability."
+  },
+  {
+    "id": "network_pretrained_future_links",
+    "family": "supply_network",
+    "split": "train",
+    "scenario": "A supplier-network strategy predicts delayed propagation of customer earnings news. Financial releases are correctly delayed, but the graph embedding is trained once on the full historical network, including supplier links disclosed after the dates being forecast. The claimed chronological holdout therefore uses representations informed by later relationships. Trading costs and the modest exposure budget are otherwise credible.",
+    "label": "audit_timing",
+    "rationale": "The network and its learned representation must be rebuilt from relationships known at each historical decision date."
+  },
+  {
+    "id": "network_explanation_test",
+    "family": "supply_network",
+    "split": "train",
+    "scenario": "A proposed network model gives high importance to supplier centrality, but the team interprets this alternately as bargaining power and vulnerability to disruption. Those stories imply opposite conditional returns, and no target horizon or interaction prediction has been specified. Point-in-time links are available and there is not yet a selected backtest. Reviewers want interpretation that can change the research design, not a decorative explanation plot.",
+    "label": "clarify_thesis",
+    "rationale": "A directional mechanism with testable conditions is needed to make the model interpretation useful for research decisions."
+  },
+  {
+    "id": "network_small_supplier_fills",
+    "family": "supply_network",
+    "split": "train",
+    "scenario": "A locked supplier-news rule survives sequential evaluation on first-disclosed relationships and remains within concentration limits. Its median predicted move is 18 basis points, while the intended small-supplier basket has quoted round-trip spreads averaging 22 basis points before commissions. The paper assumes midpoint fills without evidence of passive execution and attributes all gross gains to information propagation.",
+    "label": "model_costs",
+    "rationale": "Quoted spreads already exceed the predicted move, so a defensible executable-return estimate takes priority."
+  },
+  {
+    "id": "network_component_dependence",
+    "family": "supply_network",
+    "split": "train",
+    "scenario": "A supplier-news study uses date-correct graphs, realistic execution charges, and tiny positions. It reports 900 independent event outcomes, but most belong to four connected customer groups hit by the same announcements. Performance survives basic sector adjustment, yet confidence intervals resample individual suppliers rather than connected event groups. The reviewer needs to determine whether the evidence supports generalization beyond those four clusters.",
+    "label": "improve_validation",
+    "rationale": "Resampling and holdouts must respect network-event dependence rather than count correlated suppliers as independent evidence."
+  },
+  {
+    "id": "weather_reanalysis_substitution",
+    "family": "weather_load",
+    "split": "valid",
+    "scenario": "A power-demand proposal trades on weather forecast errors and uses realistic market-gate delays. The weather table labeled forecast is actually a retrospective reanalysis assimilating observations collected after delivery. Its unusually accurate demand estimates dominate the trading results. Contract costs and collateral needs have already been conservatively assessed, but no archived issued forecasts have been used.",
+    "label": "audit_timing",
+    "rationale": "Issued forecast vintages are required because retrospective reanalysis was not available when orders would have been placed."
+  },
+  {
+    "id": "weather_few_heatwaves",
+    "family": "weather_load",
+    "split": "valid",
+    "scenario": "A forecast-surprise rule uses archived weather runs and tradable gate prices, with bounded losses and complete fees. Reported performance relies on hourly observations from three heatwaves, and the chosen temperature threshold was adjusted after examining each episode. Ordinary months show little effect. The stated claim is recurring performance across future extreme-weather events rather than replication within the same episodes.",
+    "label": "improve_validation",
+    "rationale": "Untouched event-level evaluation and threshold-selection controls are necessary to support recurrence beyond the three observed heatwaves."
+  },
+  {
+    "id": "weather_collateral_spike",
+    "family": "weather_load",
+    "split": "valid",
+    "scenario": "A demand forecast strategy survives independent event holdouts and stressed bid-ask charges using issued weather archives. During a plausible regional outage, collateral calls exceed available cash before offsetting contracts settle, despite a small eventual net loss. The proposed allocation assumes these offsets make the book safe. Execution improvements would not eliminate the timing mismatch in funding obligations.",
+    "label": "limit_risk",
+    "rationale": "Sizing and cash reserves must address peak stressed collateral demands rather than only eventual net losses."
+  },
+  {
+    "id": "weather_dispatch_trial",
+    "family": "weather_load",
+    "split": "valid",
+    "scenario": "A frozen weather-surprise rule is evaluated on archived issued forecasts across unseen seasons and independent extreme events. It remains positive after unfavorable gate-price execution, and both peak collateral and outage losses fit a conservative cap. A shadow implementation has reproduced every decision. The next proposal is a very small monitored order trial with dispatch reconciliation and explicit shutdown conditions.",
+    "label": "run_pilot",
+    "rationale": "The validated rule is ready for a bounded test of real order handling and reconciliation."
+  },
+  {
+    "id": "credit_stale_marks",
+    "family": "credit_liquidity",
+    "split": "valid",
+    "scenario": "A bond-liquidity premium study uses genuinely available dealer indications and strong chronological holdouts. Its monthly gross edge is 35 basis points, but the proposed rebalancing trades at evaluated marks despite executable dealer quotes implying 50 basis points of round-trip concession on traded positions. Turnover is one complete portfolio round trip per month, and default stress already fits the exposure budget.",
+    "label": "model_costs",
+    "rationale": "The 50-basis-point monthly execution concession exceeds the 35-basis-point gross edge and must replace mark-based fills."
+  },
+  {
+    "id": "credit_premium_definition",
+    "family": "credit_liquidity",
+    "split": "valid",
+    "scenario": "A credit proposal ranks bonds by quote dispersion and calls high ranks attractive without specifying whether it seeks compensation for illiquidity or convergence of erroneous prices. These interpretations imply different holding periods, hedges, and acceptable mark-to-market losses. Historical quotes are timestamped and the universe is fixed, but the authors have not yet chosen an outcome variable or benchmark.",
+    "label": "clarify_thesis",
+    "rationale": "The intended source of return and decision horizon must be specified before a meaningful strategy evaluation can be designed."
+  },
+  {
+    "id": "credit_redemption_mismatch",
+    "family": "credit_liquidity",
+    "split": "valid",
+    "scenario": "A liquidity-premium portfolio earns positive net returns using executable historical quotes, and independent holdouts support its predeclared mechanism. Its vehicle promises weekly withdrawals, yet a stressed dealer-withdrawal scenario leaves 40 percent of assets requiring a month to sell within allowable participation. The study already includes severe price concessions; the unresolved issue is inability to deliver cash on schedule at the proposed size.",
+    "label": "limit_risk",
+    "rationale": "Portfolio size and liquidity constraints must be reconciled with redemption obligations under dealer withdrawal."
+  },
+  {
+    "id": "credit_independent_quote_check",
+    "family": "credit_liquidity",
+    "split": "valid",
+    "scenario": "A narrowly defined credit convergence rule has survived untouched issuer and calendar holdouts with first-received quotes and conservative executable concessions. Independent replication excludes stale prints, and a small allocation fits both default shocks and stressed sale horizons. Remaining uncertainty concerns dealer response rates. The proposed experiment caps inventory, records rejected inquiries, and halts if response or net-price thresholds fail.",
+    "label": "run_pilot",
+    "rationale": "A small controlled inquiry-and-execution trial directly addresses the remaining dealer-response uncertainty."
+  },
+  {
+    "id": "search_normalized_future_peak",
+    "family": "search_attention",
+    "split": "valid",
+    "scenario": "An aggregate search-attention strategy uses no individual-level data and posits delayed consumer demand recognition. Each historical query series is downloaded today and normalized by its maximum over the entire requested window, while the trading rule compares absolute index levels across dates and categories. No contemporaneous snapshots exist in the analysis. The chronological split and low-turnover fee model do not address this construction.",
+    "label": "audit_timing",
+    "rationale": "The reviewer must establish reproducible as-of query values because future-window normalization can alter historical decisions."
+  },
+  {
+    "id": "search_direction_undefined",
+    "family": "search_attention",
+    "split": "valid",
+    "scenario": "A proposal maps rising product searches to a sector trade, but its examples mix purchase intent, product complaints, and curiosity after price increases. The authors offer no rule for distinguishing these channels or expected return direction, and have not chosen a target market surprise. Archived weekly snapshots are available and no fitted result has been claimed. The reviewer must prioritize the initial research request.",
+    "label": "clarify_thesis",
+    "rationale": "A directional demand mechanism and observable counterexamples are needed before search activity can define a trading hypothesis."
+  },
+  {
+    "id": "search_keyword_selection",
+    "family": "search_attention",
+    "split": "valid",
+    "scenario": "A search-demand rule uses contemporaneously saved series, conservative trading delays, and realistic costs. Its twelve keywords were selected from thousands by their correlations with returns across the entire dataset; subsequent rolling regressions hold those selected keywords fixed. Exposure and stress tests are satisfactory at small size. The apparent forward evaluation therefore does not isolate the discovery step from later outcomes.",
+    "label": "improve_validation",
+    "rationale": "Keyword selection must occur within training windows or be assessed on untouched data to remove selection contamination."
+  },
+  {
+    "id": "search_attention_fast_decay",
+    "family": "search_attention",
+    "split": "valid",
+    "scenario": "A predeclared search-surprise strategy uses first-delivered snapshots and passes independent sequential testing. The signal loses most of its predictive move in the first ten minutes after delivery, yet assumed fills use the initial midpoint with no routing delay. Name weights are tiny and stress losses are acceptable. Available quote logs can estimate the execution delay and spread jointly, but that calculation has not been performed.",
+    "label": "model_costs",
+    "rationale": "Delay-sensitive executable fills are needed to determine whether any net edge remains after the short-lived opportunity can actually be traded."
+  },
+  {
+    "id": "fx_fix_full_window_volume",
+    "family": "fx_fix_flow",
+    "split": "valid",
+    "scenario": "A currency-fix reversal study uses completed fixing-window volume to size orders assumed submitted at the window's start. The hypothesis is plausible, and results include conservative spreads and small exposure. The authors describe the volume field as a same-day control, but it contains transactions occurring after the modeled order. A clean later-year holdout repeats the same construction.",
+    "label": "audit_timing",
+    "rationale": "The sizing input must be restricted to information available before order submission."
+  },
+  {
+    "id": "fx_fix_holiday_dependence",
+    "family": "fx_fix_flow",
+    "split": "valid",
+    "scenario": "A fixing-flow strategy uses pre-order data and measured execution charges, with aggregate currency stress inside limits. Its inference treats each currency pair as independent even though almost all gains occur on the same eight global month-end dates. The chosen rule was specified before testing, but confidence intervals do not account for common dates or repeated legs. The central uncertainty is whether the effect repeats across independent events.",
+    "label": "improve_validation",
+    "rationale": "Date-clustered inference and additional independent fixing events are needed to avoid overstating evidence from correlated pairs."
+  },
+  {
+    "id": "fx_fix_shared_dollar_leg",
+    "family": "fx_fix_flow",
+    "split": "valid",
+    "scenario": "A fixing-flow portfolio has reliable pre-order features and positive net performance under a locked rolling design. Pair-level volatility weights conceal a large common funding-currency position; a plausible devaluation elsewhere triggers correlated losses exceeding the portfolio cap by a factor of three. Spread and impact assumptions already use stressed observations. The reviewer must address the dominant issue before scaling the rule.",
+    "label": "limit_risk",
+    "rationale": "Aggregate currency-factor exposure must be constrained because pair-level weights do not control the joint loss budget."
+  },
+  {
+    "id": "fx_fix_bounded_execution",
+    "family": "fx_fix_flow",
+    "split": "valid",
+    "scenario": "A fixed currency-flow rule survives independent month-end holdouts with pre-order message replay and conservative latency-adjusted prices. Net results persist when crisis dates are included, while aggregate currency and funding exposures remain below caps. A parallel shadow process agrees with the research implementation. A small execution trial has participation limits, fill-quality thresholds, and an automatic fallback to no position.",
+    "label": "run_pilot",
+    "rationale": "A bounded execution trial is the appropriate next step after independent evidence and portfolio controls have been established."
+  },
+  {
+    "id": "patent_grant_vs_application",
+    "family": "patent_diffusion",
+    "split": "test",
+    "scenario": "A technology-diffusion strategy predicts supplier growth from public patent text. The database dates each record by application submission even when the text was not published until much later, and trades are assigned to the submission month. The economic argument, slow turnover, and chronological holdout are otherwise credible. Reviewers need to resolve this before interpreting apparent early discovery.",
+    "label": "audit_timing",
+    "rationale": "Signals must be aligned to the text's first public release rather than an earlier administrative filing date."
+  },
+  {
+    "id": "patent_novelty_interpretation",
+    "family": "patent_diffusion",
+    "split": "test",
+    "scenario": "An early-stage patent model ranks semantic novelty but does not specify whether novelty predicts profitable innovation, speculative overvaluation, or costly experimentation. Its explanation charts identify unusual words without distinguishing these mechanisms. Public-release archives and a fixed universe are ready, but there is no stated prediction conditional on research spending or an investment horizon. The reviewer is choosing the first substantive research action.",
+    "label": "clarify_thesis",
+    "rationale": "The novelty measure needs an economically directional, falsifiable claim rather than an interpretation based only on unusual language."
+  },
+  {
+    "id": "patent_unseen_clusters",
+    "family": "patent_diffusion",
+    "split": "test",
+    "scenario": "A patent-diffusion rule uses first-public texts, modest exposure, and conservative net returns. Random train-test splits distribute near-identical members of the same patent family and their assignees across both sets, while the deployment claim concerns genuinely new technology clusters. No timestamp leakage is found in features. Performance on independent future clusters has not been measured.",
+    "label": "improve_validation",
+    "rationale": "Grouped forward tests must separate related patents and assess unseen clusters to match the intended generalization claim."
+  },
+  {
+    "id": "patent_slow_signal_trial",
+    "family": "patent_diffusion",
+    "split": "test",
+    "scenario": "A slow patent-diffusion rule states a precise customer-adoption mechanism and survives preregistered future-cluster holdouts. First-public texts, historical universes, realistic borrow charges, and conservative monthly execution produce independently replicated net gains. Sector concentration and stressed liquidation pass at the proposed small size. A monitored trial has fixed review dates and will stop if data coverage or realized execution leaves the tested range.",
+    "label": "run_pilot",
+    "rationale": "The completed evidentiary and feasibility checks support a limited monitored implementation."
+  },
+  {
+    "id": "index_rebalance_impact_curve",
+    "family": "index_membership_flow",
+    "split": "test",
+    "scenario": "A public index-change strategy correctly enters after announcement and has positive frozen holdout performance. Its proposed orders consume 18 percent of closing volume in affected names, but the model uses the same 2-basis-point charge as a tiny-order study. Factor and gap-loss limits already pass. The key unmeasured quantity is how the strategy's own trading changes entry and exit prices.",
+    "label": "model_costs",
+    "rationale": "Size-dependent market impact must be estimated at the proposed participation before small-order returns can justify the allocation."
+  },
+  {
+    "id": "index_announcement_archive",
+    "family": "index_membership_flow",
+    "split": "test",
+    "scenario": "An index-flow study builds historical candidate sets from a provider's final constituent files and assigns membership knowledge to the review month's first day. Actual additions are publicly announced later, and final files also incorporate intervening corporate actions. The proposed rule relies on knowing which candidates become additions, not merely predicting them. Fees and event-level inference are otherwise carefully specified.",
+    "label": "audit_timing",
+    "rationale": "Announcement archives and historically available candidate sets are needed to remove premature knowledge of final membership."
+  },
+  {
+    "id": "index_crowded_overnight_gap",
+    "family": "index_membership_flow",
+    "split": "test",
+    "scenario": "A post-announcement index-flow rule survives untouched event tests and size-specific execution estimates. However, most proposed exposure is in three names shared by many flow strategies, and a delayed implementation announcement would create an overnight gap loss above the approved budget. Orders are small relative to normal volume, so ordinary impact is not the principal concern; stop orders cannot bound the overnight gap.",
+    "label": "limit_risk",
+    "rationale": "Crowded event concentration must be reduced or hedged against discontinuous losses that execution assumptions and stops cannot contain."
+  },
+  {
+    "id": "index_reversal_or_pressure",
+    "family": "index_membership_flow",
+    "split": "test",
+    "scenario": "A proposal says index additions should outperform because of forced demand, then proposes shorting them immediately after announcement without distinguishing anticipated flow from post-effective-date reversal. It has no holding-period commitment or prediction for surprise relative to consensus. Public announcement data and execution records are available, but coding has not begun. The reviewer needs a coherent test before authorizing the backtest.",
+    "label": "clarify_thesis",
+    "rationale": "The expected flow surprise, return direction, and timing must be reconciled into a single testable mechanism."
+  },
+  {
+    "id": "macro_final_series",
+    "family": "macro_release_surprise",
+    "split": "test",
+    "scenario": "A macro-surprise strategy compares a survey median saved before release with the latest official historical series. Orders are delayed five minutes and priced from archived quotes, but later benchmark revisions alter the actual-minus-forecast surprise for many events. The economic mechanism and position budget are well defined. The reported walk-forward gains cannot distinguish original news from subsequent statistical revisions.",
+    "label": "audit_timing",
+    "rationale": "Surprises must use the first released actual values paired with the contemporaneous survey."
+  },
+  {
+    "id": "macro_nested_thresholds",
+    "family": "macro_release_surprise",
+    "split": "test",
+    "scenario": "A first-release macro strategy has plausible delayed repricing, realistic five-minute quotes, and exposure below stress caps. Researchers chose both a surprise threshold and holding period after comparing all combinations across the full sample, then reported rolling coefficients as forward evidence. The rolling coefficient fits do not repeat or isolate the earlier threshold search. No independent evaluation period remains.",
+    "label": "improve_validation",
+    "rationale": "A nested selection process or new untouched sample is required because rolling coefficients do not undo full-sample rule selection."
+  },
+  {
+    "id": "macro_release_spread_regime",
+    "family": "macro_release_surprise",
+    "split": "test",
+    "scenario": "A preregistered macro rule uses first-release data and passes independent event holdouts with acceptable gap exposure. It earns 5 basis points gross per round trip, but assumes the ordinary-session 1-basis-point round-trip spread. Archived quotes at its actual order times imply 7 basis points before fees, and the paper has not rerun fills using those release-window quotes. The signal timestamps themselves are correct.",
+    "label": "model_costs",
+    "rationale": "The relevant 7-basis-point release-window spread exceeds the 5-basis-point gross edge and must be reflected in net results."
+  },
+  {
+    "id": "macro_release_controlled_start",
+    "family": "macro_release_surprise",
+    "split": "test",
+    "scenario": "A fixed macro-surprise rule uses saved forecasts and first releases, passes unseen event-period tests, and remains positive with measured post-release latency and stressed spreads. Independent code reproduces decisions, and joint release shocks stay within a deliberately small loss budget. The only untested component is automated receipt-to-order handling; a capped trial includes duplicate-message protection and immediate shutdown on timestamp disagreement.",
+    "label": "run_pilot",
+    "rationale": "A bounded operational trial directly tests the remaining automation risk after the research evidence is established."
+  },
+  {
+    "id": "intraday_accuracy_vs_payoff",
+    "family": "intraday_state_model",
+    "split": "test",
+    "scenario": "A proposed intraday state classifier achieves high accuracy by predicting the common no-move state. The team has not decided whether the application is liquidity provision, directional entry, or withholding orders during adverse selection, and provides no action-dependent loss function. Feed availability has been checked and no profitability result is claimed. Reviewers must choose what to request before optimizing the architecture.",
+    "label": "clarify_thesis",
+    "rationale": "The trading decision and its asymmetric payoff objective must be defined before classification accuracy can guide model development."
+  },
+  {
+    "id": "intraday_interpretability_ablation",
+    "family": "intraday_state_model",
+    "split": "test",
+    "scenario": "A state-dependent intraday rule has a clear adverse-selection hypothesis, verified receipt-time inputs, realistic fills, and conservative exposure caps. Feature explanations suggest almost all improvement comes from a venue identifier, but the evaluation covers only a period when that venue had a temporary fee promotion. The authors claim portable order-flow learning without testing venue-held-out periods or removing the identifier.",
+    "label": "improve_validation",
+    "rationale": "Venue and regime holdouts with an identifier ablation can falsify the claimed portable mechanism rather than merely describe feature importance."
+  },
+  {
+    "id": "intraday_queue_and_rebates",
+    "family": "intraday_state_model",
+    "split": "test",
+    "scenario": "A frozen intraday policy passes sequential signal tests with verified input times and a tight inventory limit. The simulator credits every touched passive order as filled and books rebates, ignoring queue position and the worse subsequent moves of orders that actually execute. The predicted edge is small, while a separate loss-budget review finds no material concentration problem. The reviewer must prioritize the remaining feasibility gap.",
+    "label": "model_costs",
+    "rationale": "Queue-aware fills and execution-conditioned adverse selection must replace optimistic rebate accounting to establish realizable net returns."
+  },
+  {
+    "id": "intraday_inventory_feedback",
+    "family": "intraday_state_model",
+    "split": "test",
+    "scenario": "A state-aware quoting policy has independent forward evidence using receipt-time replay and queue-calibrated net fills. In a simulated venue outage, its cross-venue hedger stops working while the remaining quotes keep accumulating inventory, breaching the loss ceiling within seconds. The intended size is otherwise economical, and the failure is reproducible rather than a speculative cost estimate. No aggregate inventory shutdown has been implemented.",
+    "label": "limit_risk",
+    "rationale": "A cross-venue inventory cap and failure-triggered quoting shutdown are necessary to contain the demonstrated outage exposure."
+  }
+]
