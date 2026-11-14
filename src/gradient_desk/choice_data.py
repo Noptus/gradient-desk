@@ -13,7 +13,7 @@ from statistics import median
 from typing import Iterable
 
 from .dataset import METHODS, read_jsonl, write_jsonl
-from .traces import ACTIONS
+from .traces import ACTIONS, oracle_label
 
 CODES = "ABCDEFGH"
 INTERVENTIONS = {
@@ -193,6 +193,9 @@ def validate(rows: list[dict]) -> dict:
                 raise ValueError(f"Source group occurs across splits: {group}")
         if "actions" in row:
             normalized_action_losses(row)
+            if row["label"] != oracle_label({action: result["validation_loss"]
+                                              for action, result in row["actions"].items()}):
+                raise ValueError(f"Measured action label differs from the near-tie oracle: {key}")
         counts[split][track] += 1
     return {split: dict(sorted(totals.items())) for split, totals in sorted(counts.items())}
 

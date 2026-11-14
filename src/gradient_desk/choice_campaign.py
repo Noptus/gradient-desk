@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import argparse
-from collections import defaultdict
+from collections import Counter, defaultdict
 import gc
 import hashlib
 import json
@@ -74,6 +74,8 @@ class _FrozenPrefix:
         import mlx.core as mx
         from mlx_lm.models.base import create_attention_mask
 
+        # The causal mask is a function of the padded shape. Real prompt
+        # lengths are used downstream to select each row's last hidden state.
         key = tuple(tuple(row) for row in batch_ids.tolist())
         hidden = self.cache.get(key)
         if hidden is None:
@@ -90,11 +92,10 @@ class _FrozenPrefix:
 
 
 def _verify_prefix_parity(model, tokenizer, rows, variants, batch_size, cached):
-    """Compare both layouts on the shortest and longest development prompts."""
+    """Compare both layouts in a mixed-length batch spanning the prompt lengths."""
     ordered = sorted(rows, key=lambda row: len(_encode_prompt(tokenizer, row, 0)[0]))
-    sample = [ordered[0]]
-    if len(ordered) > 1:
-        sample.append(ordered[-1])
+    size = min(len(rows), max(2, math.ceil(batch_size / variants)))
+    sample = [ordered[i * (len(ordered) - 1) // max(size - 1, 1)] for i in range(size)]
     reference = _score_rows(model, tokenizer, sample, variants, batch_size, progress=False)
     reused = _score_rows(
         model, tokenizer, sample, variants, batch_size, progress=False, logits_fn=cached,
@@ -405,6 +406,29 @@ def _prior_weights(path: Path, expected_sha: str, current_config: dict) -> tuple
     }
 
 
+def _check_protocol(path: Path, expected_sha: str, rows: list[dict], *,
+                    variants: int, batch_size: int, expected_prior_sha256: str | None = None) -> str:
+    protocol = json.loads(path.read_text(encoding="utf-8"))
+    test = protocol["test"]
+    if test["cases_sha256"] != expected_sha:
+        raise ValueError("The supplied digest does not match the versioned test protocol")
+    counts = Counter(_benchmark(row) for row in rows)
+    blocks = defaultdict(set)
+    for row in rows:
+        blocks[_benchmark(row)].add(_block(row))
+    actual = {name: {"cases": count, "blocks": len(blocks[name])}
+              for name, count in counts.items()}
+    if actual != test["benchmarks"]:
+        raise ValueError("Frozen cases do not match the protocol's benchmark and block counts")
+    inference = protocol["inference"]
+    if (inference["option_orders"], inference["scoring_batch_size"]) != (variants, batch_size):
+        raise ValueError("Scoring layout and batch size differ from the versioned test protocol")
+    if (expected_prior_sha256 is not None
+            and inference["optional_prior_diagnostic"]["weights_sha256"] != expected_prior_sha256):
+        raise ValueError("The prior adapter digest differs from the versioned test protocol")
+    return _file_sha256(path)
+
+
 def _infer_pair(model_path, config_path, checkpoint, rows, variants, batch_size,
                 *, reuse_frozen_prefix, prior_adapter, expected_prior_sha256):
     import mlx.core as mx
@@ -455,6 +479,7 @@ def evaluate(
     reuse_frozen_prefix: bool = False,
     prior_adapter: Path | None = None,
     expected_prior_sha256: str | None = None,
+    protocol: Path | None = None,
 ) -> dict:
     """Write complete paired results after verifying every primary input."""
     if variants < 1 or batch_size < 1:
@@ -474,6 +499,10 @@ def evaluate(
         raise ValueError("No evaluation cases supplied")
     _require_split(rows, "test", "Evaluation cases")
     validate(rows)
+    protocol_sha = None
+    if protocol is not None:
+        protocol_sha = _check_protocol(protocol, expected_cases_sha256, rows, variants=variants,
+                                       batch_size=batch_size, expected_prior_sha256=expected_prior_sha256)
     shared = set(receipt.get("case_ids", ())) & {row["case_id"] for row in rows}
     if shared:
         raise ValueError(f"Test cases reuse validation IDs: {sorted(shared)}")
@@ -518,6 +547,7 @@ def evaluate(
         "base_predictions_sha256": _file_sha256(output / "base.jsonl"),
         "tuned_predictions_sha256": _file_sha256(output / "tuned.jsonl"),
         "selection_sha256": _file_sha256(selection),
+        "protocol_sha256": protocol_sha,
     }
     report["scoring"] = {
         "timing_seconds": timings,
@@ -596,6 +626,7 @@ def build_parser() -> argparse.ArgumentParser:
                     help="Reuse frozen Qwen3 layers after checking probability parity")
     ev.add_argument("--prior-adapter", type=Path, help="Optional previous release for a secondary diagnostic")
     ev.add_argument("--expected-prior-sha256", help="Published sha256 of the prior adapter tensors")
+    ev.add_argument("--protocol", type=Path, help="Reference protocol to verify test digest and panel counts")
     return parser
 
 
@@ -617,6 +648,7 @@ def main(argv: list[str] | None = None) -> None:
             variants=args.variants, batch_size=args.batch_size,
             reuse_frozen_prefix=args.reuse_frozen_prefix,
             prior_adapter=args.prior_adapter, expected_prior_sha256=args.expected_prior_sha256,
+            protocol=args.protocol,
         )
         print(json.dumps({"improvement_sources": report["improvement_sources"],
                           "output": str(args.output)}, indent=2))

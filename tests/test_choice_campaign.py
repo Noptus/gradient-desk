@@ -16,6 +16,7 @@ from gradient_desk.choice_campaign import (
     SELECTION_SCHEMA,
     _FrozenPrefix,
     _blind,
+    _check_protocol,
     _equal_weight_mean,
     _swap_lora_weights,
     _verify_receipt,
@@ -291,3 +292,18 @@ def test_evaluation_writes_complete_pair_after_full_forward_fallback(tmp_path, m
     assert attempts == [True, False]
     assert result["scoring"]["frozen_prefix_fallback"] == "parity fixture"
     assert {path.name for path in output.iterdir()} == {"base.jsonl", "tuned.jsonl", "paired-report.json"}
+
+
+def test_reference_protocol_rejects_a_missing_dependence_block(tmp_path):
+    protocol = tmp_path / "protocol.json"
+    protocol.write_text(json.dumps({
+        "test": {"cases_sha256": "published",
+                 "benchmarks": {"methods": {"cases": 2, "blocks": 2}}},
+        "inference": {"option_orders": 2, "scoring_batch_size": 8},
+    }), encoding="utf-8")
+    rows = [label_case("a", block="same"), label_case("b", block="same")]
+    with pytest.raises(ValueError, match="benchmark and block counts"):
+        _check_protocol(protocol, "published", rows, variants=2, batch_size=8)
+    rows[1]["evaluation_block"] = "different"
+    assert _check_protocol(protocol, "published", rows, variants=2,
+                           batch_size=8) == _file_sha256(protocol)

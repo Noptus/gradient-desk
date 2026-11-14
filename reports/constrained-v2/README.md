@@ -18,7 +18,7 @@ The [UCI Taiwanese Bankruptcy Prediction dataset](https://doi.org/10.24432/C5004
 
 ## Fixed training and scoring
 
-Train 240 Adam steps on a single four-row batch per step, using rank 8, scale 16, zero dropout, and adapters on the final eight Qwen3 layers. The learning rate is 0.00015, seed 1777, and input token limit 1024. Cycle through the five task tracks with a square-root class-frequency sampler. Shuffle answer positions using the case ID and rotate them across training. Checkpoints are at steps 60, 120, 180, and 240.
+Train 240 Adam steps on a single four-row batch per step, using rank 8, scale 16, zero dropout, and adapters on the final eight Qwen3 layers. The learning rate is 0.00015, seed 1777, input token limit 1024, and adapter training gradient norm cap 1.0. Cycle through the five task tracks with a square-root class-frequency sampler. Shuffle answer positions using the case ID and rotate them across training. Checkpoints are at steps 60, 120, 180, and 240.
 
 Use up to 32 development cases per panel, picked across the declared blocks by stable hashes of IDs before measuring outcomes. Score the three public language panels and the Treasury intervention panel. Maximize mean panel utility with equal panel weights, using accuracy for language and 1 minus normalized regret for intervention. Early steps break exact ties. Record the frozen base on the same development inputs. Evaluate only the selected checkpoint on the frozen holdout.
 
@@ -84,11 +84,12 @@ python -u -m gradient_desk.choice_campaign evaluate \
   b29b8149e140374b1a1a8e58e4b228b77ab6e2ee346725fcec8e5075735eba05 \
   --model models/Qwen3-8B-MLX-4bit --adapter adapters/choice-v2-campaign-01 \
   --selection .work/v2/choice-selection.json --variants 2 --batch-size 8 \
+  --protocol reports/constrained-v2/protocol.json \
   --reuse-frozen-prefix \
   --output .work/v2/choice-heldout
 ```
 
-The optional frozen-prefix cache reuses unchanged Qwen3 layers. During selection, it checks direct and cached probabilities at both prompt-length extremes and in both layouts, on the pinned base and first checkpoint. The test repeats that check on the base and selected step. A failure triggers full forwards for both primary models on every test row.
+The optional frozen-prefix cache reuses unchanged Qwen3 layers. During selection, it checks direct and cached probabilities on a mixed-length batch spanning both extremes, in both layouts on the pinned base and first checkpoint. The test repeats that check on the base and selected step. A primary parity failure triggers full forwards for both primary models on every test row. A failure specific to the optional prior omits that diagnostic and records the reason.
 
 To add a historical diagnostic, unpack the published `gradient-desk-mixed-step-180.tar.gz` release and pass `--prior-adapter path/to/m4-mixed-step-180 --expected-prior-sha256 96d6e260118caea855974d3007e4090314cf021a85e24b9a5c6bf12febc179b6` to `evaluate`. It uses the same test inputs and passes the same base lineage, adapter layout, and probability parity checks. It contributes no test selection or source-level gain claim. [Prior release](https://github.com/Noptus/gradient-desk/releases/tag/v0.1.0)
 

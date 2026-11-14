@@ -8,6 +8,7 @@
       "train": "f0be5723a3f9c74831be1742fe842b1d689bf833fa14837368a75f4bbfb5419f",
       "valid": "3c8fb2e2059f527fc0350583c0e2cedcf4fc3214fd4df7a01cbcd603d819db0f"
     },
+    "fixed_training_gradient_norm_cap": 1.0,
     "hyperparameters": {
       "batch_size": 4,
       "dropout": 0.0,
@@ -92,8 +93,8 @@
     "one_sided_holm_alpha": 0.05,
     "option_orders": 2,
     "optional_acceleration": {
-      "fallback": "Re-score both primary models without cache before writing any prediction or paired result.",
-      "parity_check": "Probability agreement and exact label match on the shortest and longest blinded prompts in both layouts. Verify each primary model and any optional prior.",
+      "fallback": "Re-score both primary models without cache after a primary parity failure, before writing any prediction or paired result. Omit an optional prior if its own verification fails.",
+      "parity_check": "Probability agreement and exact label match on a mixed-length batch spanning prompt-length extremes in both layouts. Verify each primary model and any optional prior.",
       "scope": "Reusable Qwen3 prefix activations across models with identical bodies up to the final LoRA layers.",
       "tolerances": {
         "maximum_absolute_floor": 1e-07,
