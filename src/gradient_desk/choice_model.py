@@ -91,10 +91,12 @@ def candidate_logits(model, batch_ids, lengths, candidate_matrix):
     candidate_matrix : int32 ``[B, C]`` option token ids; padded option slots
         repeat a valid id and are masked out via ``candidate_mask``.
     """
+    return _candidate_head(model, model.model(batch_ids), lengths, candidate_matrix)
+
+
+def _candidate_head(model, hidden, lengths, candidate_matrix):
     import mlx.core as mx
 
-    # Transformer body only -> hidden states [B, T, H]; never the full vocab.
-    hidden = model.model(batch_ids)
     last = (lengths - 1).reshape(-1, 1, 1)
     last = mx.broadcast_to(last, (hidden.shape[0], 1, hidden.shape[-1]))
     final_hidden = mx.take_along_axis(hidden, last, axis=1)  # [B, 1, H]
@@ -415,7 +417,8 @@ def score(
     return results
 
 
-def _score_rows(model, tokenizer, rows, variants, batch_size, *, progress=True):
+def _score_rows(model, tokenizer, rows, variants, batch_size, *, progress=True,
+                logits_fn=candidate_logits):
     """Yield one scored record per row, averaging over permutation variants."""
     import mlx.core as mx
 
@@ -443,7 +446,7 @@ def _score_rows(model, tokenizer, rows, variants, batch_size, *, progress=True):
             orders.append(order)
         batch_ids, lengths = _pad_batch(token_lists, pad_id)
         candidate_matrix, candidate_mask = _pad_candidates(orders, table)
-        logits = candidate_logits(model, batch_ids, lengths, candidate_matrix)
+        logits = logits_fn(model, batch_ids, lengths, candidate_matrix)
         probs = candidate_probabilities(logits, candidate_mask)
         mx.eval(probs)
         for row_pos, (index, _, _) in enumerate(chunk):

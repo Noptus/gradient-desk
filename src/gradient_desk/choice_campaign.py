@@ -6,11 +6,15 @@ import argparse
 from collections import defaultdict
 import hashlib
 import json
+import math
 from pathlib import Path
 import time
 
 from .choice_data import normalized_action_losses, validate
-from .choice_model import EXPECTED_WEIGHTS_SHA256, _file_sha256, _load, _score_rows
+from .choice_model import (
+    EXPECTED_WEIGHTS_SHA256, _candidate_head, _encode_prompt, _file_sha256, _load, _score_rows,
+    candidate_logits,
+)
 from .dataset import read_jsonl
 
 # The pre-v2 "methodology" research-advice track is excluded from automatic
@@ -50,6 +54,59 @@ def _swap_lora_weights(model, checkpoint: Path) -> None:
     model.eval()
 
 
+class _FrozenPrefix:
+    """Reuse unchanged Qwen activations across scores for identical token batches."""
+
+    def __init__(self, model, config: dict):
+        num_layers = config["num_layers"]
+        if (model.model_type != "qwen3" or config["fine_tune_type"] != "lora"
+                or config["lora_parameters"].get("keys") is not None
+                or not 0 < num_layers < len(model.layers)):
+            raise ValueError("Prefix caching requires Qwen3 and LoRA on its final layers only")
+        self.boundary = len(model.layers) - num_layers
+        self.cache = {}
+
+    def __call__(self, model, batch_ids, lengths, candidate_matrix):
+        import mlx.core as mx
+        from mlx_lm.models.base import create_attention_mask
+
+        key = tuple(tuple(row) for row in batch_ids.tolist())
+        hidden = self.cache.get(key)
+        if hidden is None:
+            hidden = model.model.embed_tokens(batch_ids)
+            mask = create_attention_mask(hidden, None)
+            for layer in model.layers[:self.boundary]:
+                hidden = layer(hidden, mask, None)
+            mx.eval(hidden)
+            self.cache[key] = hidden
+        mask = create_attention_mask(hidden, None)
+        for layer in model.layers[self.boundary:]:
+            hidden = layer(hidden, mask, None)
+        return _candidate_head(model, model.model.norm(hidden), lengths, candidate_matrix)
+
+
+def _verify_prefix_parity(model, tokenizer, rows, variants, batch_size, cached):
+    """Compare both layouts on the shortest and longest development prompts."""
+    ordered = sorted(rows, key=lambda row: len(_encode_prompt(tokenizer, row, 0)[0]))
+    sample = [ordered[0]]
+    if len(ordered) > 1:
+        sample.append(ordered[-1])
+    reference = _score_rows(model, tokenizer, sample, variants, batch_size, progress=False)
+    reused = _score_rows(
+        model, tokenizer, sample, variants, batch_size, progress=False, logits_fn=cached,
+    )
+    max_difference = 0.0
+    for original, optimized in zip(reference, reused, strict=True):
+        if original["prediction"] != optimized["prediction"]:
+            raise RuntimeError("Frozen-prefix prediction failed parity against full Qwen inference")
+        for label, probability in original["probabilities"].items():
+            other = optimized["probabilities"][label]
+            if not math.isclose(probability, other, rel_tol=1e-6, abs_tol=1e-7):
+                raise RuntimeError("Frozen-prefix probabilities failed parity against full Qwen inference")
+            max_difference = max(max_difference, abs(probability - other))
+    return max_difference
+
+
 # --------------------------------------------------------------------------- #
 # Pure helpers (no MLX): selection set construction and panel utility.
 # --------------------------------------------------------------------------- #
@@ -59,7 +116,7 @@ def _benchmark(row: dict) -> str:
 
 
 def _block(row: dict) -> str:
-    """Independent dependence block, matching the report's grouping key."""
+    """Use the declared dependence block, matching the report."""
     return str(row.get("evaluation_block", row.get("group_id", row["case_id"])))
 
 
@@ -150,6 +207,7 @@ def select(
     batch_size: int,
     limit_per_benchmark: int = MAX_PER_BENCHMARK,
     benchmarks: list[str] | None = None,
+    reuse_frozen_prefix: bool = False,
 ) -> dict:
     """Score each checkpoint on validation and write a selection receipt.
 
@@ -212,8 +270,16 @@ def select(
     started = time.monotonic()
     print("Scoring development cases with the frozen base", flush=True)
     model, tokenizer = _load(model_path, None)
+    logits_fn = candidate_logits
+    prefix_parity = {}
+    if reuse_frozen_prefix:
+        logits_fn = _FrozenPrefix(model, json.loads(config_path.read_text(encoding="utf-8")))
+        prefix_parity["base_max_probability_error"] = _verify_prefix_parity(
+            model, tokenizer, blind_cases, variants, batch_size, logits_fn,
+        )
+        print("Verified frozen-prefix parity on the base model", flush=True)
     base_predictions = {rec["case_id"]: rec["prediction"] for rec in
-                        _score_rows(model, tokenizer, blind_cases, variants, batch_size)}
+                        _score_rows(model, tokenizer, blind_cases, variants, batch_size, logits_fn=logits_fn)}
     base_utility = panel_utilities(cases, base_predictions)
 
     _install_lora(model, config_path)
@@ -221,7 +287,12 @@ def select(
     scored = {}
     for step, path in checkpoints.items():
         _swap_lora_weights(model, path)
-        records = list(_score_rows(model, tokenizer, blind_cases, variants, batch_size))
+        if reuse_frozen_prefix and not scored:
+            prefix_parity["adapted_max_probability_error"] = _verify_prefix_parity(
+                model, tokenizer, blind_cases, variants, batch_size, logits_fn,
+            )
+            print("Verified frozen-prefix parity on the first trained checkpoint", flush=True)
+        records = _score_rows(model, tokenizer, blind_cases, variants, batch_size, logits_fn=logits_fn)
         predictions = {rec["case_id"]: rec["prediction"] for rec in records}
         panels = panel_utilities(cases, predictions)
         scored[step] = {
@@ -247,6 +318,7 @@ def select(
         "adapter_config_sha256": config_sha,
         "base_weights_sha256": base_sha,
         "base_panel_utility": dict(sorted(base_utility.items())),
+        "frozen_prefix_parity": prefix_parity or None,
         "selected_weights_sha256": scored[chosen]["weights_sha256"],
         "case_ids": case_ids,
         "case_ids_sha256": hashlib.sha256("\n".join(case_ids).encode()).hexdigest(),
@@ -424,6 +496,8 @@ def build_parser() -> argparse.ArgumentParser:
     sel.add_argument("--batch-size", type=_positive_int, default=8)
     sel.add_argument("--benchmark", dest="benchmarks", action="append",
                      help="Opt in explicit benchmark names (overrides the legacy-track exclusion)")
+    sel.add_argument("--reuse-frozen-prefix", action="store_true",
+                     help="Cache verified frozen Qwen-layer outputs across development checkpoint scores")
 
     ev = commands.add_parser("evaluate", help="Paired base/tuned evaluation on frozen test cases")
     ev.add_argument("--cases", type=Path, required=True)
@@ -444,6 +518,7 @@ def main(argv: list[str] | None = None) -> None:
             args.validation, args.model, args.adapter, args.output,
             steps=args.steps, variants=args.variants, batch_size=args.batch_size,
             limit_per_benchmark=args.limit_per_benchmark, benchmarks=args.benchmarks,
+            reuse_frozen_prefix=args.reuse_frozen_prefix,
         )
         print(json.dumps({"selected_step": receipt["selected_step"],
                           "output": str(args.output)}, indent=2))

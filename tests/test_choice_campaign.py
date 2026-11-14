@@ -13,6 +13,7 @@ import pytest
 
 from gradient_desk.choice_campaign import (
     MAX_PER_BENCHMARK,
+    _FrozenPrefix,
     _blind,
     _equal_weight_mean,
     _swap_lora_weights,
@@ -21,7 +22,7 @@ from gradient_desk.choice_campaign import (
     panel_utilities,
     select_cases,
 )
-from gradient_desk.choice_model import _file_sha256
+from gradient_desk.choice_model import _file_sha256, candidate_logits
 from gradient_desk.traces import ACTIONS
 
 
@@ -230,3 +231,31 @@ def test_swap_loads_complete_partial_adapter(tmp_path):
     mx.save_safetensors(str(path), {"lora_a": mx.ones((2, 1)), "lora_b": mx.ones((1, 2))})
     _swap_lora_weights(model, path)
     assert model.lora_a.tolist() == [[1.0], [1.0]]
+
+
+def test_frozen_prefix_matches_qwen_with_right_padding_and_adapters():
+    mx = pytest.importorskip("mlx.core")
+    qwen = pytest.importorskip("mlx_lm.models.qwen3")
+    tuner = pytest.importorskip("mlx_lm.tuner.utils")
+    model = qwen.Model(qwen.ModelArgs(
+        model_type="qwen3", hidden_size=16, num_hidden_layers=4, intermediate_size=32,
+        num_attention_heads=4, rms_norm_eps=1e-6, vocab_size=24, num_key_value_heads=2,
+        max_position_embeddings=1024, rope_theta=10000, head_dim=4, tie_word_embeddings=False,
+    ))
+    options = {"rank": 2, "scale": 2.0, "dropout": 0.0}
+    config = {"fine_tune_type": "lora", "num_layers": 1, "lora_parameters": options}
+    cache = _FrozenPrefix(model, config)
+    token_batch = mx.array([[1, 3, 2, 0, 0], [1, 6, 5, 8, 9]])
+    lengths = mx.array([3, 5])
+    choices = mx.array([[20, 22], [20, 21]])
+    tensors = (token_batch, lengths, choices)
+    base = candidate_logits(model, *tensors)
+    assert mx.allclose(base, cache(model, *tensors), atol=1e-7, rtol=1e-6).item()
+
+    model.freeze()
+    tuner.linear_to_lora_layers(model, 1, options)
+    q_proj = model.layers[-1].self_attn.q_proj
+    q_proj.lora_b = mx.full(q_proj.lora_b.shape, 0.1)
+    tuned = candidate_logits(model, *tensors)
+    assert not mx.array_equal(base, tuned).item()
+    assert mx.allclose(tuned, cache(model, *tensors), atol=1e-7, rtol=1e-6).item()

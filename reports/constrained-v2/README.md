@@ -77,6 +77,7 @@ python -u -m gradient_desk.choice_campaign select \
   --steps 60 120 180 240 --limit-per-benchmark 32 --variants 2 --batch-size 8 \
   --benchmark finqa_operator --benchmark sec8k_item_routing \
   --benchmark treasury_curve_audit --benchmark treasury_intervention \
+  --reuse-frozen-prefix \
   --output .work/v2/choice-selection.json
 python -u -m gradient_desk.choice_campaign evaluate \
   --cases .work/v2/frozen/test.jsonl --expected-cases-sha256 \
@@ -86,4 +87,21 @@ python -u -m gradient_desk.choice_campaign evaluate \
   --output .work/v2/choice-heldout
 ```
 
-Run `gradient_desk.choice_cpu` with the same training, development, and frozen-test paths to reproduce the fixed-resume and validation-selected telemetry controls. The language controls are described in the [finance source protocol](../../examples/public_finance/README.md).
+The optional frozen-prefix cache reuses the unchanged Qwen3 layers during development selection. It checks direct versus cached predictions on the shortest and longest prompts in both option layouts, for the pinned base and first checkpoint. Test scoring runs the full transformer forwards.
+
+## CPU control results
+
+| Intervention panel | Fixed resume regret | Learned telemetry regret | Gain |
+| --- | ---: | ---: | ---: |
+| Treasury yield MLP | 0.58045 | 0.13206 | +0.44839 |
+| Taiwanese bankruptcy MLP | 0.33690 | 0.42972 | −0.09282 |
+
+The telemetry control selected five neighbors on development. It reduced regret on held-out Treasury dates and increased regret on the test-only bankruptcy workload. The Treasury comparison had Holm-adjusted p = 0.000333. The adapter's primary comparison uses the frozen Qwen3 base. [CPU control report](controls/learned-vs-resume.json) · [Language controls](../../examples/public_finance/README.md)
+
+```sh
+python -m gradient_desk.choice_cpu \
+  --train .work/v2/campaign-01-data/train.jsonl --validation .work/v2/campaign-01-data/valid.jsonl \
+  --test .work/v2/frozen/test.jsonl --expected-test-sha256 \
+  b29b8149e140374b1a1a8e58e4b228b77ab6e2ee346725fcec8e5075735eba05 \
+  --output .work/v2/cpu-intervention
+```

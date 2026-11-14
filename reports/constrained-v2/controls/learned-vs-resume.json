@@ -1,0 +1,170 @@
+{
+  "confirmed_improvements": 1,
+  "input_sha256": {
+    "base": "90ff82cde09e064b00531d8cd9cfaaa53d65ce21328e4e3fe42059051677ddde",
+    "candidate": "95e2933f96a279a11c5ac2af36a8a78fdf408df115d5325828ce7a01fe33cb50",
+    "cases": "cbaf0a94931219191099fbb85ff14571fbb20461b095623e8364ce7432935058"
+  },
+  "observed_improvements": 1,
+  "panels": {
+    "taiwan_bankruptcy_intervention": {
+      "base": {
+        "accuracy": 0.5357142857142857,
+        "action_counts": {
+          "resume": 140
+        },
+        "confusion_reference_by_prediction": {
+          "accumulate": {
+            "resume": 10
+          },
+          "clip_grad": {
+            "resume": 15
+          },
+          "lower_lr": {
+            "resume": 40
+          },
+          "resume": {
+            "resume": 75
+          }
+        },
+        "macro_accuracy": 0.25,
+        "mean_raw_regret": 0.25681423140423637,
+        "primary": 0.33689897018937326
+      },
+      "candidate": {
+        "accuracy": 0.38571428571428573,
+        "action_counts": {
+          "accumulate": 1,
+          "clip_grad": 51,
+          "lower_lr": 26,
+          "resume": 62
+        },
+        "confusion_reference_by_prediction": {
+          "accumulate": {
+            "clip_grad": 10
+          },
+          "clip_grad": {
+            "clip_grad": 7,
+            "lower_lr": 3,
+            "resume": 5
+          },
+          "lower_lr": {
+            "clip_grad": 20,
+            "lower_lr": 5,
+            "resume": 15
+          },
+          "resume": {
+            "accumulate": 1,
+            "clip_grad": 14,
+            "lower_lr": 18,
+            "resume": 42
+          }
+        },
+        "macro_accuracy": 0.2879166666666667,
+        "mean_raw_regret": 0.19539046585559844,
+        "primary": 0.429715047453311
+      },
+      "confirmed_improvement": false,
+      "dependence_blocks": 28,
+      "gain": -0.0928160772639378,
+      "gain_direction": "positive favors candidate",
+      "labels": {
+        "accumulate": 10,
+        "clip_grad": 15,
+        "lower_lr": 40,
+        "resume": 75
+      },
+      "n": 140,
+      "observed_improvement": false,
+      "p_block_one_sided": 0.9851691384769206,
+      "p_holm": 0.9851691384769206,
+      "paired_block_bootstrap95": [
+        -0.17380055018328566,
+        -0.01712527743981513
+      ],
+      "primary_metric": "mean_normalized_regret"
+    },
+    "treasury_intervention": {
+      "base": {
+        "accuracy": 0.18823529411764706,
+        "action_counts": {
+          "resume": 85
+        },
+        "confusion_reference_by_prediction": {
+          "accumulate": {
+            "resume": 12
+          },
+          "clip_grad": {
+            "resume": 7
+          },
+          "lower_lr": {
+            "resume": 50
+          },
+          "resume": {
+            "resume": 16
+          }
+        },
+        "macro_accuracy": 0.25,
+        "mean_raw_regret": 3.1924554432033085e+27,
+        "primary": 0.5804473742834171
+      },
+      "candidate": {
+        "accuracy": 0.5176470588235295,
+        "action_counts": {
+          "accumulate": 15,
+          "clip_grad": 3,
+          "lower_lr": 65,
+          "resume": 2
+        },
+        "confusion_reference_by_prediction": {
+          "accumulate": {
+            "accumulate": 3,
+            "clip_grad": 1,
+            "lower_lr": 7,
+            "resume": 1
+          },
+          "clip_grad": {
+            "accumulate": 1,
+            "clip_grad": 1,
+            "lower_lr": 5
+          },
+          "lower_lr": {
+            "accumulate": 8,
+            "clip_grad": 1,
+            "lower_lr": 40,
+            "resume": 1
+          },
+          "resume": {
+            "accumulate": 3,
+            "lower_lr": 13
+          }
+        },
+        "macro_accuracy": 0.2982142857142857,
+        "mean_raw_regret": 0.34420055694439833,
+        "primary": 0.13205808725457535
+      },
+      "confirmed_improvement": true,
+      "dependence_blocks": 17,
+      "gain": 0.4483892870288418,
+      "gain_direction": "positive favors candidate",
+      "labels": {
+        "accumulate": 12,
+        "clip_grad": 7,
+        "lower_lr": 50,
+        "resume": 16
+      },
+      "n": 85,
+      "observed_improvement": true,
+      "p_block_one_sided": 0.00016663889351774705,
+      "p_holm": 0.0003332777870354941,
+      "paired_block_bootstrap95": [
+        0.35175473048017625,
+        0.5357314899367119
+      ],
+      "primary_metric": "mean_normalized_regret"
+    }
+  },
+  "resamples": 6000,
+  "schema": 1,
+  "seed": 7121
+}

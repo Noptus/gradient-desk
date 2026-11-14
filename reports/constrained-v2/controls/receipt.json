@@ -1,0 +1,46 @@
+{
+  "inputs": {
+    "train": "f0be5723a3f9c74831be1742fe842b1d689bf833fa14837368a75f4bbfb5419f",
+    "valid": "3c8fb2e2059f527fc0350583c0e2cedcf4fc3214fd4df7a01cbcd603d819db0f",
+    "test": "b29b8149e140374b1a1a8e58e4b228b77ab6e2ee346725fcec8e5075735eba05"
+  },
+  "rows": 225,
+  "learned": {
+    "track": "training",
+    "selected_k": 5,
+    "candidate_k": [
+      1,
+      3,
+      5,
+      7,
+      9
+    ],
+    "feature_names": [
+      "grad_level",
+      "grad_spread",
+      "grad_trend",
+      "train_trend",
+      "val_trend",
+      "lr",
+      "log_lr",
+      "is_classification",
+      "is_ranking",
+      "log_batch"
+    ],
+    "n_train": 429,
+    "n_validation": 214,
+    "tie_order": [
+      "resume",
+      "lower_lr",
+      "clip_grad",
+      "accumulate"
+    ],
+    "validation_regret": {
+      "1": 0.22758136859975733,
+      "3": 0.18142018575277077,
+      "5": 0.17291799075826253,
+      "7": 0.18361191467119362,
+      "9": 0.1765034560378597
+    }
+  }
+}
