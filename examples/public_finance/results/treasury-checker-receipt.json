@@ -1,0 +1,14 @@
+{
+  "accuracy": 1.0,
+  "baseline": "treasury_decimal_calculator",
+  "correct": 150,
+  "count": 150,
+  "incorrect": 0,
+  "input": {
+    "file": "treasury-test.jsonl",
+    "sha256": "344c060d33b5eb56f929d84e3b3580d15532668c8abd66a1da1c10f18a534eb2"
+  },
+  "predictions_file": "treasury-checker-predictions.jsonl",
+  "predictions_sha256": "abf4019cf08f8b26887492970538afdb61cd3f9253f21f04b1e9f954ae4f6fdd",
+  "track": "treasury_curve_audit"
+}

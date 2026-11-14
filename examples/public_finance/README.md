@@ -28,7 +28,7 @@ Use the official daily par curve archive. At each date, select nonoverlapping th
 
 ### Lexical comparator
 
-A verified TF-IDF logistic baseline reads only the prompt text of each case. One feature space uses word unigrams and bigrams, and the other adds character n-grams of length three to five on top of those words. Training rows fit the model, and development rows alone select the feature space and the inverse regularization strength from a fixed grid of 0.25, 1.0, 4.0 and 16.0. Held-out labels stay closed until that development choice is frozen, then open once per track. Before any fitting the comparator checks all nine inputs against the SHA-256 digests in [the data receipt](frozen-receipts.json). Under a pinned scikit-learn it produced held-out accuracy of 68.932 percent on FinQA, 86.1635 percent on SEC and 32.000 percent on Treasury.
+A TF-IDF logistic baseline uses only the case prompt. Development accuracy selects word n-grams with or without additional character n-grams, and inverse regularization strength from 0.25, 1, 4 and 16. The program checks the reconstructed inputs against [the frozen digests](frozen-receipts.json) before use. Held-out accuracy was 68.93% on FinQA, 86.16% on SEC and 32.00% on Treasury.
 
 Reproduce it with the pinned solver after rebuilding the inputs.
 
@@ -36,10 +36,22 @@ Reproduce it with the pinned solver after rebuilding the inputs.
 python3 -m pip install scikit-learn==1.9.1
 python3 examples/public_finance/lexical.py \
   --cases-dir .work/v2/public-finance/reconstructed \
-  --output results
+  --output .work/v2/public-finance/lexical
 ```
 
-The run writes a receipt to [results/lexical-receipt.json](results/lexical-receipt.json) and per-case predictions to [results/lexical-predictions.jsonl](results/lexical-predictions.jsonl).
+See the [aggregate receipt](results/lexical-receipt.json) and [case-level predictions](results/lexical-predictions.jsonl).
+
+### Treasury calculator
+
+The fixed-format checker reads the displayed dates, yields and claim. It evaluates each of the five possible discrepancies using exact decimal arithmetic. It identified all 150 held-out labels. This score measures what a task-specific calculator can do on the generated memo template.
+
+```sh
+python3 examples/public_finance/treasury_checker.py \
+  --cases-dir .work/v2/public-finance/reconstructed \
+  --output .work/v2/public-finance/treasury-checker
+```
+
+See the [calculator receipt](results/treasury-checker-receipt.json) and [case-level predictions](results/treasury-checker-predictions.jsonl).
 
 ## Reproduce the inputs
 
