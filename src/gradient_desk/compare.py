@@ -26,14 +26,21 @@ def _interval(blocks: dict, draws: int = 3000) -> list[float]:
 
 
 def paired_deltas(base_path: Path, candidate_path: Path) -> dict:
-    base = {row["case_id"]: row for row in read_jsonl(base_path)}
-    candidate = {row["case_id"]: row for row in read_jsonl(candidate_path)}
+    def index(path: Path) -> dict:
+        rows = read_jsonl(path)
+        by_id = {row["case_id"]: row for row in rows}
+        if len(by_id) != len(rows):
+            raise ValueError(f"Repeated case IDs in {path}")
+        return by_id
+
+    base = index(base_path)
+    candidate = index(candidate_path)
     if not base or set(base) != set(candidate):
         raise ValueError("Comparison requires identical nonempty case IDs")
     by_family = defaultdict(list)
     for case_id, baseline in base.items():
         trial = candidate[case_id]
-        for field in ("family", "track", "split", "label"):
+        for field in ("family", "track", "split", "label", "block"):
             if baseline[field] != trial[field]:
                 raise ValueError(f"{case_id} differs on {field}")
         by_family[(trial["track"], trial["family"])].append((baseline, trial))
@@ -49,10 +56,11 @@ def paired_deltas(base_path: Path, candidate_path: Path) -> dict:
         if track == "training":
             blocks = defaultdict(list)
             for b, t in pairs:
-                seed_group = t["case_id"].rsplit("-", 1)[-1]
-                blocks[seed_group].append(t["normalized_regret"] - b["normalized_regret"])
+                group = t["block"]
+                blocks[group].append(t["normalized_regret"] - b["normalized_regret"])
             out["mean_normalized_regret_delta"] = statistics.mean(x for group in blocks.values() for x in group)
-            out["seed_block_bootstrap_95"] = _interval(blocks)
+            if len(blocks) >= 8:
+                out["block_bootstrap_95"] = _interval(blocks)
         report["by_family"][f"{track}/{family}"] = out
     return report
 

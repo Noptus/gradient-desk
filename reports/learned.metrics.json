@@ -1,0 +1,249 @@
+{
+  "engine": "learned",
+  "model_dir": null,
+  "adapter_dir": null,
+  "inference_batch_size": 1,
+  "versions": {},
+  "by_track": {
+    "methodology": {
+      "n": 16,
+      "accuracy": 0.8125,
+      "valid_rate": 1.0,
+      "predictions": {
+        "audit_timing": 3,
+        "clarify_thesis": 4,
+        "improve_validation": 2,
+        "run_pilot": 4,
+        "model_costs": 3
+      },
+      "gold": {
+        "audit_timing": 3,
+        "clarify_thesis": 3,
+        "improve_validation": 3,
+        "run_pilot": 2,
+        "model_costs": 3,
+        "limit_risk": 2
+      },
+      "mean_seconds": 0.0002765338103927206,
+      "macro_accuracy": 0.7777777777777778
+    },
+    "training": {
+      "n": 144,
+      "accuracy": 0.6041666666666666,
+      "valid_rate": 1.0,
+      "predictions": {
+        "resume": 39,
+        "clip_grad": 22,
+        "lower_lr": 78,
+        "accumulate": 5
+      },
+      "gold": {
+        "resume": 70,
+        "lower_lr": 63,
+        "accumulate": 9,
+        "clip_grad": 2
+      },
+      "mean_seconds": 0.0008241504510806408,
+      "macro_accuracy": 0.3329365079365079,
+      "mean_relative_regret": 0.15547843411902498,
+      "median_relative_regret": 0.0,
+      "mean_log_relative_regret": 0.09042379301550951,
+      "mean_normalized_regret": 0.2846999458114256
+    }
+  },
+  "by_family": {
+    "methodology/index_membership_flow": {
+      "n": 4,
+      "accuracy": 0.75,
+      "valid_rate": 1.0,
+      "predictions": {
+        "model_costs": 1,
+        "audit_timing": 1,
+        "run_pilot": 1,
+        "clarify_thesis": 1
+      },
+      "gold": {
+        "model_costs": 1,
+        "audit_timing": 1,
+        "limit_risk": 1,
+        "clarify_thesis": 1
+      },
+      "mean_seconds": 0.0002783954987535253,
+      "macro_accuracy": 0.75
+    },
+    "methodology/intraday_state_model": {
+      "n": 4,
+      "accuracy": 0.5,
+      "valid_rate": 1.0,
+      "predictions": {
+        "clarify_thesis": 2,
+        "model_costs": 1,
+        "run_pilot": 1
+      },
+      "gold": {
+        "clarify_thesis": 1,
+        "improve_validation": 1,
+        "model_costs": 1,
+        "limit_risk": 1
+      },
+      "mean_seconds": 0.00023792700085323304,
+      "macro_accuracy": 0.5
+    },
+    "methodology/macro_release_surprise": {
+      "n": 4,
+      "accuracy": 1.0,
+      "valid_rate": 1.0,
+      "predictions": {
+        "audit_timing": 1,
+        "improve_validation": 1,
+        "model_costs": 1,
+        "run_pilot": 1
+      },
+      "gold": {
+        "audit_timing": 1,
+        "improve_validation": 1,
+        "model_costs": 1,
+        "run_pilot": 1
+      },
+      "mean_seconds": 0.00026518775848671794,
+      "macro_accuracy": 1.0
+    },
+    "methodology/patent_diffusion": {
+      "n": 4,
+      "accuracy": 1.0,
+      "valid_rate": 1.0,
+      "predictions": {
+        "audit_timing": 1,
+        "clarify_thesis": 1,
+        "improve_validation": 1,
+        "run_pilot": 1
+      },
+      "gold": {
+        "audit_timing": 1,
+        "clarify_thesis": 1,
+        "improve_validation": 1,
+        "run_pilot": 1
+      },
+      "mean_seconds": 0.0003246249834774062,
+      "macro_accuracy": 1.0
+    },
+    "training/rank_cross_section": {
+      "n": 72,
+      "accuracy": 0.3472222222222222,
+      "valid_rate": 1.0,
+      "predictions": {
+        "resume": 22,
+        "clip_grad": 14,
+        "lower_lr": 31,
+        "accumulate": 5
+      },
+      "gold": {
+        "resume": 45,
+        "accumulate": 9,
+        "lower_lr": 16,
+        "clip_grad": 2
+      },
+      "mean_seconds": 0.0007800885165731112,
+      "macro_accuracy": 0.23958333333333331,
+      "mean_relative_regret": 0.028557516912678493,
+      "median_relative_regret": 0.015004255630317721,
+      "mean_log_relative_regret": 0.027662966997537272,
+      "mean_normalized_regret": 0.46736304733770645
+    },
+    "training/tabular_regime_shift": {
+      "n": 72,
+      "accuracy": 0.8611111111111112,
+      "valid_rate": 1.0,
+      "predictions": {
+        "resume": 17,
+        "clip_grad": 8,
+        "lower_lr": 47
+      },
+      "gold": {
+        "resume": 25,
+        "lower_lr": 47
+      },
+      "mean_seconds": 0.0008682123855881704,
+      "macro_accuracy": 0.8093617021276596,
+      "mean_relative_regret": 0.28239935132537153,
+      "median_relative_regret": 0.0,
+      "mean_log_relative_regret": 0.15318461903348174,
+      "mean_normalized_regret": 0.10203684428514465
+    }
+  },
+  "validation_selection": {
+    "methodology": {
+      "track": "methodology",
+      "selected_k": 5,
+      "candidate_k": [
+        1,
+        3,
+        5,
+        7
+      ],
+      "vocabulary_size": 809,
+      "labels": [
+        "audit_timing",
+        "clarify_thesis",
+        "improve_validation",
+        "limit_risk",
+        "model_costs",
+        "run_pilot"
+      ],
+      "n_train": 32,
+      "n_validation": 16,
+      "tie_order": [
+        "audit_timing",
+        "improve_validation",
+        "model_costs",
+        "limit_risk",
+        "clarify_thesis",
+        "run_pilot"
+      ],
+      "validation_accuracy": {
+        "1": 0.6875,
+        "3": 0.6875,
+        "5": 0.875,
+        "7": 0.8125
+      }
+    },
+    "training": {
+      "track": "training",
+      "selected_k": 5,
+      "candidate_k": [
+        1,
+        3,
+        5,
+        7,
+        9
+      ],
+      "feature_names": [
+        "grad_level",
+        "grad_spread",
+        "grad_trend",
+        "train_trend",
+        "val_trend",
+        "lr",
+        "log_lr",
+        "is_classification",
+        "is_ranking",
+        "log_batch"
+      ],
+      "n_train": 144,
+      "n_validation": 144,
+      "tie_order": [
+        "resume",
+        "lower_lr",
+        "clip_grad",
+        "accumulate"
+      ],
+      "validation_regret": {
+        "1": 0.2382884106393732,
+        "3": 0.224422579960273,
+        "5": 0.19218331730001206,
+        "7": 0.22490499057907393,
+        "9": 0.19911727695363496
+      }
+    }
+  }
+}

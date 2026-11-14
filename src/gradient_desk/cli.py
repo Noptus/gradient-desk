@@ -39,6 +39,24 @@ def main(argv: list[str] | None = None) -> None:
     engine.add_argument("--model", type=Path)
     engine.add_argument("--baseline", choices=("resume", "rules"))
 
+    learned = commands.add_parser("learned-eval", help="Test validation-selected CPU baselines")
+    learned.add_argument("--train-cases", type=Path, required=True)
+    learned.add_argument("--valid-cases", type=Path, required=True)
+    learned.add_argument("--cases", type=Path, required=True)
+    learned.add_argument("--output", type=Path, required=True)
+
+    paired = commands.add_parser("paired-eval", help="Evaluate base and adapter with matching settings")
+    paired.add_argument("--cases", type=Path, required=True)
+    paired.add_argument("--output", type=Path, required=True)
+    paired.add_argument("--model", type=Path, required=True)
+    paired.add_argument("--adapter", type=Path, required=True)
+    paired.add_argument("--batch-size", type=_positive, default=1)
+    paired.add_argument("--extra-cases", type=Path, action="append", default=[],
+                        help="Independent external holdout, reported separately (repeat to add panels)")
+    paired.add_argument("--validation-cases", type=Path, help="Optional fixed validation panel")
+    paired.add_argument("--checkpoints", type=_positive, nargs="+", default=[],
+                        help="Choose among these saved steps using the validation panel")
+
     compare = commands.add_parser("compare", help="Compare matched evaluation predictions")
     compare.add_argument("--base", type=Path, required=True)
     compare.add_argument("--candidate", type=Path, required=True)
@@ -64,6 +82,19 @@ def main(argv: list[str] | None = None) -> None:
         print(path)
     elif args.command == "prepare":
         print(json.dumps(prepare(args.traces, args.methods, args.output, args.method_weight), indent=2))
+    elif args.command == "learned-eval":
+        from .learned import evaluate_learned
+
+        report = evaluate_learned(args.train_cases, args.valid_cases, args.cases, args.output)
+        print(json.dumps(report, indent=2))
+    elif args.command == "paired-eval":
+        from .evaluate import paired_eval
+
+        scores = paired_eval(
+            args.cases, args.output, args.model, args.adapter, args.batch_size, tuple(args.extra_cases),
+            args.validation_cases, tuple(args.checkpoints),
+        )
+        print(json.dumps(scores, indent=2))
     elif args.command == "compare":
         from .compare import write_comparison
 

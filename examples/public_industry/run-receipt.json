@@ -1,0 +1,84 @@
+{
+  "schema": 1,
+  "source_url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp_202412/12_Industry_Portfolios_daily_CSV.zip",
+  "source_sha256": "d1571474ee0f6e1ff463f7fccc6c3cca74d6d18d0385b6a24c9c51498b714ea6",
+  "database_vintage": "202412",
+  "device": "cpu",
+  "torch_version": "2.9.1",
+  "python_version": "3.12.13",
+  "os": "Darwin",
+  "machine": "arm64",
+  "cases": 24,
+  "case_sha256": "1047c52aaeace3fce17065047123cedbeeacc1a97a694b2b9804b2ef7e5cfe2d",
+  "measurement_sha256": "b8e67b03fc1b37c7cd574f300e421c63168ec07bf07dc3f81e35e892f56f55c4",
+  "industries": [
+    "NoDur",
+    "Durbl",
+    "Manuf",
+    "Enrgy",
+    "Chems",
+    "BusEq",
+    "Telcm",
+    "Utils",
+    "Shops",
+    "Hlth",
+    "Money",
+    "Other"
+  ],
+  "features": [
+    "own_return_t",
+    "own_mean_5",
+    "own_mean_20",
+    "own_std_20",
+    "basket_return_t",
+    "own_minus_basket_t"
+  ],
+  "label": "next trading-session return in percent",
+  "learning_rates": [
+    0.01,
+    0.04,
+    0.12,
+    0.24
+  ],
+  "anchors": [
+    "2011-08-01",
+    "2013-06-03",
+    "2018-02-01",
+    "2020-02-18",
+    "2022-06-01",
+    "2023-03-01"
+  ],
+  "outcome_counts": {
+    "accumulate": 2,
+    "lower_lr": 19,
+    "resume": 3
+  },
+  "validation": "terminal MSE in squared percentage points",
+  "limits": "Six predeclared market windows, one small MLP, archived values, no investment performance claim.",
+  "repeat_measurements_equal_ignoring_wall_time": true,
+  "fixed_action_baselines": {
+    "resume": {
+      "accuracy": 0.125,
+      "mean_normalized_regret": 0.7241215221543743
+    },
+    "lower_lr": {
+      "accuracy": 0.7916666666666666,
+      "mean_normalized_regret": 0.04205585838454962
+    },
+    "clip_grad": {
+      "accuracy": 0,
+      "mean_normalized_regret": 0.5050323693442322
+    },
+    "accumulate": {
+      "accuracy": 0.08333333333333333,
+      "mean_normalized_regret": 0.14855472895463837
+    }
+  },
+  "rules_baseline": {
+    "n": 24,
+    "accuracy": 0.0,
+    "macro_accuracy": 0.0,
+    "mean_normalized_regret": 0.5050323693442323
+  },
+  "comparison_scope": "All fixed actions are reported descriptively. lower_lr was the best fixed action on this panel ex post. This panel was not used to tune a policy."
+}

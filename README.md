@@ -51,6 +51,8 @@ python -m pytest -q
 
 The checkpoints, trace outputs, and prediction files contain no private market data. The downloader pins the publisher's [Qwen3-8B MLX 4-bit revision](https://huggingface.co/Qwen/Qwen3-8B-MLX-4bit/tree/383413e909f3bc5303ce195ebbdf0339c5a1a2a3). Training reads a verified local snapshot with model-side code loading disabled. A Mac that takes a long time to initialize binary dependencies from an external drive can use its internal disk for the Python environment while keeping models and working artifacts on the external drive.
 
+The [reference protocol](EXPERIMENT.md) gives the validation-only checkpoint selection rule, the matched evaluation command, and the evidence required to interpret the scores.
+
 ## What the two tracks measure
 
 **Neural training.** Each row starts from an identical model, optimizer, data cursor, and random state. Keep settings, reduce learning rate, clip global gradient norm, or accumulate gradients. Every branch sees the same ordered eight microbatches. Accumulation takes four optimizer updates and the other interventions take eight. The label reflects the smallest measured post-intervention validation loss, with a fixed near-tie threshold and first preference for resuming. Outcome values, durations, IDs, labels, and split names never enter the model prompt.
