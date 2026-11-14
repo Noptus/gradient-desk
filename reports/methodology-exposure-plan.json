@@ -1,0 +1,205 @@
+{
+  "seed": 425,
+  "mixed_step": 120,
+  "methodology_updates": 49,
+  "removed_neural_updates": 71,
+  "methodology_order": [
+    {
+      "mixed_step": 2,
+      "case_id": "curve_operational_trial"
+    },
+    {
+      "mixed_step": 3,
+      "case_id": "inventory_overlapping_targets"
+    },
+    {
+      "mixed_step": 5,
+      "case_id": "network_explanation_test"
+    },
+    {
+      "mixed_step": 10,
+      "case_id": "language_borrow_economics"
+    },
+    {
+      "mixed_step": 14,
+      "case_id": "dispersion_jump_budget"
+    },
+    {
+      "mixed_step": 17,
+      "case_id": "language_many_dictionaries"
+    },
+    {
+      "mixed_step": 18,
+      "case_id": "dispersion_six_independent_events"
+    },
+    {
+      "mixed_step": 21,
+      "case_id": "curve_compensation_or_error"
+    },
+    {
+      "mixed_step": 27,
+      "case_id": "dispersion_ambiguous_payoff"
+    },
+    {
+      "mixed_step": 32,
+      "case_id": "freight_thin_hedge_leg"
+    },
+    {
+      "mixed_step": 39,
+      "case_id": "curve_common_funding_shock"
+    },
+    {
+      "mixed_step": 40,
+      "case_id": "network_pretrained_future_links"
+    },
+    {
+      "mixed_step": 44,
+      "case_id": "retail_shared_exit"
+    },
+    {
+      "mixed_step": 47,
+      "case_id": "curve_operational_trial"
+    },
+    {
+      "mixed_step": 49,
+      "case_id": "language_borrow_economics"
+    },
+    {
+      "mixed_step": 50,
+      "case_id": "inventory_small_demonstration"
+    },
+    {
+      "mixed_step": 51,
+      "case_id": "retail_shared_exit"
+    },
+    {
+      "mixed_step": 52,
+      "case_id": "language_borrow_economics"
+    },
+    {
+      "mixed_step": 53,
+      "case_id": "retail_capped_launch"
+    },
+    {
+      "mixed_step": 54,
+      "case_id": "network_small_supplier_fills"
+    },
+    {
+      "mixed_step": 55,
+      "case_id": "dispersion_midquote_hedges"
+    },
+    {
+      "mixed_step": 56,
+      "case_id": "inventory_small_demonstration"
+    },
+    {
+      "mixed_step": 60,
+      "case_id": "language_replaced_documents"
+    },
+    {
+      "mixed_step": 64,
+      "case_id": "retail_shared_exit"
+    },
+    {
+      "mixed_step": 65,
+      "case_id": "curve_compensation_or_error"
+    },
+    {
+      "mixed_step": 68,
+      "case_id": "inventory_revisions_vintage"
+    },
+    {
+      "mixed_step": 70,
+      "case_id": "network_small_supplier_fills"
+    },
+    {
+      "mixed_step": 72,
+      "case_id": "curve_roll_definition_search"
+    },
+    {
+      "mixed_step": 74,
+      "case_id": "language_many_dictionaries"
+    },
+    {
+      "mixed_step": 79,
+      "case_id": "dispersion_ambiguous_payoff"
+    },
+    {
+      "mixed_step": 81,
+      "case_id": "network_component_dependence"
+    },
+    {
+      "mixed_step": 83,
+      "case_id": "freight_accuracy_without_decision"
+    },
+    {
+      "mixed_step": 85,
+      "case_id": "inventory_delivery_concentration"
+    },
+    {
+      "mixed_step": 87,
+      "case_id": "freight_accuracy_without_decision"
+    },
+    {
+      "mixed_step": 91,
+      "case_id": "retail_refreshed_history"
+    },
+    {
+      "mixed_step": 93,
+      "case_id": "freight_accuracy_without_decision"
+    },
+    {
+      "mixed_step": 95,
+      "case_id": "language_replaced_documents"
+    },
+    {
+      "mixed_step": 96,
+      "case_id": "language_missing_mechanism"
+    },
+    {
+      "mixed_step": 97,
+      "case_id": "auction_small_edge"
+    },
+    {
+      "mixed_step": 103,
+      "case_id": "network_component_dependence"
+    },
+    {
+      "mixed_step": 106,
+      "case_id": "network_explanation_test"
+    },
+    {
+      "mixed_step": 107,
+      "case_id": "auction_freeze_and_observe"
+    },
+    {
+      "mixed_step": 108,
+      "case_id": "retail_capped_launch"
+    },
+    {
+      "mixed_step": 110,
+      "case_id": "language_missing_mechanism"
+    },
+    {
+      "mixed_step": 112,
+      "case_id": "inventory_overlapping_targets"
+    },
+    {
+      "mixed_step": 113,
+      "case_id": "freight_independent_replication"
+    },
+    {
+      "mixed_step": 115,
+      "case_id": "network_pretrained_future_links"
+    },
+    {
+      "mixed_step": 117,
+      "case_id": "dispersion_six_independent_events"
+    },
+    {
+      "mixed_step": 118,
+      "case_id": "dispersion_midquote_hedges"
+    }
+  ],
+  "order_sha256": "dad5509d106f230f5eee02622827b1e3fa640e478966eda762f533131114bcec"
+}
