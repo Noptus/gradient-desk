@@ -6,7 +6,7 @@ import argparse
 import json
 from pathlib import Path
 
-from .dataset import MODEL_REPO, MODEL_REVISION, method_prompt, prepare
+from .dataset import MODEL_REPO, MODEL_REVISION, method_prompt, prepare, read_jsonl
 from .traces import format_telemetry
 
 
@@ -63,8 +63,12 @@ def main(argv: list[str] | None = None) -> None:
     compare.add_argument("--output", type=Path, required=True)
 
     advise = commands.add_parser("advise", help="Choose an action for one local research case")
-    advise.add_argument("--model", type=Path, required=True)
+    adviser = advise.add_mutually_exclusive_group(required=True)
+    adviser.add_argument("--model", type=Path)
+    adviser.add_argument("--policy", choices=("learned",), help="Use the validation-selected CPU policy")
     advise.add_argument("--adapter", type=Path)
+    advise.add_argument("--train-cases", type=Path)
+    advise.add_argument("--valid-cases", type=Path)
     case = advise.add_mutually_exclusive_group(required=True)
     case.add_argument("--scenario")
     case.add_argument("--telemetry", type=Path)
@@ -100,20 +104,38 @@ def main(argv: list[str] | None = None) -> None:
 
         print(json.dumps(write_comparison(args.base, args.candidate, args.output), indent=2))
     elif args.command == "advise":
-        from .evaluate import generate_predictions
+        if args.policy and (args.adapter or not args.train_cases or not args.valid_cases):
+            advise.error("--policy learned requires --train-cases and --valid-cases")
+        if args.model and (args.train_cases or args.valid_cases):
+            advise.error("--train-cases and --valid-cases require --policy learned")
+        try:
+            if args.scenario is not None:
+                if not args.scenario.strip():
+                    raise ValueError("--scenario must have text")
+                row = {"track": "methodology", "prompt": method_prompt(args.scenario)}
+            else:
+                telemetry = json.loads(args.telemetry.read_text(encoding="utf-8"))
+                if not isinstance(telemetry, dict):
+                    raise ValueError("--telemetry must contain a JSON object")
+                row = {"track": "training", "prompt": format_telemetry(telemetry)}
+            if args.policy:
+                from .learned import make_baseline
 
-        if args.scenario is not None:
-            row = {"track": "methodology", "prompt": method_prompt(args.scenario)}
-        else:
-            telemetry = json.loads(args.telemetry.read_text(encoding="utf-8"))
-            if not isinstance(telemetry, dict):
-                parser.error("--telemetry must contain a JSON object")
-            row = {
-                "track": "training",
-                "prompt": format_telemetry(telemetry),
-            }
-        prediction = next(generate_predictions(args.model, args.adapter, [row], progress=False))
-        print(json.dumps({"action": prediction.label, "raw": prediction.raw}, indent=2))
+                train, valid = (
+                    [case for case in read_jsonl(path) if case.get("track") == row["track"]]
+                    for path in (args.train_cases, args.valid_cases)
+                )
+                policy = make_baseline(train, valid)
+                report = {"action": policy(row), "policy": "learned",
+                          "selected_k": policy.settings.selected_k}
+            else:
+                from .evaluate import generate_predictions
+
+                prediction = next(generate_predictions(args.model, args.adapter, [row], progress=False))
+                report = {"action": prediction.label, "raw": prediction.raw}
+        except (OSError, ValueError, KeyError, TypeError) as error:
+            advise.error(str(error))
+        print(json.dumps(report, indent=2))
     else:
         from .evaluate import evaluate
 
