@@ -246,6 +246,7 @@ def fit(
     dropout: float = DEFAULT_DROPOUT,
     resume: Path | None = None,
     max_tokens: int = 768,
+    warmup_steps: int = 0,
 ) -> dict:
     """Fine-tune constrained candidate soft targets and write an MLX adapter.
 
@@ -261,6 +262,8 @@ def fit(
 
     if steps <= 0 or batch_size <= 0 or not math.isfinite(learning_rate) or learning_rate <= 0:
         raise ValueError("steps, batch-size and learning-rate must be positive")
+    if not 0 <= warmup_steps < steps:
+        raise ValueError("warmup-steps must be nonnegative and less than the training steps")
     if output.exists():
         raise FileExistsError(f"Adapter output already exists: {output}")
 
@@ -305,7 +308,10 @@ def fit(
         logits = candidate_logits(model, batch_ids, lengths, candidate_matrix)
         return masked_soft_cross_entropy(logits, targets, candidate_mask)
 
-    optimizer = optim.Adam(learning_rate=learning_rate)
+    schedule = learning_rate
+    if warmup_steps > 1:
+        schedule = optim.linear_schedule(learning_rate / warmup_steps, learning_rate, warmup_steps - 1)
+    optimizer = optim.Adam(learning_rate=schedule)
     loss_and_grad = nn.value_and_grad(model, loss_fn)
 
     output.mkdir(parents=True)
@@ -330,7 +336,8 @@ def fit(
         "resume_adapter_sha256": _file_sha256(resume / "adapters.safetensors") if resume else None,
         "hyperparameters": {
             "steps": steps, "batch_size": batch_size, "learning_rate": learning_rate,
-            "seed": seed, "num_layers": num_layers, "max_tokens": max_tokens, **lora_parameters,
+            "seed": seed, "num_layers": num_layers, "max_tokens": max_tokens,
+            "warmup_steps": warmup_steps, **lora_parameters,
         },
     }
     (output / "provenance.json").write_text(
@@ -357,7 +364,8 @@ def fit(
         optimizer.update(model, grads)
         mx.eval(model.trainable_parameters(), optimizer.state)
         receipts.append({"step": step, "loss": value, "gradient_norm": norm_value,
-                         "batch": len(batch), "track": batch[0]["track"]})
+                         "batch": len(batch), "track": batch[0]["track"],
+                         "learning_rate": float(optimizer.learning_rate.item())})
         if step % max(1, save_every) == 0 or step == steps:
             save_checkpoint(step)
         if step % 10 == 0 or step == steps or step == 1:
@@ -502,6 +510,8 @@ def build_parser() -> argparse.ArgumentParser:
     fit_cmd.add_argument("--batch-size", type=_positive_int, default=4)
     fit_cmd.add_argument("--max-tokens", type=_positive_int, default=768)
     fit_cmd.add_argument("--learning-rate", type=float, default=1e-5)
+    fit_cmd.add_argument("--warmup-steps", type=int, default=0,
+                         help="Linearly warm up Adam to the configured learning rate")
     fit_cmd.add_argument("--seed", type=int, default=0)
     fit_cmd.add_argument("--num-layers", type=_positive_int, default=DEFAULT_NUM_LAYERS)
     fit_cmd.add_argument("--rank", type=_positive_int, default=DEFAULT_RANK)
@@ -533,6 +543,7 @@ def main(argv: list[str] | None = None) -> None:
             steps=args.steps, save_every=args.save_every, batch_size=args.batch_size,
             learning_rate=args.learning_rate, seed=args.seed, num_layers=args.num_layers,
             rank=args.rank, scale=args.scale, dropout=args.dropout, resume=args.resume, max_tokens=args.max_tokens,
+            warmup_steps=args.warmup_steps,
         )
         print(json.dumps({"steps": report["steps"], "final_loss": report["final_loss"]}, indent=2))
     else:

@@ -1,0 +1,1688 @@
+{
+  "steps": 240,
+  "final_loss": 1.4529156684875488,
+  "receipts": [
+    {
+      "step": 1,
+      "loss": 3.985196113586426,
+      "gradient_norm": 48.04413604736328,
+      "batch": 4,
+      "track": "methodology"
+    },
+    {
+      "step": 2,
+      "loss": 1.9241342544555664,
+      "gradient_norm": 20.7800350189209,
+      "batch": 4,
+      "track": "training"
+    },
+    {
+      "step": 3,
+      "loss": 1.1692728996276855,
+      "gradient_norm": 26.753643035888672,
+      "batch": 4,
+      "track": "finqa_operator"
+    },
+    {
+      "step": 4,
+      "loss": 4.572219371795654,
+      "gradient_norm": 108.931640625,
+      "batch": 4,
+      "track": "sec8k_item_routing"
+    },
+    {
+      "step": 5,
+      "loss": 2.86871337890625,
+      "gradient_norm": 217.82215881347656,
+      "batch": 4,
+      "track": "treasury_curve_audit"
+    },
+    {
+      "step": 6,
+      "loss": 5.942358016967773,
+      "gradient_norm": 181.1735382080078,
+      "batch": 4,
+      "track": "finqa_operator"
+    },
+    {
+      "step": 7,
+      "loss": 1.6121153831481934,
+      "gradient_norm": 35.97692108154297,
+      "batch": 4,
+      "track": "methodology"
+    },
+    {
+      "step": 8,
+      "loss": 2.0068106651306152,
+      "gradient_norm": 45.42229461669922,
+      "batch": 4,
+      "track": "treasury_curve_audit"
+    },
+    {
+      "step": 9,
+      "loss": 1.9305495023727417,
+      "gradient_norm": 35.77374267578125,
+      "batch": 4,
+      "track": "training"
+    },
+    {
+      "step": 10,
+      "loss": 5.752591133117676,
+      "gradient_norm": 94.4001693725586,
+      "batch": 4,
+      "track": "sec8k_item_routing"
+    },
+    {
+      "step": 11,
+      "loss": 2.2072179317474365,
+      "gradient_norm": 45.31043243408203,
+      "batch": 4,
+      "track": "training"
+    },
+    {
+      "step": 12,
+      "loss": 1.3838694095611572,
+      "gradient_norm": 15.924795150756836,
+      "batch": 4,
+      "track": "finqa_operator"
+    },
+    {
+      "step": 13,
+      "loss": 3.235849142074585,
+      "gradient_norm": 77.20201110839844,
+      "batch": 4,
+      "track": "sec8k_item_routing"
+    },
+    {
+      "step": 14,
+      "loss": 1.6143436431884766,
+      "gradient_norm": 17.491920471191406,
+      "batch": 4,
+      "track": "treasury_curve_audit"
+    },
+    {
+      "step": 15,
+      "loss": 2.838385820388794,
+      "gradient_norm": 44.76817321777344,
+      "batch": 4,
+      "track": "methodology"
+    },
+    {
+      "step": 16,
+      "loss": 2.172018051147461,
+      "gradient_norm": 27.356393814086914,
+      "batch": 4,
+      "track": "methodology"
+    },
+    {
+      "step": 17,
+      "loss": 1.3219938278198242,
+      "gradient_norm": 4.045976161956787,
+      "batch": 4,
+      "track": "training"
+    },
+    {
+      "step": 18,
+      "loss": 1.8657519817352295,
+      "gradient_norm": 35.5604248046875,
+      "batch": 4,
+      "track": "sec8k_item_routing"
+    },
+    {
+      "step": 19,
+      "loss": 1.3906760215759277,
+      "gradient_norm": 9.978072166442871,
+      "batch": 4,
+      "track": "treasury_curve_audit"
+    },
+    {
+      "step": 20,
+      "loss": 2.5620808601379395,
+      "gradient_norm": 73.97014617919922,
+      "batch": 4,
+      "track": "finqa_operator"
+    },
+    {
+      "step": 21,
+      "loss": 2.800241470336914,
+      "gradient_norm": 43.861724853515625,
+      "batch": 4,
+      "track": "methodology"
+    },
+    {
+      "step": 22,
+      "loss": 1.7330070734024048,
+      "gradient_norm": 19.337751388549805,
+      "batch": 4,
+      "track": "treasury_curve_audit"
+    },
+    {
+      "step": 23,
+      "loss": 1.6131327152252197,
+      "gradient_norm": 19.564496994018555,
+      "batch": 4,
+      "track": "finqa_operator"
+    },
+    {
+      "step": 24,
+      "loss": 2.086834669113159,
+      "gradient_norm": 19.740507125854492,
+      "batch": 4,
+      "track": "sec8k_item_routing"
+    },
+    {
+      "step": 25,
+      "loss": 1.6592732667922974,
+      "gradient_norm": 31.106889724731445,
+      "batch": 4,
+      "track": "training"
+    },
+    {
+      "step": 26,
+      "loss": 1.6216362714767456,
+      "gradient_norm": 9.840837478637695,
+      "batch": 4,
+      "track": "methodology"
+    },
+    {
+      "step": 27,
+      "loss": 2.667494773864746,
+      "gradient_norm": 54.73293685913086,
+      "batch": 4,
+      "track": "treasury_curve_audit"
+    },
+    {
+      "step": 28,
+      "loss": 1.9154486656188965,
+      "gradient_norm": 30.04952621459961,
+      "batch": 4,
+      "track": "training"
+    },
+    {
+      "step": 29,
+      "loss": 2.431838035583496,
+      "gradient_norm": 25.390378952026367,
+      "batch": 4,
+      "track": "sec8k_item_routing"
+    },
+    {
+      "step": 30,
+      "loss": 1.4538590908050537,
+      "gradient_norm": 11.85531234741211,
+      "batch": 4,
+      "track": "finqa_operator"
+    },
+    {
+      "step": 31,
+      "loss": 1.7699480056762695,
+      "gradient_norm": 11.03344440460205,
+      "batch": 4,
+      "track": "methodology"
+    },
+    {
+      "step": 32,
+      "loss": 1.387643814086914,
+      "gradient_norm": 10.075607299804688,
+      "batch": 4,
+      "track": "treasury_curve_audit"
+    },
+    {
+      "step": 33,
+      "loss": 1.9515693187713623,
+      "gradient_norm": 19.48303985595703,
+      "batch": 4,
+      "track": "sec8k_item_routing"
+    },
+    {
+      "step": 34,
+      "loss": 1.7529449462890625,
+      "gradient_norm": 21.980270385742188,
+      "batch": 4,
+      "track": "training"
+    },
+    {
+      "step": 35,
+      "loss": 1.5241072177886963,
+      "gradient_norm": 16.623706817626953,
+      "batch": 4,
+      "track": "finqa_operator"
+    },
+    {
+      "step": 36,
+      "loss": 2.112001895904541,
+      "gradient_norm": 14.743042945861816,
+      "batch": 4,
+      "track": "methodology"
+    },
+    {
+      "step": 37,
+      "loss": 1.3547286987304688,
+      "gradient_norm": 8.900406837463379,
+      "batch": 4,
+      "track": "training"
+    },
+    {
+      "step": 38,
+      "loss": 2.12446928024292,
+      "gradient_norm": 27.394670486450195,
+      "batch": 4,
+      "track": "treasury_curve_audit"
+    },
+    {
+      "step": 39,
+      "loss": 3.0007095336914062,
+      "gradient_norm": 38.35911178588867,
+      "batch": 4,
+      "track": "sec8k_item_routing"
+    },
+    {
+      "step": 40,
+      "loss": 1.3825740814208984,
+      "gradient_norm": 24.829437255859375,
+      "batch": 4,
+      "track": "finqa_operator"
+    },
+    {
+      "step": 41,
+      "loss": 1.6581655740737915,
+      "gradient_norm": 23.140079498291016,
+      "batch": 4,
+      "track": "treasury_curve_audit"
+    },
+    {
+      "step": 42,
+      "loss": 1.8574581146240234,
+      "gradient_norm": 17.19908332824707,
+      "batch": 4,
+      "track": "sec8k_item_routing"
+    },
+    {
+      "step": 43,
+      "loss": 1.5829014778137207,
+      "gradient_norm": 32.44947052001953,
+      "batch": 4,
+      "track": "training"
+    },
+    {
+      "step": 44,
+      "loss": 2.16104793548584,
+      "gradient_norm": 26.8687801361084,
+      "batch": 4,
+      "track": "methodology"
+    },
+    {
+      "step": 45,
+      "loss": 1.77080500125885,
+      "gradient_norm": 33.51408004760742,
+      "batch": 4,
+      "track": "finqa_operator"
+    },
+    {
+      "step": 46,
+      "loss": 1.546433687210083,
+      "gradient_norm": 19.67815399169922,
+      "batch": 4,
+      "track": "treasury_curve_audit"
+    },
+    {
+      "step": 47,
+      "loss": 1.5366935729980469,
+      "gradient_norm": 34.85926818847656,
+      "batch": 4,
+      "track": "training"
+    },
+    {
+      "step": 48,
+      "loss": 1.3781148195266724,
+      "gradient_norm": 27.677244186401367,
+      "batch": 4,
+      "track": "finqa_operator"
+    },
+    {
+      "step": 49,
+      "loss": 1.7317203283309937,
+      "gradient_norm": 22.79669189453125,
+      "batch": 4,
+      "track": "methodology"
+    },
+    {
+      "step": 50,
+      "loss": 2.733463764190674,
+      "gradient_norm": 75.7420425415039,
+      "batch": 4,
+      "track": "sec8k_item_routing"
+    },
+    {
+      "step": 51,
+      "loss": 1.2448011636734009,
+      "gradient_norm": 30.111473083496094,
+      "batch": 4,
+      "track": "finqa_operator"
+    },
+    {
+      "step": 52,
+      "loss": 2.2219250202178955,
+      "gradient_norm": 60.921138763427734,
+      "batch": 4,
+      "track": "treasury_curve_audit"
+    },
+    {
+      "step": 53,
+      "loss": 2.2912039756774902,
+      "gradient_norm": 45.08052062988281,
+      "batch": 4,
+      "track": "methodology"
+    },
+    {
+      "step": 54,
+      "loss": 1.4220961332321167,
+      "gradient_norm": 40.959110260009766,
+      "batch": 4,
+      "track": "training"
+    },
+    {
+      "step": 55,
+      "loss": 2.0599215030670166,
+      "gradient_norm": 70.02467346191406,
+      "batch": 4,
+      "track": "sec8k_item_routing"
+    },
+    {
+      "step": 56,
+      "loss": 1.6936324834823608,
+      "gradient_norm": 15.359979629516602,
+      "batch": 4,
+      "track": "methodology"
+    },
+    {
+      "step": 57,
+      "loss": 1.7566872835159302,
+      "gradient_norm": 57.45166778564453,
+      "batch": 4,
+      "track": "finqa_operator"
+    },
+    {
+      "step": 58,
+      "loss": 2.4553420543670654,
+      "gradient_norm": 42.26453399658203,
+      "batch": 4,
+      "track": "sec8k_item_routing"
+    },
+    {
+      "step": 59,
+      "loss": 14.882905960083008,
+      "gradient_norm": 603.5195922851562,
+      "batch": 4,
+      "track": "treasury_curve_audit"
+    },
+    {
+      "step": 60,
+      "loss": 12.055638313293457,
+      "gradient_norm": 726.0961303710938,
+      "batch": 4,
+      "track": "training"
+    },
+    {
+      "step": 61,
+      "loss": 5.588927745819092,
+      "gradient_norm": 633.9290771484375,
+      "batch": 4,
+      "track": "finqa_operator"
+    },
+    {
+      "step": 62,
+      "loss": 15.152362823486328,
+      "gradient_norm": 516.4188232421875,
+      "batch": 4,
+      "track": "treasury_curve_audit"
+    },
+    {
+      "step": 63,
+      "loss": 9.717095375061035,
+      "gradient_norm": 245.53598022460938,
+      "batch": 4,
+      "track": "sec8k_item_routing"
+    },
+    {
+      "step": 64,
+      "loss": 4.393916130065918,
+      "gradient_norm": 94.28315734863281,
+      "batch": 4,
+      "track": "methodology"
+    },
+    {
+      "step": 65,
+      "loss": 4.2668023109436035,
+      "gradient_norm": 400.55560302734375,
+      "batch": 4,
+      "track": "training"
+    },
+    {
+      "step": 66,
+      "loss": 1.6683456897735596,
+      "gradient_norm": 23.828807830810547,
+      "batch": 4,
+      "track": "training"
+    },
+    {
+      "step": 67,
+      "loss": 2.337733030319214,
+      "gradient_norm": 39.37851333618164,
+      "batch": 4,
+      "track": "treasury_curve_audit"
+    },
+    {
+      "step": 68,
+      "loss": 1.6094613075256348,
+      "gradient_norm": 38.80954360961914,
+      "batch": 4,
+      "track": "finqa_operator"
+    },
+    {
+      "step": 69,
+      "loss": 1.8960038423538208,
+      "gradient_norm": 19.403345108032227,
+      "batch": 4,
+      "track": "sec8k_item_routing"
+    },
+    {
+      "step": 70,
+      "loss": 2.544553756713867,
+      "gradient_norm": 44.224761962890625,
+      "batch": 4,
+      "track": "methodology"
+    },
+    {
+      "step": 71,
+      "loss": 2.5605506896972656,
+      "gradient_norm": 47.139427185058594,
+      "batch": 4,
+      "track": "methodology"
+    },
+    {
+      "step": 72,
+      "loss": 3.680985927581787,
+      "gradient_norm": 57.505306243896484,
+      "batch": 4,
+      "track": "sec8k_item_routing"
+    },
+    {
+      "step": 73,
+      "loss": 1.497424840927124,
+      "gradient_norm": 14.379719734191895,
+      "batch": 4,
+      "track": "treasury_curve_audit"
+    },
+    {
+      "step": 74,
+      "loss": 2.285317897796631,
+      "gradient_norm": 186.55291748046875,
+      "batch": 4,
+      "track": "training"
+    },
+    {
+      "step": 75,
+      "loss": 2.2446274757385254,
+      "gradient_norm": 68.90731048583984,
+      "batch": 4,
+      "track": "finqa_operator"
+    },
+    {
+      "step": 76,
+      "loss": 2.373021125793457,
+      "gradient_norm": 23.836496353149414,
+      "batch": 4,
+      "track": "treasury_curve_audit"
+    },
+    {
+      "step": 77,
+      "loss": 1.4634745121002197,
+      "gradient_norm": 13.628811836242676,
+      "batch": 4,
+      "track": "finqa_operator"
+    },
+    {
+      "step": 78,
+      "loss": 2.2313151359558105,
+      "gradient_norm": 25.374372482299805,
+      "batch": 4,
+      "track": "sec8k_item_routing"
+    },
+    {
+      "step": 79,
+      "loss": 1.3961045742034912,
+      "gradient_norm": 22.218303680419922,
+      "batch": 4,
+      "track": "training"
+    },
+    {
+      "step": 80,
+      "loss": 2.7781360149383545,
+      "gradient_norm": 33.2540168762207,
+      "batch": 4,
+      "track": "methodology"
+    },
+    {
+      "step": 81,
+      "loss": 2.602947235107422,
+      "gradient_norm": 19.45819091796875,
+      "batch": 4,
+      "track": "sec8k_item_routing"
+    },
+    {
+      "step": 82,
+      "loss": 1.3546397686004639,
+      "gradient_norm": 11.069562911987305,
+      "batch": 4,
+      "track": "treasury_curve_audit"
+    },
+    {
+      "step": 83,
+      "loss": 2.516587734222412,
+      "gradient_norm": 154.4137725830078,
+      "batch": 4,
+      "track": "finqa_operator"
+    },
+    {
+      "step": 84,
+      "loss": 1.6604275703430176,
+      "gradient_norm": 35.21752166748047,
+      "batch": 4,
+      "track": "training"
+    },
+    {
+      "step": 85,
+      "loss": 2.4136710166931152,
+      "gradient_norm": 12.137336730957031,
+      "batch": 4,
+      "track": "methodology"
+    },
+    {
+      "step": 86,
+      "loss": 1.9861940145492554,
+      "gradient_norm": 21.567882537841797,
+      "batch": 4,
+      "track": "training"
+    },
+    {
+      "step": 87,
+      "loss": 2.0053977966308594,
+      "gradient_norm": 18.126508712768555,
+      "batch": 4,
+      "track": "treasury_curve_audit"
+    },
+    {
+      "step": 88,
+      "loss": 1.8810542821884155,
+      "gradient_norm": 6.17703914642334,
+      "batch": 4,
+      "track": "methodology"
+    },
+    {
+      "step": 89,
+      "loss": 2.4140329360961914,
+      "gradient_norm": 29.935077667236328,
+      "batch": 4,
+      "track": "sec8k_item_routing"
+    },
+    {
+      "step": 90,
+      "loss": 1.858675479888916,
+      "gradient_norm": 49.95096969604492,
+      "batch": 4,
+      "track": "finqa_operator"
+    },
+    {
+      "step": 91,
+      "loss": 2.169734239578247,
+      "gradient_norm": 24.9621524810791,
+      "batch": 4,
+      "track": "methodology"
+    },
+    {
+      "step": 92,
+      "loss": 1.8173201084136963,
+      "gradient_norm": 43.53898620605469,
+      "batch": 4,
+      "track": "finqa_operator"
+    },
+    {
+      "step": 93,
+      "loss": 2.3693017959594727,
+      "gradient_norm": 25.950841903686523,
+      "batch": 4,
+      "track": "sec8k_item_routing"
+    },
+    {
+      "step": 94,
+      "loss": 1.575194239616394,
+      "gradient_norm": 21.632429122924805,
+      "batch": 4,
+      "track": "treasury_curve_audit"
+    },
+    {
+      "step": 95,
+      "loss": 1.2670326232910156,
+      "gradient_norm": 23.171579360961914,
+      "batch": 4,
+      "track": "training"
+    },
+    {
+      "step": 96,
+      "loss": 1.7276685237884521,
+      "gradient_norm": 32.91545867919922,
+      "batch": 4,
+      "track": "training"
+    },
+    {
+      "step": 97,
+      "loss": 1.2945476770401,
+      "gradient_norm": 17.158979415893555,
+      "batch": 4,
+      "track": "finqa_operator"
+    },
+    {
+      "step": 98,
+      "loss": 2.116084098815918,
+      "gradient_norm": 12.894675254821777,
+      "batch": 4,
+      "track": "sec8k_item_routing"
+    },
+    {
+      "step": 99,
+      "loss": 1.637604832649231,
+      "gradient_norm": 14.535743713378906,
+      "batch": 4,
+      "track": "treasury_curve_audit"
+    },
+    {
+      "step": 100,
+      "loss": 1.6059337854385376,
+      "gradient_norm": 9.943248748779297,
+      "batch": 4,
+      "track": "methodology"
+    },
+    {
+      "step": 101,
+      "loss": 1.7127794027328491,
+      "gradient_norm": 34.827022552490234,
+      "batch": 4,
+      "track": "methodology"
+    },
+    {
+      "step": 102,
+      "loss": 1.3136862516403198,
+      "gradient_norm": 22.37948989868164,
+      "batch": 4,
+      "track": "training"
+    },
+    {
+      "step": 103,
+      "loss": 1.3766660690307617,
+      "gradient_norm": 10.345693588256836,
+      "batch": 4,
+      "track": "finqa_operator"
+    },
+    {
+      "step": 104,
+      "loss": 2.1798317432403564,
+      "gradient_norm": 36.6060791015625,
+      "batch": 4,
+      "track": "treasury_curve_audit"
+    },
+    {
+      "step": 105,
+      "loss": 2.9973514080047607,
+      "gradient_norm": 39.21260452270508,
+      "batch": 4,
+      "track": "sec8k_item_routing"
+    },
+    {
+      "step": 106,
+      "loss": 2.0269787311553955,
+      "gradient_norm": 38.224430084228516,
+      "batch": 4,
+      "track": "training"
+    },
+    {
+      "step": 107,
+      "loss": 19.078125,
+      "gradient_norm": 2070.6044921875,
+      "batch": 4,
+      "track": "finqa_operator"
+    },
+    {
+      "step": 108,
+      "loss": 1.6875971555709839,
+      "gradient_norm": 9.505102157592773,
+      "batch": 4,
+      "track": "methodology"
+    },
+    {
+      "step": 109,
+      "loss": 2.1080527305603027,
+      "gradient_norm": 39.6075553894043,
+      "batch": 4,
+      "track": "treasury_curve_audit"
+    },
+    {
+      "step": 110,
+      "loss": 2.1861495971679688,
+      "gradient_norm": 15.971883773803711,
+      "batch": 4,
+      "track": "sec8k_item_routing"
+    },
+    {
+      "step": 111,
+      "loss": 1.4290988445281982,
+      "gradient_norm": 13.847458839416504,
+      "batch": 4,
+      "track": "training"
+    },
+    {
+      "step": 112,
+      "loss": 2.6999082565307617,
+      "gradient_norm": 35.178123474121094,
+      "batch": 4,
+      "track": "sec8k_item_routing"
+    },
+    {
+      "step": 113,
+      "loss": 1.8837149143218994,
+      "gradient_norm": 18.89337730407715,
+      "batch": 4,
+      "track": "methodology"
+    },
+    {
+      "step": 114,
+      "loss": 1.9908208847045898,
+      "gradient_norm": 37.85031509399414,
+      "batch": 4,
+      "track": "treasury_curve_audit"
+    },
+    {
+      "step": 115,
+      "loss": 1.6885435581207275,
+      "gradient_norm": 30.511077880859375,
+      "batch": 4,
+      "track": "finqa_operator"
+    },
+    {
+      "step": 116,
+      "loss": 1.4279365539550781,
+      "gradient_norm": 8.807841300964355,
+      "batch": 4,
+      "track": "finqa_operator"
+    },
+    {
+      "step": 117,
+      "loss": 1.7351325750350952,
+      "gradient_norm": 21.647974014282227,
+      "batch": 4,
+      "track": "treasury_curve_audit"
+    },
+    {
+      "step": 118,
+      "loss": 1.3480201959609985,
+      "gradient_norm": 9.376641273498535,
+      "batch": 4,
+      "track": "training"
+    },
+    {
+      "step": 119,
+      "loss": 2.0096938610076904,
+      "gradient_norm": 23.99709129333496,
+      "batch": 4,
+      "track": "sec8k_item_routing"
+    },
+    {
+      "step": 120,
+      "loss": 1.9266283512115479,
+      "gradient_norm": 15.349446296691895,
+      "batch": 4,
+      "track": "methodology"
+    },
+    {
+      "step": 121,
+      "loss": 1.290672779083252,
+      "gradient_norm": 7.651698112487793,
+      "batch": 4,
+      "track": "training"
+    },
+    {
+      "step": 122,
+      "loss": 1.2302225828170776,
+      "gradient_norm": 8.204903602600098,
+      "batch": 4,
+      "track": "finqa_operator"
+    },
+    {
+      "step": 123,
+      "loss": 2.0289182662963867,
+      "gradient_norm": 12.456356048583984,
+      "batch": 4,
+      "track": "methodology"
+    },
+    {
+      "step": 124,
+      "loss": 1.7204241752624512,
+      "gradient_norm": 12.133005142211914,
+      "batch": 4,
+      "track": "sec8k_item_routing"
+    },
+    {
+      "step": 125,
+      "loss": 1.574549674987793,
+      "gradient_norm": 12.288954734802246,
+      "batch": 4,
+      "track": "treasury_curve_audit"
+    },
+    {
+      "step": 126,
+      "loss": 2.018263339996338,
+      "gradient_norm": 17.149364471435547,
+      "batch": 4,
+      "track": "sec8k_item_routing"
+    },
+    {
+      "step": 127,
+      "loss": 1.5463842153549194,
+      "gradient_norm": 7.880157470703125,
+      "batch": 4,
+      "track": "methodology"
+    },
+    {
+      "step": 128,
+      "loss": 1.1189318895339966,
+      "gradient_norm": 2.655463695526123,
+      "batch": 4,
+      "track": "training"
+    },
+    {
+      "step": 129,
+      "loss": 1.2703059911727905,
+      "gradient_norm": 13.802607536315918,
+      "batch": 4,
+      "track": "finqa_operator"
+    },
+    {
+      "step": 130,
+      "loss": 2.415419340133667,
+      "gradient_norm": 26.065696716308594,
+      "batch": 4,
+      "track": "treasury_curve_audit"
+    },
+    {
+      "step": 131,
+      "loss": 2.488401174545288,
+      "gradient_norm": 19.869155883789062,
+      "batch": 4,
+      "track": "sec8k_item_routing"
+    },
+    {
+      "step": 132,
+      "loss": 2.1364359855651855,
+      "gradient_norm": 19.694141387939453,
+      "batch": 4,
+      "track": "methodology"
+    },
+    {
+      "step": 133,
+      "loss": 1.860395908355713,
+      "gradient_norm": 16.463869094848633,
+      "batch": 4,
+      "track": "treasury_curve_audit"
+    },
+    {
+      "step": 134,
+      "loss": 2.744292736053467,
+      "gradient_norm": 39.19016647338867,
+      "batch": 4,
+      "track": "finqa_operator"
+    },
+    {
+      "step": 135,
+      "loss": 2.920959711074829,
+      "gradient_norm": 45.221580505371094,
+      "batch": 4,
+      "track": "training"
+    },
+    {
+      "step": 136,
+      "loss": 1.5910212993621826,
+      "gradient_norm": 11.571576118469238,
+      "batch": 4,
+      "track": "treasury_curve_audit"
+    },
+    {
+      "step": 137,
+      "loss": 1.5802053213119507,
+      "gradient_norm": 10.218290328979492,
+      "batch": 4,
+      "track": "training"
+    },
+    {
+      "step": 138,
+      "loss": 1.6997476816177368,
+      "gradient_norm": 17.06501007080078,
+      "batch": 4,
+      "track": "finqa_operator"
+    },
+    {
+      "step": 139,
+      "loss": 1.8345482349395752,
+      "gradient_norm": 10.438275337219238,
+      "batch": 4,
+      "track": "methodology"
+    },
+    {
+      "step": 140,
+      "loss": 2.2142419815063477,
+      "gradient_norm": 19.037919998168945,
+      "batch": 4,
+      "track": "sec8k_item_routing"
+    },
+    {
+      "step": 141,
+      "loss": 2.034184455871582,
+      "gradient_norm": 19.62016487121582,
+      "batch": 4,
+      "track": "sec8k_item_routing"
+    },
+    {
+      "step": 142,
+      "loss": 1.545398235321045,
+      "gradient_norm": 8.607970237731934,
+      "batch": 4,
+      "track": "treasury_curve_audit"
+    },
+    {
+      "step": 143,
+      "loss": 1.517768144607544,
+      "gradient_norm": 13.160099029541016,
+      "batch": 4,
+      "track": "finqa_operator"
+    },
+    {
+      "step": 144,
+      "loss": 1.4199488162994385,
+      "gradient_norm": 4.3650736808776855,
+      "batch": 4,
+      "track": "training"
+    },
+    {
+      "step": 145,
+      "loss": 1.809274673461914,
+      "gradient_norm": 11.383505821228027,
+      "batch": 4,
+      "track": "methodology"
+    },
+    {
+      "step": 146,
+      "loss": 1.833395004272461,
+      "gradient_norm": 16.41398811340332,
+      "batch": 4,
+      "track": "methodology"
+    },
+    {
+      "step": 147,
+      "loss": 2.1706905364990234,
+      "gradient_norm": 9.696062088012695,
+      "batch": 4,
+      "track": "sec8k_item_routing"
+    },
+    {
+      "step": 148,
+      "loss": 1.5346494913101196,
+      "gradient_norm": 9.142929077148438,
+      "batch": 4,
+      "track": "treasury_curve_audit"
+    },
+    {
+      "step": 149,
+      "loss": 1.4174041748046875,
+      "gradient_norm": 11.945721626281738,
+      "batch": 4,
+      "track": "finqa_operator"
+    },
+    {
+      "step": 150,
+      "loss": 1.367906928062439,
+      "gradient_norm": 5.334743499755859,
+      "batch": 4,
+      "track": "training"
+    },
+    {
+      "step": 151,
+      "loss": 1.7451725006103516,
+      "gradient_norm": 6.279354095458984,
+      "batch": 4,
+      "track": "methodology"
+    },
+    {
+      "step": 152,
+      "loss": 1.9908146858215332,
+      "gradient_norm": 16.540571212768555,
+      "batch": 4,
+      "track": "treasury_curve_audit"
+    },
+    {
+      "step": 153,
+      "loss": 1.6632894277572632,
+      "gradient_norm": 17.062427520751953,
+      "batch": 4,
+      "track": "training"
+    },
+    {
+      "step": 154,
+      "loss": 1.3763694763183594,
+      "gradient_norm": 11.188127517700195,
+      "batch": 4,
+      "track": "finqa_operator"
+    },
+    {
+      "step": 155,
+      "loss": 2.4098474979400635,
+      "gradient_norm": 19.916685104370117,
+      "batch": 4,
+      "track": "sec8k_item_routing"
+    },
+    {
+      "step": 156,
+      "loss": 1.4756050109863281,
+      "gradient_norm": 20.746679306030273,
+      "batch": 4,
+      "track": "finqa_operator"
+    },
+    {
+      "step": 157,
+      "loss": 1.9215600490570068,
+      "gradient_norm": 9.448378562927246,
+      "batch": 4,
+      "track": "methodology"
+    },
+    {
+      "step": 158,
+      "loss": 1.7640798091888428,
+      "gradient_norm": 8.388594627380371,
+      "batch": 4,
+      "track": "treasury_curve_audit"
+    },
+    {
+      "step": 159,
+      "loss": 1.8943778276443481,
+      "gradient_norm": 16.38886070251465,
+      "batch": 4,
+      "track": "sec8k_item_routing"
+    },
+    {
+      "step": 160,
+      "loss": 1.4312642812728882,
+      "gradient_norm": 9.134917259216309,
+      "batch": 4,
+      "track": "training"
+    },
+    {
+      "step": 161,
+      "loss": 1.8445069789886475,
+      "gradient_norm": 12.199294090270996,
+      "batch": 4,
+      "track": "methodology"
+    },
+    {
+      "step": 162,
+      "loss": 1.6073664426803589,
+      "gradient_norm": 6.78873872756958,
+      "batch": 4,
+      "track": "treasury_curve_audit"
+    },
+    {
+      "step": 163,
+      "loss": 1.4884653091430664,
+      "gradient_norm": 8.097077369689941,
+      "batch": 4,
+      "track": "finqa_operator"
+    },
+    {
+      "step": 164,
+      "loss": 1.3483343124389648,
+      "gradient_norm": 14.377998352050781,
+      "batch": 4,
+      "track": "training"
+    },
+    {
+      "step": 165,
+      "loss": 2.0195000171661377,
+      "gradient_norm": 19.498228073120117,
+      "batch": 4,
+      "track": "sec8k_item_routing"
+    },
+    {
+      "step": 166,
+      "loss": 1.3198468685150146,
+      "gradient_norm": 6.4397125244140625,
+      "batch": 4,
+      "track": "finqa_operator"
+    },
+    {
+      "step": 167,
+      "loss": 1.6932904720306396,
+      "gradient_norm": 10.556075096130371,
+      "batch": 4,
+      "track": "methodology"
+    },
+    {
+      "step": 168,
+      "loss": 1.6232120990753174,
+      "gradient_norm": 17.135000228881836,
+      "batch": 4,
+      "track": "treasury_curve_audit"
+    },
+    {
+      "step": 169,
+      "loss": 1.4469624757766724,
+      "gradient_norm": 16.61956787109375,
+      "batch": 4,
+      "track": "training"
+    },
+    {
+      "step": 170,
+      "loss": 2.2697629928588867,
+      "gradient_norm": 20.288864135742188,
+      "batch": 4,
+      "track": "sec8k_item_routing"
+    },
+    {
+      "step": 171,
+      "loss": 1.3996148109436035,
+      "gradient_norm": 13.105789184570312,
+      "batch": 4,
+      "track": "finqa_operator"
+    },
+    {
+      "step": 172,
+      "loss": 1.304597020149231,
+      "gradient_norm": 9.066943168640137,
+      "batch": 4,
+      "track": "training"
+    },
+    {
+      "step": 173,
+      "loss": 1.504348874092102,
+      "gradient_norm": 14.785979270935059,
+      "batch": 4,
+      "track": "treasury_curve_audit"
+    },
+    {
+      "step": 174,
+      "loss": 2.1721091270446777,
+      "gradient_norm": 13.53502082824707,
+      "batch": 4,
+      "track": "sec8k_item_routing"
+    },
+    {
+      "step": 175,
+      "loss": 1.539961338043213,
+      "gradient_norm": 8.929962158203125,
+      "batch": 4,
+      "track": "methodology"
+    },
+    {
+      "step": 176,
+      "loss": 2.286867618560791,
+      "gradient_norm": 13.32385540008545,
+      "batch": 4,
+      "track": "sec8k_item_routing"
+    },
+    {
+      "step": 177,
+      "loss": 1.4674476385116577,
+      "gradient_norm": 8.373799324035645,
+      "batch": 4,
+      "track": "finqa_operator"
+    },
+    {
+      "step": 178,
+      "loss": 1.3064910173416138,
+      "gradient_norm": 4.998751640319824,
+      "batch": 4,
+      "track": "training"
+    },
+    {
+      "step": 179,
+      "loss": 1.9169197082519531,
+      "gradient_norm": 20.974517822265625,
+      "batch": 4,
+      "track": "treasury_curve_audit"
+    },
+    {
+      "step": 180,
+      "loss": 1.8603533506393433,
+      "gradient_norm": 6.2238450050354,
+      "batch": 4,
+      "track": "methodology"
+    },
+    {
+      "step": 181,
+      "loss": 2.1026968955993652,
+      "gradient_norm": 20.5498046875,
+      "batch": 4,
+      "track": "methodology"
+    },
+    {
+      "step": 182,
+      "loss": 2.2634406089782715,
+      "gradient_norm": 16.031574249267578,
+      "batch": 4,
+      "track": "sec8k_item_routing"
+    },
+    {
+      "step": 183,
+      "loss": 1.5464969873428345,
+      "gradient_norm": 6.935611248016357,
+      "batch": 4,
+      "track": "treasury_curve_audit"
+    },
+    {
+      "step": 184,
+      "loss": 1.3313238620758057,
+      "gradient_norm": 6.109765529632568,
+      "batch": 4,
+      "track": "training"
+    },
+    {
+      "step": 185,
+      "loss": 1.2255390882492065,
+      "gradient_norm": 14.908348083496094,
+      "batch": 4,
+      "track": "finqa_operator"
+    },
+    {
+      "step": 186,
+      "loss": 1.4093676805496216,
+      "gradient_norm": 4.220554828643799,
+      "batch": 4,
+      "track": "finqa_operator"
+    },
+    {
+      "step": 187,
+      "loss": 1.8452388048171997,
+      "gradient_norm": 13.770105361938477,
+      "batch": 4,
+      "track": "methodology"
+    },
+    {
+      "step": 188,
+      "loss": 1.9318113327026367,
+      "gradient_norm": 18.06096076965332,
+      "batch": 4,
+      "track": "sec8k_item_routing"
+    },
+    {
+      "step": 189,
+      "loss": 1.6888890266418457,
+      "gradient_norm": 12.325617790222168,
+      "batch": 4,
+      "track": "treasury_curve_audit"
+    },
+    {
+      "step": 190,
+      "loss": 1.3578835725784302,
+      "gradient_norm": 3.0152335166931152,
+      "batch": 4,
+      "track": "training"
+    },
+    {
+      "step": 191,
+      "loss": 1.2739557027816772,
+      "gradient_norm": 13.437724113464355,
+      "batch": 4,
+      "track": "finqa_operator"
+    },
+    {
+      "step": 192,
+      "loss": 1.7670072317123413,
+      "gradient_norm": 4.08681058883667,
+      "batch": 4,
+      "track": "methodology"
+    },
+    {
+      "step": 193,
+      "loss": 1.2099121809005737,
+      "gradient_norm": 16.748695373535156,
+      "batch": 4,
+      "track": "training"
+    },
+    {
+      "step": 194,
+      "loss": 1.625944972038269,
+      "gradient_norm": 8.577762603759766,
+      "batch": 4,
+      "track": "treasury_curve_audit"
+    },
+    {
+      "step": 195,
+      "loss": 2.219792366027832,
+      "gradient_norm": 17.420915603637695,
+      "batch": 4,
+      "track": "sec8k_item_routing"
+    },
+    {
+      "step": 196,
+      "loss": 1.5645869970321655,
+      "gradient_norm": 2.9905264377593994,
+      "batch": 4,
+      "track": "treasury_curve_audit"
+    },
+    {
+      "step": 197,
+      "loss": 1.9371947050094604,
+      "gradient_norm": 18.27586555480957,
+      "batch": 4,
+      "track": "methodology"
+    },
+    {
+      "step": 198,
+      "loss": 1.4656459093093872,
+      "gradient_norm": 9.373214721679688,
+      "batch": 4,
+      "track": "finqa_operator"
+    },
+    {
+      "step": 199,
+      "loss": 2.1923329830169678,
+      "gradient_norm": 7.01847505569458,
+      "batch": 4,
+      "track": "sec8k_item_routing"
+    },
+    {
+      "step": 200,
+      "loss": 1.4710613489151,
+      "gradient_norm": 13.87124252319336,
+      "batch": 4,
+      "track": "training"
+    },
+    {
+      "step": 201,
+      "loss": 1.568748950958252,
+      "gradient_norm": 10.930672645568848,
+      "batch": 4,
+      "track": "treasury_curve_audit"
+    },
+    {
+      "step": 202,
+      "loss": 1.3098968267440796,
+      "gradient_norm": 18.565616607666016,
+      "batch": 4,
+      "track": "training"
+    },
+    {
+      "step": 203,
+      "loss": 1.3687517642974854,
+      "gradient_norm": 11.115630149841309,
+      "batch": 4,
+      "track": "finqa_operator"
+    },
+    {
+      "step": 204,
+      "loss": 1.7336173057556152,
+      "gradient_norm": 4.913662910461426,
+      "batch": 4,
+      "track": "methodology"
+    },
+    {
+      "step": 205,
+      "loss": 2.0805845260620117,
+      "gradient_norm": 9.397576332092285,
+      "batch": 4,
+      "track": "sec8k_item_routing"
+    },
+    {
+      "step": 206,
+      "loss": 1.5563459396362305,
+      "gradient_norm": 22.644180297851562,
+      "batch": 4,
+      "track": "treasury_curve_audit"
+    },
+    {
+      "step": 207,
+      "loss": 1.9959431886672974,
+      "gradient_norm": 15.1695556640625,
+      "batch": 4,
+      "track": "methodology"
+    },
+    {
+      "step": 208,
+      "loss": 1.3946999311447144,
+      "gradient_norm": 2.1098811626434326,
+      "batch": 4,
+      "track": "finqa_operator"
+    },
+    {
+      "step": 209,
+      "loss": 2.240879774093628,
+      "gradient_norm": 12.570436477661133,
+      "batch": 4,
+      "track": "sec8k_item_routing"
+    },
+    {
+      "step": 210,
+      "loss": 1.4265118837356567,
+      "gradient_norm": 4.266564846038818,
+      "batch": 4,
+      "track": "training"
+    },
+    {
+      "step": 211,
+      "loss": 1.5493398904800415,
+      "gradient_norm": 7.471872806549072,
+      "batch": 4,
+      "track": "treasury_curve_audit"
+    },
+    {
+      "step": 212,
+      "loss": 2.1109085083007812,
+      "gradient_norm": 6.374814987182617,
+      "batch": 4,
+      "track": "sec8k_item_routing"
+    },
+    {
+      "step": 213,
+      "loss": 1.429513692855835,
+      "gradient_norm": 8.866708755493164,
+      "batch": 4,
+      "track": "finqa_operator"
+    },
+    {
+      "step": 214,
+      "loss": 1.7964565753936768,
+      "gradient_norm": 14.25811767578125,
+      "batch": 4,
+      "track": "methodology"
+    },
+    {
+      "step": 215,
+      "loss": 1.375302791595459,
+      "gradient_norm": 2.405825614929199,
+      "batch": 4,
+      "track": "training"
+    },
+    {
+      "step": 216,
+      "loss": 1.5761574506759644,
+      "gradient_norm": 6.203788757324219,
+      "batch": 4,
+      "track": "treasury_curve_audit"
+    },
+    {
+      "step": 217,
+      "loss": 2.0502665042877197,
+      "gradient_norm": 8.536345481872559,
+      "batch": 4,
+      "track": "sec8k_item_routing"
+    },
+    {
+      "step": 218,
+      "loss": 1.3801250457763672,
+      "gradient_norm": 0.7092669010162354,
+      "batch": 4,
+      "track": "training"
+    },
+    {
+      "step": 219,
+      "loss": 1.414379358291626,
+      "gradient_norm": 11.95828914642334,
+      "batch": 4,
+      "track": "finqa_operator"
+    },
+    {
+      "step": 220,
+      "loss": 1.7937361001968384,
+      "gradient_norm": 9.531307220458984,
+      "batch": 4,
+      "track": "methodology"
+    },
+    {
+      "step": 221,
+      "loss": 2.006711721420288,
+      "gradient_norm": 4.762127876281738,
+      "batch": 4,
+      "track": "sec8k_item_routing"
+    },
+    {
+      "step": 222,
+      "loss": 1.7572860717773438,
+      "gradient_norm": 7.83854341506958,
+      "batch": 4,
+      "track": "methodology"
+    },
+    {
+      "step": 223,
+      "loss": 1.3897613286972046,
+      "gradient_norm": 0.41180121898651123,
+      "batch": 4,
+      "track": "training"
+    },
+    {
+      "step": 224,
+      "loss": 1.3708871603012085,
+      "gradient_norm": 4.996864318847656,
+      "batch": 4,
+      "track": "finqa_operator"
+    },
+    {
+      "step": 225,
+      "loss": 1.7148683071136475,
+      "gradient_norm": 7.542352676391602,
+      "batch": 4,
+      "track": "treasury_curve_audit"
+    },
+    {
+      "step": 226,
+      "loss": 1.5951353311538696,
+      "gradient_norm": 4.985175609588623,
+      "batch": 4,
+      "track": "treasury_curve_audit"
+    },
+    {
+      "step": 227,
+      "loss": 1.727351188659668,
+      "gradient_norm": 7.1312689781188965,
+      "batch": 4,
+      "track": "methodology"
+    },
+    {
+      "step": 228,
+      "loss": 2.0828206539154053,
+      "gradient_norm": 12.752224922180176,
+      "batch": 4,
+      "track": "sec8k_item_routing"
+    },
+    {
+      "step": 229,
+      "loss": 1.2993351221084595,
+      "gradient_norm": 10.587435722351074,
+      "batch": 4,
+      "track": "finqa_operator"
+    },
+    {
+      "step": 230,
+      "loss": 1.3514117002487183,
+      "gradient_norm": 8.967972755432129,
+      "batch": 4,
+      "track": "training"
+    },
+    {
+      "step": 231,
+      "loss": 1.4069523811340332,
+      "gradient_norm": 3.1273090839385986,
+      "batch": 4,
+      "track": "training"
+    },
+    {
+      "step": 232,
+      "loss": 1.3911967277526855,
+      "gradient_norm": 8.013751029968262,
+      "batch": 4,
+      "track": "finqa_operator"
+    },
+    {
+      "step": 233,
+      "loss": 2.1598312854766846,
+      "gradient_norm": 11.925089836120605,
+      "batch": 4,
+      "track": "sec8k_item_routing"
+    },
+    {
+      "step": 234,
+      "loss": 1.9980673789978027,
+      "gradient_norm": 17.895084381103516,
+      "batch": 4,
+      "track": "methodology"
+    },
+    {
+      "step": 235,
+      "loss": 1.447685956954956,
+      "gradient_norm": 6.652242183685303,
+      "batch": 4,
+      "track": "treasury_curve_audit"
+    },
+    {
+      "step": 236,
+      "loss": 1.511479377746582,
+      "gradient_norm": 7.864640235900879,
+      "batch": 4,
+      "track": "treasury_curve_audit"
+    },
+    {
+      "step": 237,
+      "loss": 2.0883126258850098,
+      "gradient_norm": 5.466214656829834,
+      "batch": 4,
+      "track": "sec8k_item_routing"
+    },
+    {
+      "step": 238,
+      "loss": 1.9317400455474854,
+      "gradient_norm": 9.680963516235352,
+      "batch": 4,
+      "track": "methodology"
+    },
+    {
+      "step": 239,
+      "loss": 1.4214558601379395,
+      "gradient_norm": 5.945043563842773,
+      "batch": 4,
+      "track": "training"
+    },
+    {
+      "step": 240,
+      "loss": 1.4529156684875488,
+      "gradient_norm": 8.567898750305176,
+      "batch": 4,
+      "track": "finqa_operator"
+    }
+  ],
+  "peak_mlx_bytes": 12582074506,
+  "elapsed_seconds": 2644.015279250045
+}

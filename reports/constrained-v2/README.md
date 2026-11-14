@@ -109,3 +109,11 @@ python -m gradient_desk.choice_cpu \
   b29b8149e140374b1a1a8e58e4b228b77ab6e2ee346725fcec8e5075735eba05 \
   --output .work/v2/cpu-intervention
 ```
+
+## Development check and recovery trial
+
+The first fit completed all 240 recorded steps. Step 120 won the development selection with mean panel utility 0.3433 against 0.5686 for the frozen base. FinQA accuracy fell from 78.125% to 34.375% and SEC accuracy fell from 75% to 12.5%. Treasury audit accuracy rose from 18.75% to 25% and Treasury intervention utility rose from 0.5557 to 0.6545. Both gains came from the Treasury source. The late average training loss was close to the equal-track uniform-choice loss of 1.6506. [Training receipt](campaign-01/training-receipts.json) · [Development selection](campaign-01/selection.json)
+
+Holdout eligibility requires a development utility gain of at least 0.02 across three distinct input sources. The first fit did not qualify. The recovery trial uses the same training and development data, target objective, layout procedure, ranks, base and seed. It starts from the unadapted weights and trains 180 steps with a 20-step linear warmup to 0.00003. The frozen holdout remains reserved for a qualifying selection. [Recovery protocol](recovery-plan.json)
+
+To reproduce the recovery trial, use `--output adapters/choice-v2-campaign-warmup --steps 180 --save-every 60 --learning-rate 0.00003 --warmup-steps 20` with the fit command above. Run the same development selection with `--adapter adapters/choice-v2-campaign-warmup --steps 60 120 180 --output .work/v2/choice-selection-warmup.json`.

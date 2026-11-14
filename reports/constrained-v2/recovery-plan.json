@@ -1,0 +1,40 @@
+{
+  "fit": {
+    "batch_size": 4,
+    "checkpoint_steps": [
+      60,
+      120,
+      180
+    ],
+    "dropout": 0.0,
+    "gradient_norm_cap": 1.0,
+    "initial_checkpoint": "unadapted base",
+    "initial_lr": 1.5e-06,
+    "learning_rate": 3e-05,
+    "max_tokens": 1024,
+    "num_layers": 8,
+    "rank": 8,
+    "scale": 16.0,
+    "seed": 1777,
+    "steps": 180,
+    "warmup_steps": 20
+  },
+  "fit_dataset_sha256": {
+    "train": "f0be5723a3f9c74831be1742fe842b1d689bf833fa14837368a75f4bbfb5419f",
+    "valid": "3c8fb2e2059f527fc0350583c0e2cedcf4fc3214fd4df7a01cbcd603d819db0f"
+  },
+  "heldout_cases_sha256": "b29b8149e140374b1a1a8e58e4b228b77ab6e2ee346725fcec8e5075735eba05",
+  "same_development_cases_sha256": "514a651415318ebd3ef8474f3836165b8f1a2333af06fae01df1718ae6ec08b7",
+  "schema": 1,
+  "scope": "No transformer holdout predictions were produced before this plan. The public CPU baseline receipts are tracked separately.",
+  "selection": "The same development IDs and layouts. Pick a checkpoint by equal mean panel utility with earliest-step tie breaks. A holdout-eligible checkpoint must achieve a gain of at least 0.02 on all three distinct development sources, counting the two Treasury panels as one source.",
+  "source_protocol_sha256": "acd46b0d83dcaba8d8f13fe8590a69e4486db0f8775d82f09e91cae9e54f2176",
+  "trigger": {
+    "checkpoint_selection_sha256": "337278feb45665d2ab6c5dc3a33abc565104a138cf4f443a3dce84d9846909e2",
+    "minimum_utility_gain_per_source": 0.02,
+    "qualifying_sources_from_campaign_01": [
+      "us_treasury_daily_par_curve"
+    ],
+    "required_development_sources": 3
+  }
+}
