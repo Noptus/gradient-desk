@@ -1,0 +1,359 @@
+{
+  "finance_source_protocol_git_commit": "744b880",
+  "finetune": {
+    "base_repo": "Qwen/Qwen3-8B-MLX-4bit",
+    "base_revision": "383413e909f3bc5303ce195ebbdf0339c5a1a2a3",
+    "config_sha256": "0bea83188a5f25215e089023f2b8bd1ce21af47c2a1e2cbea230107dd287f92d",
+    "dataset_sha256": {
+      "train": "f0be5723a3f9c74831be1742fe842b1d689bf833fa14837368a75f4bbfb5419f",
+      "valid": "3c8fb2e2059f527fc0350583c0e2cedcf4fc3214fd4df7a01cbcd603d819db0f"
+    },
+    "hyperparameters": {
+      "batch_size": 4,
+      "dropout": 0.0,
+      "learning_rate": 0.00015,
+      "max_tokens": 1024,
+      "num_layers": 8,
+      "rank": 8,
+      "scale": 16.0,
+      "seed": 1777,
+      "steps": 240
+    },
+    "resume_adapter_sha256": null,
+    "weights_sha256": "fcc83d7537bee76cc143be3e25f8954b816798f93528103db1cddb02977c5617"
+  },
+  "fit_data": {
+    "counts": {
+      "train": {
+        "finqa_operator": 320,
+        "methodology": 32,
+        "sec8k_item_routing": 320,
+        "training": 429,
+        "treasury_curve_audit": 300
+      },
+      "valid": {
+        "finqa_operator": 72,
+        "methodology": 16,
+        "sec8k_item_routing": 96,
+        "training": 214,
+        "treasury_curve_audit": 100
+      }
+    },
+    "inputs": [
+      {
+        "name": "train.jsonl",
+        "sha256": "382273f7b64f01208d2f88f84f7a5e4293181d1bfd822ff2c8719f61bf05963b"
+      },
+      {
+        "name": "valid.jsonl",
+        "sha256": "34855055865a99002e9c93f738b5aa0f7fae9a89334379ff4e2eb5ddc39510d9"
+      },
+      {
+        "name": "treasury-train.jsonl",
+        "sha256": "68b6d850b94d226b0499ab9634a491156d16b1e20649732794a250e1897a6b20"
+      },
+      {
+        "name": "treasury-valid.jsonl",
+        "sha256": "a71b8fb35f88d10fad1e59553bc620edc4e6963b630342857f0fa9c4a9f261b1"
+      },
+      {
+        "name": "finqa-train.jsonl",
+        "sha256": "13c77c68a42e89eefce27246354a111fa0da22814706f95356eb778659b7c533"
+      },
+      {
+        "name": "finqa-valid.jsonl",
+        "sha256": "6d7cd80781bbb3f10f0341e16b7963cf3abd9273f83450035361a66378ba0ef9"
+      },
+      {
+        "name": "sec8k-train.jsonl",
+        "sha256": "0b6c016bd301220bc2f8ee4ab8722669443faa2dea53be9321c7336989f8723b"
+      },
+      {
+        "name": "sec8k-valid.jsonl",
+        "sha256": "893dfbef1567735d474dc86f61c1526e4e4a4b894c1aafa8e576c7b3f2ca1748"
+      },
+      {
+        "name": "treasury-train.jsonl",
+        "sha256": "27af19a824a250cda893d1a0f47767e4c80f0cc51bf9fd01cc4b25732dc910d2"
+      },
+      {
+        "name": "treasury-valid.jsonl",
+        "sha256": "0d010012fa6b06ff4ac60dc8b58c255ceecc6ff1bc383e850ebac464ff3b5f92"
+      }
+    ],
+    "outputs": {
+      "train.jsonl": "f0be5723a3f9c74831be1742fe842b1d689bf833fa14837368a75f4bbfb5419f",
+      "valid.jsonl": "3c8fb2e2059f527fc0350583c0e2cedcf4fc3214fd4df7a01cbcd603d819db0f"
+    },
+    "schema": 1
+  },
+  "inference": {
+    "minimum_observed_gain": 0.02,
+    "one_sided_holm_alpha": 0.05,
+    "option_orders": 2,
+    "paired_block_resamples": 6000,
+    "primary_comparison": "Selected QLoRA against the same frozen Qwen3 model with identical input and scoring.",
+    "resample_seed": 7121,
+    "scoring_batch_size": 8,
+    "source_count_rule": "Treasury audit and Treasury intervention are one source. FinQA and SEC serve different tasks and corpora, and may share issuers."
+  },
+  "prior_data": {
+    "counts": {
+      "test": {
+        "methodology": 24,
+        "training": 168
+      },
+      "train": {
+        "methodology": 32,
+        "training": 144
+      },
+      "valid": {
+        "methodology": 16,
+        "training": 144
+      }
+    },
+    "inputs": [
+      {
+        "name": "train-cases.jsonl",
+        "sha256": "80a5b962efe68a8c43705f5ddb8dddcb09ec209d51fc6d2e5a7e3c60f0fbb0ef"
+      },
+      {
+        "name": "valid-cases.jsonl",
+        "sha256": "1c3aaafad9bab2f83cb9e97d3e0e492dcdff9e0d77729ff62e761bfe65801a50"
+      },
+      {
+        "name": "test-cases.jsonl",
+        "sha256": "62d992b5c2196ce1dc68a3d1f300c3708e720c4e3cc32d384c8907f88130ed2f"
+      },
+      {
+        "name": "verified-cases.jsonl",
+        "sha256": "1047c52aaeace3fce17065047123cedbeeacc1a97a694b2b9804b2ef7e5cfe2d"
+      },
+      {
+        "name": "frozen.jsonl",
+        "sha256": "a8dc77b5ca49796576da4c916f2d4cc6cfb513237179cf6529ed130bf235c2cc"
+      }
+    ],
+    "outputs": {
+      "test.jsonl": "ee9fa45f4ed15a88a2f284e7142d54934b5a381106e461b81c62035e3d9e325a",
+      "train.jsonl": "382273f7b64f01208d2f88f84f7a5e4293181d1bfd822ff2c8719f61bf05963b",
+      "valid.jsonl": "34855055865a99002e9c93f738b5aa0f7fae9a89334379ff4e2eb5ddc39510d9"
+    },
+    "schema": 1
+  },
+  "schema": 1,
+  "selection": {
+    "benchmarks": [
+      "finqa_operator",
+      "sec8k_item_routing",
+      "treasury_curve_audit",
+      "treasury_intervention"
+    ],
+    "criterion": "Equal-weight mean of per-panel classification accuracy or one minus normalized intervention regret; earliest checkpoint breaks ties.",
+    "maximum_cases_per_panel": 32,
+    "option_orders": 2,
+    "scoring_batch_size": 8,
+    "steps": [
+      60,
+      120,
+      180,
+      240
+    ]
+  },
+  "taiwan_bankruptcy_intervention": {
+    "benchmark": "taiwan_bankruptcy_intervention",
+    "canonicalization": {
+      "conflicting_label_groups_skipped": 0,
+      "conflicting_rows_skipped": 0,
+      "duplicate_feature_rows_collapsed": 0,
+      "positive_rows_kept": 220,
+      "raw_rows": 6819,
+      "unique_feature_groups_kept": 6819
+    },
+    "counts": {
+      "cases": 140,
+      "labels": {
+        "accumulate": 10,
+        "clip_grad": 15,
+        "lower_lr": 40,
+        "resume": 75
+      },
+      "profiles": 5
+    },
+    "environment": {
+      "device": "cpu",
+      "machine": "arm64",
+      "os": "Darwin",
+      "python_version": "3.12.13",
+      "torch_version": "2.9.1"
+    },
+    "family": "taiwan_bankruptcy_mlp",
+    "grouping": {
+      "disjoint": true,
+      "group_max": 240,
+      "group_min": 192,
+      "group_size": 236,
+      "groups": 28,
+      "issuer_duplication_guarantee": false,
+      "issuer_identifiers": false,
+      "shuffle_seed": 572024,
+      "stratified_source_wide": true
+    },
+    "limits": "Frozen test-only OOD holdout; small MLP; published labels; no named-business prediction and no investment claim.",
+    "measurement_sha256": "7a25fd5da8b0c54fb4fb8341dd38ef5550dbbb9a44070356104f3bd639c7f5a3",
+    "schema": 1,
+    "source": {
+      "archive_member": "data.csv",
+      "period": "1999-2009",
+      "source_doi": "10.24432/C5004D",
+      "source_license": "CC BY 4.0",
+      "source_sha256": "c346f5ad2618cb198e7ed8306cf2f31fe3bb2ec60acdbbe1736788d50f269aac",
+      "source_url": "https://archive.ics.uci.edu/static/public/572/taiwanese+bankruptcy+prediction.zip"
+    },
+    "split": "test"
+  },
+  "test": {
+    "benchmarks": {
+      "finqa_operator": {
+        "blocks": 15,
+        "cases": 103
+      },
+      "sec8k_item_routing": {
+        "blocks": 136,
+        "cases": 159
+      },
+      "taiwan_bankruptcy_intervention": {
+        "blocks": 28,
+        "cases": 140
+      },
+      "treasury_curve_audit": {
+        "blocks": 60,
+        "cases": 150
+      },
+      "treasury_intervention": {
+        "blocks": 17,
+        "cases": 85
+      }
+    },
+    "cases_sha256": "b29b8149e140374b1a1a8e58e4b228b77ab6e2ee346725fcec8e5075735eba05",
+    "schema": 1
+  },
+  "treasury_intervention": {
+    "cases": 440,
+    "counts": {
+      "test": {
+        "blocks": 17,
+        "cases": 85,
+        "labels": {
+          "accumulate": 12,
+          "clip_grad": 7,
+          "lower_lr": 50,
+          "resume": 16
+        }
+      },
+      "train": {
+        "blocks": 57,
+        "cases": 285,
+        "labels": {
+          "accumulate": 30,
+          "clip_grad": 36,
+          "lower_lr": 174,
+          "resume": 45
+        }
+      },
+      "valid": {
+        "blocks": 14,
+        "cases": 70,
+        "labels": {
+          "accumulate": 10,
+          "clip_grad": 3,
+          "lower_lr": 46,
+          "resume": 11
+        }
+      }
+    },
+    "device": "cpu",
+    "features": [
+      "tenor_index",
+      "change_t_bp",
+      "mean_change_5_bp",
+      "std_change_5_bp",
+      "level_minus_mean_5",
+      "curve_slope_t"
+    ],
+    "label": "next-session signed yield change in basis points (fit-only scaled)",
+    "limits": "Archived retrospective snapshot; small MLP; modelling changes not levels; no investment-performance or price-level claim.",
+    "machine": "arm64",
+    "measurement_sha256": "eee8bb8a4211309d1cb9327f8f85b80be8737597af9872b0f97509de79bfec12",
+    "method_break": "2021-12-06",
+    "os": "Darwin",
+    "outcome_counts": {
+      "accumulate": 52,
+      "clip_grad": 46,
+      "lower_lr": 270,
+      "resume": 72
+    },
+    "profiles": [
+      {
+        "lr": 0.01,
+        "momentum": 0.8,
+        "optimizer": "sgd"
+      },
+      {
+        "lr": 0.04,
+        "momentum": 0.8,
+        "optimizer": "sgd"
+      },
+      {
+        "lr": 0.12,
+        "momentum": 0.8,
+        "optimizer": "sgd"
+      },
+      {
+        "lr": 0.24,
+        "momentum": 0.8,
+        "optimizer": "sgd"
+      },
+      {
+        "lr": 0.08,
+        "momentum": 0.8,
+        "optimizer": "adam"
+      }
+    ],
+    "python_version": "3.12.13",
+    "schema": 1,
+    "source_sha256": "258a594eb64e9d21d9e8574b0b8580b0a5230dce56bb284ec6aa49a9a260897f",
+    "source_url": "https://home.treasury.gov/system/files/276/yield-curve-rates-1990-2024.csv",
+    "split_ids": {
+      "test": "treasury:test:2019-2024",
+      "train": "treasury:train:1990-2013",
+      "valid": "treasury:valid:2014-2018"
+    },
+    "split_years": {
+      "test": [
+        2019,
+        2024
+      ],
+      "train": [
+        1990,
+        2013
+      ],
+      "valid": [
+        2014,
+        2018
+      ]
+    },
+    "tenors": [
+      "6 Mo",
+      "1 Yr",
+      "2 Yr",
+      "3 Yr",
+      "5 Yr",
+      "7 Yr",
+      "10 Yr",
+      "30 Yr"
+    ],
+    "torch_version": "2.9.1",
+    "validation": "terminal MSE on fit-only-scaled next-session changes"
+  }
+}
