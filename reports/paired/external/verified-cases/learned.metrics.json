@@ -1,0 +1,91 @@
+{
+  "engine": "learned",
+  "model_dir": null,
+  "adapter_dir": null,
+  "inference_batch_size": 1,
+  "versions": {},
+  "by_track": {
+    "training": {
+      "n": 24,
+      "accuracy": 0.8333333333333334,
+      "valid_rate": 1.0,
+      "predictions": {
+        "lower_lr": 23,
+        "resume": 1
+      },
+      "gold": {
+        "accumulate": 2,
+        "lower_lr": 19,
+        "resume": 3
+      },
+      "mean_seconds": 0.00014161800451499099,
+      "macro_accuracy": 0.4444444444444444,
+      "mean_relative_regret": 0.028113752916365347,
+      "median_relative_regret": 0.0,
+      "mean_log_relative_regret": 0.02461972244366659,
+      "mean_normalized_regret": 0.02788518892472151
+    }
+  },
+  "by_family": {
+    "training/public_french_industry_mlp": {
+      "n": 24,
+      "accuracy": 0.8333333333333334,
+      "valid_rate": 1.0,
+      "predictions": {
+        "lower_lr": 23,
+        "resume": 1
+      },
+      "gold": {
+        "accumulate": 2,
+        "lower_lr": 19,
+        "resume": 3
+      },
+      "mean_seconds": 0.00014161800451499099,
+      "macro_accuracy": 0.4444444444444444,
+      "mean_relative_regret": 0.028113752916365347,
+      "median_relative_regret": 0.0,
+      "mean_log_relative_regret": 0.02461972244366659,
+      "mean_normalized_regret": 0.02788518892472151
+    }
+  },
+  "validation_selection": {
+    "training": {
+      "track": "training",
+      "selected_k": 5,
+      "candidate_k": [
+        1,
+        3,
+        5,
+        7,
+        9
+      ],
+      "feature_names": [
+        "grad_level",
+        "grad_spread",
+        "grad_trend",
+        "train_trend",
+        "val_trend",
+        "lr",
+        "log_lr",
+        "is_classification",
+        "is_ranking",
+        "log_batch"
+      ],
+      "n_train": 144,
+      "n_validation": 144,
+      "tie_order": [
+        "resume",
+        "lower_lr",
+        "clip_grad",
+        "accumulate"
+      ],
+      "validation_regret": {
+        "1": 0.2382884106393732,
+        "3": 0.224422579960273,
+        "5": 0.19218331730001206,
+        "7": 0.22490499057907393,
+        "9": 0.19911727695363496
+      }
+    }
+  }
+}

@@ -1,0 +1,175 @@
+{
+  "engine": "learned",
+  "model_dir": null,
+  "adapter_dir": null,
+  "inference_batch_size": 1,
+  "versions": {},
+  "by_track": {
+    "methodology": {
+      "n": 8,
+      "accuracy": 0.75,
+      "valid_rate": 1.0,
+      "predictions": {
+        "improve_validation": 1,
+        "audit_timing": 2,
+        "run_pilot": 2,
+        "limit_risk": 1,
+        "clarify_thesis": 1,
+        "model_costs": 1
+      },
+      "gold": {
+        "improve_validation": 2,
+        "audit_timing": 1,
+        "model_costs": 2,
+        "limit_risk": 1,
+        "clarify_thesis": 1,
+        "run_pilot": 1
+      },
+      "mean_seconds": 8.561449067201465e-05,
+      "macro_accuracy": 0.8333333333333334
+    }
+  },
+  "by_family": {
+    "methodology/carry_liquidation": {
+      "n": 1,
+      "accuracy": 1.0,
+      "valid_rate": 1.0,
+      "predictions": {
+        "limit_risk": 1
+      },
+      "gold": {
+        "limit_risk": 1
+      },
+      "mean_seconds": 8.537498069927096e-05,
+      "macro_accuracy": 1.0
+    },
+    "methodology/deployment_decision": {
+      "n": 1,
+      "accuracy": 1.0,
+      "valid_rate": 1.0,
+      "predictions": {
+        "run_pilot": 1
+      },
+      "gold": {
+        "run_pilot": 1
+      },
+      "mean_seconds": 0.00010137498611584306,
+      "macro_accuracy": 1.0
+    },
+    "methodology/execution_capacity": {
+      "n": 1,
+      "accuracy": 0.0,
+      "valid_rate": 1.0,
+      "predictions": {
+        "run_pilot": 1
+      },
+      "gold": {
+        "model_costs": 1
+      },
+      "mean_seconds": 7.945898687466979e-05,
+      "macro_accuracy": 0.0
+    },
+    "methodology/multiple_signal_selection": {
+      "n": 1,
+      "accuracy": 0.0,
+      "valid_rate": 1.0,
+      "predictions": {
+        "audit_timing": 1
+      },
+      "gold": {
+        "improve_validation": 1
+      },
+      "mean_seconds": 6.84579717926681e-05,
+      "macro_accuracy": 0.0
+    },
+    "methodology/overnight_attribution": {
+      "n": 1,
+      "accuracy": 1.0,
+      "valid_rate": 1.0,
+      "predictions": {
+        "model_costs": 1
+      },
+      "gold": {
+        "model_costs": 1
+      },
+      "mean_seconds": 8.220801828429103e-05,
+      "macro_accuracy": 1.0
+    },
+    "methodology/predictor_decay": {
+      "n": 1,
+      "accuracy": 1.0,
+      "valid_rate": 1.0,
+      "predictions": {
+        "clarify_thesis": 1
+      },
+      "gold": {
+        "clarify_thesis": 1
+      },
+      "mean_seconds": 8.091598283499479e-05,
+      "macro_accuracy": 1.0
+    },
+    "methodology/returns_accounting": {
+      "n": 1,
+      "accuracy": 1.0,
+      "valid_rate": 1.0,
+      "predictions": {
+        "improve_validation": 1
+      },
+      "gold": {
+        "improve_validation": 1
+      },
+      "mean_seconds": 0.00010458298493176699,
+      "macro_accuracy": 1.0
+    },
+    "methodology/vintage_economics": {
+      "n": 1,
+      "accuracy": 1.0,
+      "valid_rate": 1.0,
+      "predictions": {
+        "audit_timing": 1
+      },
+      "gold": {
+        "audit_timing": 1
+      },
+      "mean_seconds": 8.25420138426125e-05,
+      "macro_accuracy": 1.0
+    }
+  },
+  "validation_selection": {
+    "methodology": {
+      "track": "methodology",
+      "selected_k": 5,
+      "candidate_k": [
+        1,
+        3,
+        5,
+        7
+      ],
+      "vocabulary_size": 809,
+      "labels": [
+        "audit_timing",
+        "clarify_thesis",
+        "improve_validation",
+        "limit_risk",
+        "model_costs",
+        "run_pilot"
+      ],
+      "n_train": 32,
+      "n_validation": 16,
+      "tie_order": [
+        "audit_timing",
+        "improve_validation",
+        "model_costs",
+        "limit_risk",
+        "clarify_thesis",
+        "run_pilot"
+      ],
+      "validation_accuracy": {
+        "1": 0.6875,
+        "3": 0.6875,
+        "5": 0.875,
+        "7": 0.8125
+      }
+    }
+  }
+}

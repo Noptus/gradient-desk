@@ -1,0 +1,164 @@
+{
+  "engine": "adapter",
+  "model_dir": "Qwen3-8B-MLX-4bit",
+  "adapter_dir": "m4-pilot",
+  "inference_batch_size": 4,
+  "versions": {
+    "mlx": "0.32.4",
+    "mlx-lm": "0.31.3",
+    "transformers": "5.23.0"
+  },
+  "by_track": {
+    "methodology": {
+      "n": 16,
+      "accuracy": 0.5,
+      "valid_rate": 1.0,
+      "predictions": {
+        "audit_timing": 2,
+        "run_pilot": 6,
+        "improve_validation": 5,
+        "model_costs": 3
+      },
+      "gold": {
+        "audit_timing": 3,
+        "clarify_thesis": 3,
+        "improve_validation": 3,
+        "run_pilot": 2,
+        "model_costs": 3,
+        "limit_risk": 2
+      },
+      "mean_seconds": 1.0598888593776792,
+      "macro_accuracy": 0.5
+    },
+    "training": {
+      "n": 144,
+      "accuracy": 0.4861111111111111,
+      "valid_rate": 1.0,
+      "predictions": {
+        "resume": 144
+      },
+      "gold": {
+        "resume": 70,
+        "lower_lr": 63,
+        "accumulate": 9,
+        "clip_grad": 2
+      },
+      "mean_seconds": 2.780547775493081,
+      "macro_accuracy": 0.25,
+      "mean_relative_regret": 2554191259.550959,
+      "median_relative_regret": 0.004398896254984893,
+      "mean_log_relative_regret": 3.2969073180773094,
+      "mean_normalized_regret": 0.36627652321958465
+    }
+  },
+  "by_family": {
+    "methodology/index_membership_flow": {
+      "n": 4,
+      "accuracy": 0.25,
+      "valid_rate": 1.0,
+      "predictions": {
+        "run_pilot": 2,
+        "audit_timing": 1,
+        "improve_validation": 1
+      },
+      "gold": {
+        "model_costs": 1,
+        "audit_timing": 1,
+        "limit_risk": 1,
+        "clarify_thesis": 1
+      },
+      "mean_seconds": 1.037509541507461,
+      "macro_accuracy": 0.25
+    },
+    "methodology/intraday_state_model": {
+      "n": 4,
+      "accuracy": 0.5,
+      "valid_rate": 1.0,
+      "predictions": {
+        "improve_validation": 2,
+        "model_costs": 2
+      },
+      "gold": {
+        "clarify_thesis": 1,
+        "improve_validation": 1,
+        "model_costs": 1,
+        "limit_risk": 1
+      },
+      "mean_seconds": 1.064019510493381,
+      "macro_accuracy": 0.5
+    },
+    "methodology/macro_release_surprise": {
+      "n": 4,
+      "accuracy": 0.75,
+      "valid_rate": 1.0,
+      "predictions": {
+        "improve_validation": 2,
+        "model_costs": 1,
+        "run_pilot": 1
+      },
+      "gold": {
+        "audit_timing": 1,
+        "improve_validation": 1,
+        "model_costs": 1,
+        "run_pilot": 1
+      },
+      "mean_seconds": 1.0699518230103422,
+      "macro_accuracy": 0.75
+    },
+    "methodology/patent_diffusion": {
+      "n": 4,
+      "accuracy": 0.5,
+      "valid_rate": 1.0,
+      "predictions": {
+        "audit_timing": 1,
+        "run_pilot": 3
+      },
+      "gold": {
+        "audit_timing": 1,
+        "clarify_thesis": 1,
+        "improve_validation": 1,
+        "run_pilot": 1
+      },
+      "mean_seconds": 1.0680745624995325,
+      "macro_accuracy": 0.5
+    },
+    "training/rank_cross_section": {
+      "n": 72,
+      "accuracy": 0.625,
+      "valid_rate": 1.0,
+      "predictions": {
+        "resume": 72
+      },
+      "gold": {
+        "resume": 45,
+        "accumulate": 9,
+        "lower_lr": 16,
+        "clip_grad": 2
+      },
+      "mean_seconds": 2.831609034763662,
+      "macro_accuracy": 0.25,
+      "mean_relative_regret": 0.022754118107404585,
+      "median_relative_regret": 0.0,
+      "mean_log_relative_regret": 0.02167378884855933,
+      "mean_normalized_regret": 0.29208907443048526
+    },
+    "training/tabular_regime_shift": {
+      "n": 72,
+      "accuracy": 0.3472222222222222,
+      "valid_rate": 1.0,
+      "predictions": {
+        "resume": 72
+      },
+      "gold": {
+        "resume": 25,
+        "lower_lr": 47
+      },
+      "mean_seconds": 2.7294865162225,
+      "macro_accuracy": 0.5,
+      "mean_relative_regret": 5108382519.0791645,
+      "median_relative_regret": 1.4864829398965393,
+      "mean_log_relative_regret": 6.572140847306059,
+      "mean_normalized_regret": 0.44046397200868403
+    }
+  }
+}

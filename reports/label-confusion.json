@@ -1,0 +1,387 @@
+{
+  "historical-industry": {
+    "adapter": {
+      "training": {
+        "gold_to_predicted": {
+          "accumulate": {
+            "resume": 2
+          },
+          "lower_lr": {
+            "resume": 19
+          },
+          "resume": {
+            "resume": 3
+          }
+        },
+        "largest_normalized_regret_cases": [
+          {
+            "case_id": "public_french_industry_mlp-p0-s0",
+            "label": "accumulate",
+            "normalized_regret": 1.0,
+            "prediction": "resume"
+          },
+          {
+            "case_id": "public_french_industry_mlp-p2-s0",
+            "label": "lower_lr",
+            "normalized_regret": 1.0,
+            "prediction": "resume"
+          },
+          {
+            "case_id": "public_french_industry_mlp-p3-s0",
+            "label": "lower_lr",
+            "normalized_regret": 1.0,
+            "prediction": "resume"
+          },
+          {
+            "case_id": "public_french_industry_mlp-p2-s1",
+            "label": "lower_lr",
+            "normalized_regret": 1.0,
+            "prediction": "resume"
+          },
+          {
+            "case_id": "public_french_industry_mlp-p3-s1",
+            "label": "lower_lr",
+            "normalized_regret": 1.0,
+            "prediction": "resume"
+          }
+        ]
+      }
+    },
+    "base": {
+      "training": {
+        "gold_to_predicted": {
+          "accumulate": {
+            "clip_grad": 2
+          },
+          "lower_lr": {
+            "clip_grad": 13,
+            "lower_lr": 6
+          },
+          "resume": {
+            "clip_grad": 1,
+            "lower_lr": 2
+          }
+        },
+        "largest_normalized_regret_cases": [
+          {
+            "case_id": "public_french_industry_mlp-p1-s0",
+            "label": "lower_lr",
+            "normalized_regret": 1.0,
+            "prediction": "clip_grad"
+          },
+          {
+            "case_id": "public_french_industry_mlp-p0-s1",
+            "label": "resume",
+            "normalized_regret": 1.0,
+            "prediction": "clip_grad"
+          },
+          {
+            "case_id": "public_french_industry_mlp-p1-s2",
+            "label": "lower_lr",
+            "normalized_regret": 1.0,
+            "prediction": "clip_grad"
+          },
+          {
+            "case_id": "public_french_industry_mlp-p1-s3",
+            "label": "accumulate",
+            "normalized_regret": 1.0,
+            "prediction": "clip_grad"
+          },
+          {
+            "case_id": "public_french_industry_mlp-p1-s5",
+            "label": "lower_lr",
+            "normalized_regret": 1.0,
+            "prediction": "clip_grad"
+          }
+        ]
+      }
+    },
+    "learned": {
+      "training": {
+        "gold_to_predicted": {
+          "accumulate": {
+            "lower_lr": 2
+          },
+          "lower_lr": {
+            "lower_lr": 19
+          },
+          "resume": {
+            "lower_lr": 2,
+            "resume": 1
+          }
+        },
+        "largest_normalized_regret_cases": [
+          {
+            "case_id": "public_french_industry_mlp-p0-s4",
+            "label": "resume",
+            "normalized_regret": 0.4493988506547079,
+            "prediction": "lower_lr"
+          },
+          {
+            "case_id": "public_french_industry_mlp-p1-s3",
+            "label": "accumulate",
+            "normalized_regret": 0.187491328735335,
+            "prediction": "lower_lr"
+          },
+          {
+            "case_id": "public_french_industry_mlp-p0-s0",
+            "label": "accumulate",
+            "normalized_regret": 0.03161408016138113,
+            "prediction": "lower_lr"
+          },
+          {
+            "case_id": "public_french_industry_mlp-p0-s1",
+            "label": "resume",
+            "normalized_regret": 0.0007402746418921419,
+            "prediction": "lower_lr"
+          },
+          {
+            "case_id": "public_french_industry_mlp-p1-s0",
+            "label": "lower_lr",
+            "normalized_regret": 0.0,
+            "prediction": "lower_lr"
+          }
+        ]
+      }
+    }
+  },
+  "primary": {
+    "adapter": {
+      "methodology": {
+        "gold_to_predicted": {
+          "audit_timing": {
+            "audit_timing": 2,
+            "improve_validation": 1
+          },
+          "clarify_thesis": {
+            "improve_validation": 2,
+            "run_pilot": 1
+          },
+          "improve_validation": {
+            "improve_validation": 2,
+            "run_pilot": 1
+          },
+          "limit_risk": {
+            "model_costs": 1,
+            "run_pilot": 1
+          },
+          "model_costs": {
+            "model_costs": 2,
+            "run_pilot": 1
+          },
+          "run_pilot": {
+            "run_pilot": 2
+          }
+        }
+      },
+      "training": {
+        "gold_to_predicted": {
+          "accumulate": {
+            "resume": 9
+          },
+          "clip_grad": {
+            "resume": 2
+          },
+          "lower_lr": {
+            "resume": 63
+          },
+          "resume": {
+            "resume": 70
+          }
+        },
+        "largest_normalized_regret_cases": [
+          {
+            "case_id": "tabular_regime_shift-p2-s8",
+            "label": "lower_lr",
+            "normalized_regret": 1.0,
+            "prediction": "resume"
+          },
+          {
+            "case_id": "tabular_regime_shift-p2-s10",
+            "label": "lower_lr",
+            "normalized_regret": 1.0,
+            "prediction": "resume"
+          },
+          {
+            "case_id": "tabular_regime_shift-p3-s0",
+            "label": "lower_lr",
+            "normalized_regret": 1.0,
+            "prediction": "resume"
+          },
+          {
+            "case_id": "tabular_regime_shift-p3-s1",
+            "label": "lower_lr",
+            "normalized_regret": 1.0,
+            "prediction": "resume"
+          },
+          {
+            "case_id": "tabular_regime_shift-p3-s2",
+            "label": "lower_lr",
+            "normalized_regret": 1.0,
+            "prediction": "resume"
+          }
+        ]
+      }
+    },
+    "base": {
+      "methodology": {
+        "gold_to_predicted": {
+          "audit_timing": {
+            "audit_timing": 1,
+            "improve_validation": 1,
+            "run_pilot": 1
+          },
+          "clarify_thesis": {
+            "clarify_thesis": 1,
+            "improve_validation": 2
+          },
+          "improve_validation": {
+            "improve_validation": 2,
+            "run_pilot": 1
+          },
+          "limit_risk": {
+            "limit_risk": 1,
+            "run_pilot": 1
+          },
+          "model_costs": {
+            "run_pilot": 3
+          },
+          "run_pilot": {
+            "run_pilot": 2
+          }
+        }
+      },
+      "training": {
+        "gold_to_predicted": {
+          "accumulate": {
+            "lower_lr": 9
+          },
+          "clip_grad": {
+            "lower_lr": 2
+          },
+          "lower_lr": {
+            "clip_grad": 19,
+            "lower_lr": 41,
+            "resume": 3
+          },
+          "resume": {
+            "clip_grad": 6,
+            "lower_lr": 55,
+            "resume": 9
+          }
+        },
+        "largest_normalized_regret_cases": [
+          {
+            "case_id": "tabular_regime_shift-p0-s0",
+            "label": "resume",
+            "normalized_regret": 1.0,
+            "prediction": "lower_lr"
+          },
+          {
+            "case_id": "tabular_regime_shift-p0-s2",
+            "label": "resume",
+            "normalized_regret": 1.0,
+            "prediction": "lower_lr"
+          },
+          {
+            "case_id": "tabular_regime_shift-p0-s3",
+            "label": "resume",
+            "normalized_regret": 1.0,
+            "prediction": "lower_lr"
+          },
+          {
+            "case_id": "tabular_regime_shift-p0-s5",
+            "label": "resume",
+            "normalized_regret": 1.0,
+            "prediction": "lower_lr"
+          },
+          {
+            "case_id": "tabular_regime_shift-p0-s6",
+            "label": "resume",
+            "normalized_regret": 1.0,
+            "prediction": "lower_lr"
+          }
+        ]
+      }
+    }
+  },
+  "sourced-memos": {
+    "adapter": {
+      "methodology": {
+        "gold_to_predicted": {
+          "audit_timing": {
+            "improve_validation": 1
+          },
+          "clarify_thesis": {
+            "improve_validation": 1
+          },
+          "improve_validation": {
+            "improve_validation": 2
+          },
+          "limit_risk": {
+            "limit_risk": 1
+          },
+          "model_costs": {
+            "audit_timing": 1,
+            "improve_validation": 1
+          },
+          "run_pilot": {
+            "run_pilot": 1
+          }
+        }
+      }
+    },
+    "base": {
+      "methodology": {
+        "gold_to_predicted": {
+          "audit_timing": {
+            "improve_validation": 1
+          },
+          "clarify_thesis": {
+            "clarify_thesis": 1
+          },
+          "improve_validation": {
+            "improve_validation": 1,
+            "run_pilot": 1
+          },
+          "limit_risk": {
+            "limit_risk": 1
+          },
+          "model_costs": {
+            "audit_timing": 1,
+            "run_pilot": 1
+          },
+          "run_pilot": {
+            "run_pilot": 1
+          }
+        }
+      }
+    },
+    "learned": {
+      "methodology": {
+        "gold_to_predicted": {
+          "audit_timing": {
+            "audit_timing": 1
+          },
+          "clarify_thesis": {
+            "clarify_thesis": 1
+          },
+          "improve_validation": {
+            "audit_timing": 1,
+            "improve_validation": 1
+          },
+          "limit_risk": {
+            "limit_risk": 1
+          },
+          "model_costs": {
+            "model_costs": 1,
+            "run_pilot": 1
+          },
+          "run_pilot": {
+            "run_pilot": 1
+          }
+        }
+      }
+    }
+  }
+}

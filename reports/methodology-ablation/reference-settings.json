@@ -1,0 +1,6 @@
+{
+  "batch_size": 4,
+  "primary_selected_step": 180,
+  "matched_mixed_step": 120,
+  "methodology_step": 49
+}

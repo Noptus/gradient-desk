@@ -1,0 +1,13 @@
+{
+  "baseline": "base.jsonl",
+  "candidate": "adapter.jsonl",
+  "by_family": {
+    "training/public_french_industry_mlp": {
+      "n": 24,
+      "newly_correct": 3,
+      "newly_wrong": 6,
+      "accuracy_delta": -0.125,
+      "mean_normalized_regret_delta": 0.4456255137260697
+    }
+  }
+}

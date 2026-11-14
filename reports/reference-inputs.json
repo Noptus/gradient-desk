@@ -1,0 +1,12 @@
+{
+  "prereg_commit": "3710897d0db61edaf31befcf4eaf8750fdc1e808",
+  "base_weight_revision": "383413e909f3bc5303ce195ebbdf0339c5a1a2a3",
+  "inputs": {
+    "train.jsonl": "20a1710e45889c1305e5ba532d0a088b0bccebf59abf6e1ee64f433d5d3c2829",
+    "valid.jsonl": "dfa3eaae9af52051f80a04a53c9a9de2d6fd66f897429e1eeed72a60b3f3405f",
+    "test-cases.jsonl": "62d992b5c2196ce1dc68a3d1f300c3708e720c4e3cc32d384c8907f88130ed2f",
+    "selection.jsonl": "44c24f93f14a04831c77e9796274de93b3ecc22bc237c5af5648e8ff4f46f234",
+    "verified-cases.jsonl": "1047c52aaeace3fce17065047123cedbeeacc1a97a694b2b9804b2ef7e5cfe2d",
+    "research-memos-frozen.jsonl": "a8dc77b5ca49796576da4c916f2d4cc6cfb513237179cf6529ed130bf235c2cc"
+  }
+}

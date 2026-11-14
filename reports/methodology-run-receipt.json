@@ -1,0 +1,97 @@
+{
+  "provenance": {
+    "base_repo": "Qwen/Qwen3-8B-MLX-4bit",
+    "base_revision": "383413e909f3bc5303ce195ebbdf0339c5a1a2a3",
+    "weights_sha256": "fcc83d7537bee76cc143be3e25f8954b816798f93528103db1cddb02977c5617",
+    "machine": {
+      "chip": "Apple M4",
+      "platform": "macOS-27.2.1-arm64-arm-64bit"
+    },
+    "dataset_sha256": {
+      "train": "4dfbfb29e43f1d36bb1d06ba225cc7f76b9981ae1917d8f13b8f1c47c5b3dacd",
+      "valid": "629b39f599421c82f0d48e186559c9a2995440329b25abaee0cc5b242dced7a9"
+    },
+    "config_sha256": "cdb56cc59096ba7be9dbb368cbf5c36aa5127b6544a9e4e27b2766460a626e9a",
+    "overrides": {}
+  },
+  "updates": 49,
+  "training_wall_seconds_after_model_load": 145.226,
+  "elapsed_seconds_from_prepared_train_file_to_final_checkpoint": 1661.284,
+  "peak_metal_gb": 5.201,
+  "training_curve": [
+    {
+      "step": 10,
+      "completion_token_nll": 3.064,
+      "learning_rate": 0.0001,
+      "updates_per_second": 0.525,
+      "trained_completion_tokens_per_second": 3.2,
+      "trained_completion_tokens": 61,
+      "peak_metal_gb": 5.201
+    },
+    {
+      "step": 20,
+      "completion_token_nll": 0.749,
+      "learning_rate": 0.0001,
+      "updates_per_second": 0.544,
+      "trained_completion_tokens_per_second": 3.044,
+      "trained_completion_tokens": 117,
+      "peak_metal_gb": 5.201
+    },
+    {
+      "step": 30,
+      "completion_token_nll": 0.9,
+      "learning_rate": 0.0001,
+      "updates_per_second": 0.543,
+      "trained_completion_tokens_per_second": 3.149,
+      "trained_completion_tokens": 175,
+      "peak_metal_gb": 5.201
+    },
+    {
+      "step": 40,
+      "completion_token_nll": 1.012,
+      "learning_rate": 0.0001,
+      "updates_per_second": 0.541,
+      "trained_completion_tokens_per_second": 3.302,
+      "trained_completion_tokens": 236,
+      "peak_metal_gb": 5.201
+    },
+    {
+      "step": 49,
+      "completion_token_nll": 0.579,
+      "learning_rate": 0.0001,
+      "updates_per_second": 0.592,
+      "trained_completion_tokens_per_second": 3.199,
+      "trained_completion_tokens": 290,
+      "peak_metal_gb": 5.201
+    }
+  ],
+  "validation_curve": [
+    {
+      "step": 1,
+      "completion_token_nll": 9.517,
+      "elapsed_seconds": 17.73
+    },
+    {
+      "step": 25,
+      "completion_token_nll": 1.033,
+      "elapsed_seconds": 17.627
+    },
+    {
+      "step": 49,
+      "completion_token_nll": 0.716,
+      "elapsed_seconds": 17.652
+    }
+  ],
+  "checkpoint_weights_sha256": {
+    "0000049_adapters.safetensors": "6743425a25a2bf0715df8a34ce90678565b29ba909186a894a688378ab45d2a9",
+    "adapters.safetensors": "6743425a25a2bf0715df8a34ce90678565b29ba909186a894a688378ab45d2a9"
+  },
+  "dependencies": {
+    "torch": "2.9.1",
+    "mlx": "0.32.4",
+    "mlx-lm": "0.31.3",
+    "numpy": "2.5.4",
+    "transformers": "5.23.0",
+    "huggingface-hub": "1.33.0"
+  }
+}

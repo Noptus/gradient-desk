@@ -1,0 +1,53 @@
+{
+  "engine": "adapter",
+  "model_dir": "Qwen3-8B-MLX-4bit",
+  "adapter_dir": "m4-pilot",
+  "inference_batch_size": 4,
+  "versions": {
+    "mlx": "0.32.4",
+    "mlx-lm": "0.31.3",
+    "transformers": "5.23.0"
+  },
+  "by_track": {
+    "training": {
+      "n": 24,
+      "accuracy": 0.125,
+      "valid_rate": 1.0,
+      "predictions": {
+        "resume": 24
+      },
+      "gold": {
+        "accumulate": 2,
+        "lower_lr": 19,
+        "resume": 3
+      },
+      "mean_seconds": 2.933241486083716,
+      "macro_accuracy": 0.3333333333333333,
+      "mean_relative_regret": 47391049642.375336,
+      "median_relative_regret": 147.14415911244072,
+      "mean_log_relative_regret": 7.150573886131357,
+      "mean_normalized_regret": 0.7241215221543743
+    }
+  },
+  "by_family": {
+    "training/public_french_industry_mlp": {
+      "n": 24,
+      "accuracy": 0.125,
+      "valid_rate": 1.0,
+      "predictions": {
+        "resume": 24
+      },
+      "gold": {
+        "accumulate": 2,
+        "lower_lr": 19,
+        "resume": 3
+      },
+      "mean_seconds": 2.933241486083716,
+      "macro_accuracy": 0.3333333333333333,
+      "mean_relative_regret": 47391049642.375336,
+      "median_relative_regret": 147.14415911244072,
+      "mean_log_relative_regret": 7.150573886131357,
+      "mean_normalized_regret": 0.7241215221543743
+    }
+  }
+}

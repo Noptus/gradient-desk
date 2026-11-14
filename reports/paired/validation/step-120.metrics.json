@@ -1,0 +1,159 @@
+{
+  "engine": "adapter",
+  "model_dir": "Qwen3-8B-MLX-4bit",
+  "adapter_dir": "m4-pilot",
+  "inference_batch_size": 4,
+  "versions": {
+    "mlx": "0.32.4",
+    "mlx-lm": "0.31.3",
+    "transformers": "5.23.0"
+  },
+  "by_track": {
+    "methodology": {
+      "n": 16,
+      "accuracy": 0.25,
+      "valid_rate": 1.0,
+      "predictions": {
+        "audit_timing": 3,
+        "improve_validation": 13
+      },
+      "gold": {
+        "audit_timing": 3,
+        "improve_validation": 3,
+        "limit_risk": 3,
+        "run_pilot": 3,
+        "model_costs": 2,
+        "clarify_thesis": 2
+      },
+      "mean_seconds": 1.035394835875195,
+      "macro_accuracy": 0.2222222222222222
+    },
+    "training": {
+      "n": 12,
+      "accuracy": 0.5833333333333334,
+      "valid_rate": 1.0,
+      "predictions": {
+        "resume": 12
+      },
+      "gold": {
+        "resume": 7,
+        "accumulate": 2,
+        "clip_grad": 1,
+        "lower_lr": 2
+      },
+      "mean_seconds": 2.793611645916826,
+      "macro_accuracy": 0.25,
+      "mean_relative_regret": 101.0316174934356,
+      "median_relative_regret": 0.0,
+      "mean_log_relative_regret": 0.7767086212871211,
+      "mean_normalized_regret": 0.38037018593417654
+    }
+  },
+  "by_family": {
+    "methodology/credit_liquidity": {
+      "n": 4,
+      "accuracy": 0.0,
+      "valid_rate": 1.0,
+      "predictions": {
+        "improve_validation": 3,
+        "audit_timing": 1
+      },
+      "gold": {
+        "model_costs": 1,
+        "clarify_thesis": 1,
+        "limit_risk": 1,
+        "run_pilot": 1
+      },
+      "mean_seconds": 1.0619363125006203,
+      "macro_accuracy": 0.0
+    },
+    "methodology/fx_fix_flow": {
+      "n": 4,
+      "accuracy": 0.25,
+      "valid_rate": 1.0,
+      "predictions": {
+        "improve_validation": 4
+      },
+      "gold": {
+        "audit_timing": 1,
+        "improve_validation": 1,
+        "limit_risk": 1,
+        "run_pilot": 1
+      },
+      "mean_seconds": 1.02073286450468,
+      "macro_accuracy": 0.25
+    },
+    "methodology/search_attention": {
+      "n": 4,
+      "accuracy": 0.25,
+      "valid_rate": 1.0,
+      "predictions": {
+        "improve_validation": 3,
+        "audit_timing": 1
+      },
+      "gold": {
+        "audit_timing": 1,
+        "clarify_thesis": 1,
+        "improve_validation": 1,
+        "model_costs": 1
+      },
+      "mean_seconds": 1.0256154062517453,
+      "macro_accuracy": 0.25
+    },
+    "methodology/weather_load": {
+      "n": 4,
+      "accuracy": 0.5,
+      "valid_rate": 1.0,
+      "predictions": {
+        "audit_timing": 1,
+        "improve_validation": 3
+      },
+      "gold": {
+        "audit_timing": 1,
+        "improve_validation": 1,
+        "limit_risk": 1,
+        "run_pilot": 1
+      },
+      "mean_seconds": 1.0332947602437343,
+      "macro_accuracy": 0.5
+    },
+    "training/heteroscedastic_regression": {
+      "n": 6,
+      "accuracy": 0.3333333333333333,
+      "valid_rate": 1.0,
+      "predictions": {
+        "resume": 6
+      },
+      "gold": {
+        "resume": 2,
+        "clip_grad": 1,
+        "lower_lr": 2,
+        "accumulate": 1
+      },
+      "mean_seconds": 2.7643086528308536,
+      "macro_accuracy": 0.25,
+      "mean_relative_regret": 202.0609423135901,
+      "median_relative_regret": 0.8563102986405471,
+      "mean_log_relative_regret": 1.5511401952080595,
+      "mean_normalized_regret": 0.6666666666666666
+    },
+    "training/noisy_classification": {
+      "n": 6,
+      "accuracy": 0.8333333333333334,
+      "valid_rate": 1.0,
+      "predictions": {
+        "resume": 6
+      },
+      "gold": {
+        "resume": 5,
+        "accumulate": 1
+      },
+      "mean_seconds": 2.8229146390027986,
+      "macro_accuracy": 0.5,
+      "mean_relative_regret": 0.0022926732811099563,
+      "median_relative_regret": 0.0,
+      "mean_log_relative_regret": 0.0022770473661827928,
+      "mean_normalized_regret": 0.09407370520168633
+    }
+  }
+}

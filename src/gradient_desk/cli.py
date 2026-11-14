@@ -104,7 +104,9 @@ def main(argv: list[str] | None = None) -> None:
 
         print(json.dumps(write_comparison(args.base, args.candidate, args.output), indent=2))
     elif args.command == "advise":
-        if args.policy and (args.adapter or not args.train_cases or not args.valid_cases):
+        if args.policy and args.adapter:
+            advise.error("--adapter requires --model")
+        if args.policy and (not args.train_cases or not args.valid_cases):
             advise.error("--policy learned requires --train-cases and --valid-cases")
         if args.model and (args.train_cases or args.valid_cases):
             advise.error("--train-cases and --valid-cases require --policy learned")

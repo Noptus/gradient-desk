@@ -1,0 +1,22 @@
+{
+  "selected_step": 180,
+  "validation": "selection.jsonl",
+  "checkpoint_scores": {
+    "60": {
+      "training_mean_normalized_regret": 0.5465217582669194,
+      "methodology_macro_accuracy": 0.2222222222222222,
+      "selection_score": 0.3378502319776514
+    },
+    "120": {
+      "training_mean_normalized_regret": 0.38037018593417654,
+      "methodology_macro_accuracy": 0.2222222222222222,
+      "selection_score": 0.4209260181440228
+    },
+    "180": {
+      "training_mean_normalized_regret": 0.38037018593417654,
+      "methodology_macro_accuracy": 0.611111111111111,
+      "selection_score": 0.6153704625884673
+    }
+  },
+  "criterion": "mean of (one minus training normalized regret) and methodology macro accuracy"
+}

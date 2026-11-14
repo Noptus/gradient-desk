@@ -1,0 +1,102 @@
+{
+  "engine": "adapter",
+  "model_dir": "Qwen3-8B-MLX-4bit",
+  "adapter_dir": "m4-pilot",
+  "inference_batch_size": 4,
+  "versions": {
+    "mlx": "0.32.4",
+    "mlx-lm": "0.31.3",
+    "transformers": "5.23.0"
+  },
+  "by_track": {
+    "methodology": {
+      "n": 16,
+      "accuracy": 0.375,
+      "valid_rate": 1.0,
+      "predictions": {
+        "audit_timing": 4,
+        "clarify_thesis": 1,
+        "improve_validation": 11
+      },
+      "gold": {
+        "audit_timing": 3,
+        "clarify_thesis": 3,
+        "improve_validation": 3,
+        "run_pilot": 2,
+        "model_costs": 3,
+        "limit_risk": 2
+      },
+      "mean_seconds": 1.0843869297459605,
+      "macro_accuracy": 0.3333333333333333
+    }
+  },
+  "by_family": {
+    "methodology/index_membership_flow": {
+      "n": 4,
+      "accuracy": 0.25,
+      "valid_rate": 1.0,
+      "predictions": {
+        "audit_timing": 2,
+        "improve_validation": 2
+      },
+      "gold": {
+        "model_costs": 1,
+        "audit_timing": 1,
+        "limit_risk": 1,
+        "clarify_thesis": 1
+      },
+      "mean_seconds": 1.041368416743353,
+      "macro_accuracy": 0.25
+    },
+    "methodology/intraday_state_model": {
+      "n": 4,
+      "accuracy": 0.25,
+      "valid_rate": 1.0,
+      "predictions": {
+        "improve_validation": 4
+      },
+      "gold": {
+        "clarify_thesis": 1,
+        "improve_validation": 1,
+        "model_costs": 1,
+        "limit_risk": 1
+      },
+      "mean_seconds": 1.0650874687416945,
+      "macro_accuracy": 0.25
+    },
+    "methodology/macro_release_surprise": {
+      "n": 4,
+      "accuracy": 0.25,
+      "valid_rate": 1.0,
+      "predictions": {
+        "improve_validation": 4
+      },
+      "gold": {
+        "audit_timing": 1,
+        "improve_validation": 1,
+        "model_costs": 1,
+        "run_pilot": 1
+      },
+      "mean_seconds": 1.0576730000029784,
+      "macro_accuracy": 0.25
+    },
+    "methodology/patent_diffusion": {
+      "n": 4,
+      "accuracy": 0.75,
+      "valid_rate": 1.0,
+      "predictions": {
+        "audit_timing": 2,
+        "clarify_thesis": 1,
+        "improve_validation": 1
+      },
+      "gold": {
+        "audit_timing": 1,
+        "clarify_thesis": 1,
+        "improve_validation": 1,
+        "run_pilot": 1
+      },
+      "mean_seconds": 1.1734188334958162,
+      "macro_accuracy": 0.75
+    }
+  }
+}

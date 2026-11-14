@@ -1,0 +1,22 @@
+{
+  "requested": 4,
+  "used": 4,
+  "checks": [
+    {
+      "case_id": "noisy_classification-p0-s0",
+      "matches": true
+    },
+    {
+      "case_id": "noisy_classification-p1-s0",
+      "matches": true
+    },
+    {
+      "case_id": "weather_reanalysis_substitution",
+      "matches": true
+    },
+    {
+      "case_id": "weather_few_heatwaves",
+      "matches": true
+    }
+  ]
+}
