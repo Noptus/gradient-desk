@@ -1,0 +1,604 @@
+{
+  "baseline": "tfidf_logreg_lexical",
+  "predictions_file": "lexical-predictions.jsonl",
+  "predictions_sha256": "8feb0719653d746a799c16056a882249a21bbd4c47c61878e6d3df3f8b9ea948",
+  "scikit_learn": "1.9.1",
+  "sklearn_grid": {
+    "C": [
+      0.25,
+      1.0,
+      4.0,
+      16.0
+    ],
+    "feature_spaces": [
+      "word",
+      "char_word"
+    ]
+  },
+  "tracks": {
+    "finqa": {
+      "chosen": {
+        "C": 16.0,
+        "feature_space": "word"
+      },
+      "counts": {
+        "test": 103,
+        "train": 320,
+        "valid": 72
+      },
+      "digests": {
+        "test": "ceca44888ff732d988afe0508c1d958d0349e2726a8008d46e6fe1e9fc274059",
+        "train": "13c77c68a42e89eefce27246354a111fa0da22814706f95356eb778659b7c533",
+        "valid": "6d7cd80781bbb3f10f0341e16b7963cf3abd9273f83450035361a66378ba0ef9"
+      },
+      "labels": [
+        "add",
+        "divide",
+        "multiply",
+        "subtract"
+      ],
+      "selection_search": [
+        {
+          "C": 0.25,
+          "feature_space": "word",
+          "valid_accuracy": 0.513889
+        },
+        {
+          "C": 1.0,
+          "feature_space": "word",
+          "valid_accuracy": 0.541667
+        },
+        {
+          "C": 4.0,
+          "feature_space": "word",
+          "valid_accuracy": 0.625
+        },
+        {
+          "C": 16.0,
+          "feature_space": "word",
+          "valid_accuracy": 0.652778
+        },
+        {
+          "C": 0.25,
+          "feature_space": "char_word",
+          "valid_accuracy": 0.513889
+        },
+        {
+          "C": 1.0,
+          "feature_space": "char_word",
+          "valid_accuracy": 0.555556
+        },
+        {
+          "C": 4.0,
+          "feature_space": "char_word",
+          "valid_accuracy": 0.569444
+        },
+        {
+          "C": 16.0,
+          "feature_space": "char_word",
+          "valid_accuracy": 0.569444
+        }
+      ],
+      "test": {
+        "confusion": {
+          "labels": [
+            "add",
+            "divide",
+            "multiply",
+            "subtract"
+          ],
+          "matrix": [
+            [
+              10,
+              1,
+              0,
+              1
+            ],
+            [
+              6,
+              32,
+              8,
+              7
+            ],
+            [
+              2,
+              0,
+              7,
+              0
+            ],
+            [
+              5,
+              1,
+              1,
+              22
+            ]
+          ]
+        },
+        "scores": {
+          "accuracy": 0.68932,
+          "macro_f1": 0.653206
+        }
+      },
+      "track": "finqa_operator",
+      "valid": {
+        "confusion": {
+          "labels": [
+            "add",
+            "divide",
+            "multiply",
+            "subtract"
+          ],
+          "matrix": [
+            [
+              1,
+              1,
+              1,
+              0
+            ],
+            [
+              1,
+              30,
+              4,
+              4
+            ],
+            [
+              1,
+              2,
+              3,
+              0
+            ],
+            [
+              6,
+              4,
+              1,
+              13
+            ]
+          ]
+        },
+        "scores": {
+          "accuracy": 0.652778,
+          "macro_f1": 0.497572
+        }
+      }
+    },
+    "sec8k": {
+      "chosen": {
+        "C": 16.0,
+        "feature_space": "word"
+      },
+      "counts": {
+        "test": 159,
+        "train": 320,
+        "valid": 96
+      },
+      "digests": {
+        "test": "2df5d3ae3d1c7c680701e9f84193f7024c06972fdcacbd9f4a5dc6844f4653a9",
+        "train": "0b6c016bd301220bc2f8ee4ab8722669443faa2dea53be9321c7336989f8723b",
+        "valid": "893dfbef1567735d474dc86f61c1526e4e4a4b894c1aafa8e576c7b3f2ca1748"
+      },
+      "labels": [
+        "1.01",
+        "1.02",
+        "2.02",
+        "2.03",
+        "3.02",
+        "5.02",
+        "7.01",
+        "8.01"
+      ],
+      "selection_search": [
+        {
+          "C": 0.25,
+          "feature_space": "word",
+          "valid_accuracy": 0.75
+        },
+        {
+          "C": 1.0,
+          "feature_space": "word",
+          "valid_accuracy": 0.833333
+        },
+        {
+          "C": 4.0,
+          "feature_space": "word",
+          "valid_accuracy": 0.84375
+        },
+        {
+          "C": 16.0,
+          "feature_space": "word",
+          "valid_accuracy": 0.854167
+        },
+        {
+          "C": 0.25,
+          "feature_space": "char_word",
+          "valid_accuracy": 0.78125
+        },
+        {
+          "C": 1.0,
+          "feature_space": "char_word",
+          "valid_accuracy": 0.854167
+        },
+        {
+          "C": 4.0,
+          "feature_space": "char_word",
+          "valid_accuracy": 0.84375
+        },
+        {
+          "C": 16.0,
+          "feature_space": "char_word",
+          "valid_accuracy": 0.84375
+        }
+      ],
+      "test": {
+        "confusion": {
+          "labels": [
+            "1.01",
+            "1.02",
+            "2.02",
+            "2.03",
+            "3.02",
+            "5.02",
+            "7.01",
+            "8.01"
+          ],
+          "matrix": [
+            [
+              18,
+              1,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              16,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              16,
+              0,
+              0,
+              0,
+              2,
+              2
+            ],
+            [
+              2,
+              1,
+              0,
+              17,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              0,
+              0,
+              0,
+              18,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              1,
+              0,
+              19,
+              0,
+              0
+            ],
+            [
+              1,
+              0,
+              1,
+              0,
+              0,
+              0,
+              18,
+              0
+            ],
+            [
+              2,
+              1,
+              0,
+              1,
+              0,
+              0,
+              1,
+              15
+            ]
+          ]
+        },
+        "scores": {
+          "accuracy": 0.861635,
+          "macro_f1": 0.863653
+        }
+      },
+      "track": "sec8k_item_routing",
+      "valid": {
+        "confusion": {
+          "labels": [
+            "1.01",
+            "1.02",
+            "2.02",
+            "2.03",
+            "3.02",
+            "5.02",
+            "7.01",
+            "8.01"
+          ],
+          "matrix": [
+            [
+              10,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              2
+            ],
+            [
+              2,
+              10,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              12,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              4,
+              0,
+              0,
+              8,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              2,
+              10,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              12,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              10,
+              1
+            ],
+            [
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              10
+            ]
+          ]
+        },
+        "scores": {
+          "accuracy": 0.854167,
+          "macro_f1": 0.860211
+        }
+      }
+    },
+    "treasury": {
+      "chosen": {
+        "C": 4.0,
+        "feature_space": "word"
+      },
+      "counts": {
+        "test": 150,
+        "train": 300,
+        "valid": 100
+      },
+      "digests": {
+        "test": "344c060d33b5eb56f929d84e3b3580d15532668c8abd66a1da1c10f18a534eb2",
+        "train": "27af19a824a250cda893d1a0f47767e4c80f0cc51bf9fd01cc4b25732dc910d2",
+        "valid": "0d010012fa6b06ff4ac60dc8b58c255ceecc6ff1bc383e850ebac464ff3b5f92"
+      },
+      "labels": [
+        "reversed_sign",
+        "supported",
+        "wrong_session",
+        "wrong_tenor",
+        "wrong_units"
+      ],
+      "selection_search": [
+        {
+          "C": 0.25,
+          "feature_space": "word",
+          "valid_accuracy": 0.38
+        },
+        {
+          "C": 1.0,
+          "feature_space": "word",
+          "valid_accuracy": 0.37
+        },
+        {
+          "C": 4.0,
+          "feature_space": "word",
+          "valid_accuracy": 0.42
+        },
+        {
+          "C": 16.0,
+          "feature_space": "word",
+          "valid_accuracy": 0.42
+        },
+        {
+          "C": 0.25,
+          "feature_space": "char_word",
+          "valid_accuracy": 0.35
+        },
+        {
+          "C": 1.0,
+          "feature_space": "char_word",
+          "valid_accuracy": 0.36
+        },
+        {
+          "C": 4.0,
+          "feature_space": "char_word",
+          "valid_accuracy": 0.36
+        },
+        {
+          "C": 16.0,
+          "feature_space": "char_word",
+          "valid_accuracy": 0.39
+        }
+      ],
+      "test": {
+        "confusion": {
+          "labels": [
+            "reversed_sign",
+            "supported",
+            "wrong_session",
+            "wrong_tenor",
+            "wrong_units"
+          ],
+          "matrix": [
+            [
+              11,
+              5,
+              6,
+              6,
+              2
+            ],
+            [
+              11,
+              5,
+              5,
+              8,
+              1
+            ],
+            [
+              8,
+              6,
+              8,
+              5,
+              3
+            ],
+            [
+              6,
+              8,
+              7,
+              8,
+              1
+            ],
+            [
+              2,
+              4,
+              2,
+              6,
+              16
+            ]
+          ]
+        },
+        "scores": {
+          "accuracy": 0.32,
+          "macro_f1": 0.325909
+        }
+      },
+      "track": "treasury_curve_audit",
+      "valid": {
+        "confusion": {
+          "labels": [
+            "reversed_sign",
+            "supported",
+            "wrong_session",
+            "wrong_tenor",
+            "wrong_units"
+          ],
+          "matrix": [
+            [
+              5,
+              4,
+              5,
+              4,
+              2
+            ],
+            [
+              5,
+              7,
+              7,
+              0,
+              1
+            ],
+            [
+              2,
+              2,
+              10,
+              5,
+              1
+            ],
+            [
+              3,
+              2,
+              9,
+              6,
+              0
+            ],
+            [
+              1,
+              1,
+              0,
+              4,
+              14
+            ]
+          ]
+        },
+        "scores": {
+          "accuracy": 0.42,
+          "macro_f1": 0.420672
+        }
+      }
+    }
+  }
+}

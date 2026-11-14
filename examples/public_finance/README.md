@@ -26,6 +26,21 @@ Use the pinned ZipLime extraction of issuer-authored SEC filings and the officia
 
 Use the official daily par curve archive. At each date, select nonoverlapping three-session windows where a correct basis-point change and four named error computations differ. Shuffle display order and apply equal error frequencies. Splits use disjoint dates and are shared with the intervention benchmark. The rate rows are observed Treasury estimates. The cutoff scenarios and audit defects are generated, and this test does not establish release-time trading experience. An exact calculator is the task ceiling. [U.S. Treasury interest rate data](https://home.treasury.gov/policy-issues/financing-the-government/interest-rate-statistics)
 
+### Lexical comparator
+
+A verified TF-IDF logistic baseline reads only the prompt text of each case. One feature space uses word unigrams and bigrams, and the other adds character n-grams of length three to five on top of those words. Training rows fit the model, and development rows alone select the feature space and the inverse regularization strength from a fixed grid of 0.25, 1.0, 4.0 and 16.0. Held-out labels stay closed until that development choice is frozen, then open once per track. Before any fitting the comparator checks all nine inputs against the SHA-256 digests in [the data receipt](frozen-receipts.json). Under a pinned scikit-learn it produced held-out accuracy of 68.932 percent on FinQA, 86.1635 percent on SEC and 32.000 percent on Treasury.
+
+Reproduce it with the pinned solver after rebuilding the inputs.
+
+```sh
+python3 -m pip install scikit-learn==1.9.1
+python3 examples/public_finance/lexical.py \
+  --cases-dir .work/v2/public-finance/reconstructed \
+  --output results
+```
+
+The run writes a receipt to [results/lexical-receipt.json](results/lexical-receipt.json) and per-case predictions to [results/lexical-predictions.jsonl](results/lexical-predictions.jsonl).
+
 ## Reproduce the inputs
 
 Run with Python 3.12 or newer. DuckDB 2.0.0 is only required for the SEC Parquet extraction.
