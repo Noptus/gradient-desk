@@ -1,0 +1,198 @@
+{
+  "finqa": {
+    "counts": {
+      "candidates": {
+        "test": 103,
+        "train": 2182,
+        "valid": 72
+      },
+      "documents": {
+        "test": 58,
+        "train": 320,
+        "valid": 38
+      },
+      "issuers": {
+        "test": 15,
+        "train": 69,
+        "valid": 16
+      },
+      "label_distribution": {
+        "test": {
+          "add": 12,
+          "divide": 53,
+          "multiply": 9,
+          "subtract": 29
+        },
+        "train": {
+          "add": 80,
+          "divide": 80,
+          "multiply": 80,
+          "subtract": 80
+        },
+        "valid": {
+          "add": 3,
+          "divide": 39,
+          "multiply": 6,
+          "subtract": 24
+        }
+      },
+      "raw_records": {
+        "test": 1147,
+        "train": 6251,
+        "valid": 883
+      },
+      "selected": {
+        "test": 103,
+        "train": 320,
+        "valid": 72
+      }
+    },
+    "limits": "Operator-routing proxy over single-step FinQA items only; no corpus text is printed and no financial advice is implied.",
+    "method": {
+      "capacities": {
+        "test": 140,
+        "train": 320,
+        "valid": 100
+      },
+      "evidence_rule": "prompt carries the question and the exact values of qa.gold_inds (section-ordered); no programs, steps, annotations or answers",
+      "issuer_allocation": "issuer = id ticker prefix; stable SHA256(issuer) mod 100 mapped to 60/20/20 train/valid/test, independent of labels; a row is kept only if its allocated fold equals its publisher split (publisher dev -> valid), blocking issuers and honouring the upstream repartition",
+      "length_rule": "skip any row whose assembled prompt exceeds 2600 characters (deterministic)",
+      "operators": [
+        "add",
+        "subtract",
+        "multiply",
+        "divide"
+      ],
+      "sampling_rule": "deterministic hash-ordered, round-robin class-balanced selection up to capacity; prefer at most one question per source document, relaxing that only if the fold is still short of capacity",
+      "single_step_rule": "retain only questions whose qa.program is exactly one top-level call op(a, b) with op in {add, subtract, multiply, divide}, no chained steps and no '#' back-references",
+      "task": "route a FinQA single-step question to one of four arithmetic operators given its exact gold_inds evidence slice"
+    },
+    "outputs": {
+      "test": {
+        "file": "finqa-test.jsonl",
+        "sha256": "ceca44888ff732d988afe0508c1d958d0349e2726a8008d46e6fe1e9fc274059"
+      },
+      "train": {
+        "file": "finqa-train.jsonl",
+        "sha256": "13c77c68a42e89eefce27246354a111fa0da22814706f95356eb778659b7c533"
+      },
+      "valid": {
+        "file": "finqa-valid.jsonl",
+        "sha256": "6d7cd80781bbb3f10f0341e16b7963cf3abd9273f83450035361a66378ba0ef9"
+      }
+    },
+    "schema_version": 1,
+    "source": {
+      "commit": "0f16e2867befa6840783e58be38c9efb9229d742",
+      "files": {
+        "test": "finqa-test.json",
+        "train": "finqa-train.json",
+        "valid": "finqa-dev.json"
+      },
+      "license": "MIT",
+      "repo": "czyssrs/FinQA",
+      "sha256": {
+        "test": "831dbfb2e785dbc227f895ce3f24046433467aec67b09db2bd6ac7692a8a30dc",
+        "train": "49f237eb9779b569473b26b08048867d04635a7cc39ad6a7a5664c55bb428db6",
+        "valid": "a847fb7e0d61a3125a1e2909852df6b89f1ee64d2c5ff1bf689e332214deee51"
+      }
+    },
+    "track": "finqa_operator",
+    "validation": {
+      "issuers_disjoint": true,
+      "questions_unique_across_folds": true,
+      "test_adequate": true
+    }
+  },
+  "sec8k": {
+    "duckdb": "2.0.0",
+    "form_reference": "https://www.sec.gov/files/form8-k.pdf",
+    "publisher": "ZipLime/sec-8k-events",
+    "rejected": {
+      "cross_split_template": 1,
+      "issuer_or_period_mismatch": 22869
+    },
+    "revision": "dff0c3ef84097f39c97ab450465f47e9ceed3870",
+    "source_files": {
+      "data/items/part-00025.parquet": "9fd96a9c66b2fc1ef634a94699521469dcd95920f6a060fb483f2772f7893e5c",
+      "data/items/part-00026.parquet": "bafdec625b884339ebf45a1556f62eb3e51887bfb11a2cc4f47f71d3a5a10da3",
+      "data/items/part-00030.parquet": "3671a70ce9b57e9c904b4aa67616988629eb4e1eb1e84befee669faade12d111",
+      "data/items/part-00031.parquet": "1eb0ca06a50063e1489a7daf0d0b0d1812d51691e3049d4d3a6302428f812e65",
+      "data/items/part-00034.parquet": "51e3dbcd45675d2ac81e309980595858d08ba6e7f67a6e571d9779b9e9c014d1",
+      "data/items/part-00035.parquet": "2f17bda532d26a9ce5fc9b1285f08cceb9f5a34b032afa26d7c0b4f4c564ddab"
+    },
+    "splits": {
+      "test": {
+        "counts": {
+          "1.01": 20,
+          "1.02": 19,
+          "2.02": 20,
+          "2.03": 20,
+          "3.02": 20,
+          "5.02": 20,
+          "7.01": 20,
+          "8.01": 20
+        },
+        "issuer_blocks": 136,
+        "sha256": "2df5d3ae3d1c7c680701e9f84193f7024c06972fdcacbd9f4a5dc6844f4653a9"
+      },
+      "train": {
+        "counts": {
+          "1.01": 40,
+          "1.02": 40,
+          "2.02": 40,
+          "2.03": 40,
+          "3.02": 40,
+          "5.02": 40,
+          "7.01": 40,
+          "8.01": 40
+        },
+        "issuer_blocks": 300,
+        "sha256": "0b6c016bd301220bc2f8ee4ab8722669443faa2dea53be9321c7336989f8723b"
+      },
+      "valid": {
+        "counts": {
+          "1.01": 12,
+          "1.02": 12,
+          "2.02": 12,
+          "2.03": 12,
+          "3.02": 12,
+          "5.02": 12,
+          "7.01": 12,
+          "8.01": 12
+        },
+        "issuer_blocks": 89,
+        "sha256": "893dfbef1567735d474dc86f61c1526e4e4a4b894c1aafa8e576c7b3f2ca1748"
+      }
+    },
+    "task": "sec8k_item_routing"
+  },
+  "treasury": {
+    "counts": {
+      "test": {
+        "blocks": 60,
+        "eligible_nonoverlapping_windows": 229,
+        "rows": 150,
+        "sha256": "344c060d33b5eb56f929d84e3b3580d15532668c8abd66a1da1c10f18a534eb2"
+      },
+      "train": {
+        "blocks": 192,
+        "eligible_nonoverlapping_windows": 980,
+        "rows": 300,
+        "sha256": "27af19a824a250cda893d1a0f47767e4c80f0cc51bf9fd01cc4b25732dc910d2"
+      },
+      "valid": {
+        "blocks": 48,
+        "eligible_nonoverlapping_windows": 165,
+        "rows": 100,
+        "sha256": "0d010012fa6b06ff4ac60dc8b58c255ceecc6ff1bc383e850ebac464ff3b5f92"
+      }
+    },
+    "source": "U.S. Treasury daily par yield curve",
+    "task": "treasury_curve_audit",
+    "upstream": {
+      "sha256": "258a594eb64e9d21d9e8574b0b8580b0a5230dce56bb284ec6aa49a9a260897f",
+      "url": "https://home.treasury.gov/system/files/276/yield-curve-rates-1990-2024.csv"
+    }
+  }
+}
