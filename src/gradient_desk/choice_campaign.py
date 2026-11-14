@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 from collections import defaultdict
+import gc
 import hashlib
 import json
 import math
@@ -24,7 +25,10 @@ LEGACY_TRACKS = frozenset({"methodology"})
 MAX_PER_BENCHMARK = 32
 SELECTION_SCHEMA = 2
 EVALUATION_SCHEMA = 2
-
+SHARED_SOURCES = {
+    "treasury_curve_audit": "us_treasury_daily_par_curve",
+    "treasury_intervention": "us_treasury_daily_par_curve",
+}
 SCORE_FIELDS = ("case_id", "track", "family", "split", "prompt", "choices")
 
 
@@ -372,8 +376,6 @@ def _verify_receipt(
     config_sha = _file_sha256(adapter / "adapter_config.json")
     if config_sha != selection["adapter_config_sha256"]:
         raise ValueError("Adapter config digest differs from the selection receipt")
-    # Base model: stat the pinned weights file and compare to the receipt's base
-    # digest if the earlier receipt recorded one; avoid rehashing when not needed.
     base_weights = model_path / "model.safetensors"
     if not base_weights.is_file():
         raise FileNotFoundError(f"Base weights not found: {base_weights}")
@@ -381,6 +383,63 @@ def _verify_receipt(
     if _file_sha256(base_weights) != expected_base:
         raise ValueError("Base weights digest differs from the selection receipt")
     return step, checkpoint
+
+
+def _prior_weights(path: Path, expected_sha: str, current_config: dict) -> tuple[Path, dict]:
+    weights = path / "adapters.safetensors"
+    config_path = path / "adapter_config.json"
+    provenance_path = path / "provenance.json"
+    if _file_sha256(weights) != expected_sha:
+        raise ValueError("Prior weights differ from the declared release")
+    config = json.loads(config_path.read_text(encoding="utf-8"))
+    provenance = json.loads(provenance_path.read_text(encoding="utf-8"))
+    if any(config[key] != current_config[key] for key in ("fine_tune_type", "num_layers", "lora_parameters")):
+        raise ValueError("Prior adapter layout differs from the selected checkpoint layout")
+    if provenance.get("weights_sha256") != EXPECTED_WEIGHTS_SHA256:
+        raise ValueError("Prior adapter was fitted against a different base model")
+    return weights, {
+        "checkpoint_step": provenance["checkpoint_step"],
+        "weights_sha256": expected_sha,
+        "config_sha256": _file_sha256(config_path),
+        "provenance_sha256": _file_sha256(provenance_path),
+    }
+
+
+def _infer_pair(model_path, config_path, checkpoint, rows, variants, batch_size,
+                *, reuse_frozen_prefix, prior_adapter, expected_prior_sha256):
+    import mlx.core as mx
+
+    started = time.perf_counter()
+    model, tokenizer = _load(model_path, None)
+    config = json.loads(config_path.read_text(encoding="utf-8"))
+    scorer = _FrozenPrefix(model, config) if reuse_frozen_prefix else candidate_logits
+    parity = {}
+    timings = {"model_load": time.perf_counter() - started}
+
+    def score(role):
+        print(f"Scoring the {role} model", flush=True)
+        then = time.perf_counter()
+        if reuse_frozen_prefix:
+            parity[role] = _verify_prefix_parity(model, tokenizer, rows, variants, batch_size, scorer)
+            print(f"Verified frozen-prefix parity for {role}", flush=True)
+        values = list(_score_rows(model, tokenizer, rows, variants, batch_size, logits_fn=scorer))
+        timings[role] = time.perf_counter() - then
+        return values
+
+    base = score("base")
+    _install_lora(model, config_path)
+    _swap_lora_weights(model, checkpoint)
+    tuned = score("tuned")
+    prior, prior_meta = None, None
+    if prior_adapter is not None:
+        try:
+            weights, prior_meta = _prior_weights(prior_adapter, expected_prior_sha256, config)
+            _swap_lora_weights(model, weights)
+            prior = score("prior")
+        except (OSError, RuntimeError, ValueError, KeyError) as exc:
+            prior_meta = {"status": "unavailable", "reason": str(exc)}
+            print(f"Skipping prior diagnostic: {exc}", flush=True)
+    return base, tuned, prior, prior_meta, timings, parity, mx.get_peak_memory()
 
 
 def evaluate(
@@ -393,16 +452,15 @@ def evaluate(
     expected_cases_sha256: str,
     variants: int,
     batch_size: int,
+    reuse_frozen_prefix: bool = False,
+    prior_adapter: Path | None = None,
+    expected_prior_sha256: str | None = None,
 ) -> dict:
-    """Score the unadapted base then the selected tuned model, write a report.
-
-    Verification (frozen bytes, checkpoint, config, base) runs first; only then
-    is the base loaded and scored, followed by a freshly-adapter-loaded tuned
-    model.  Both runs use identical prompts, deterministic permutation variants
-    and batch size.  Output goes into a brand-new directory only.
-    """
+    """Write complete paired results after verifying every primary input."""
     if variants < 1 or batch_size < 1:
         raise ValueError("variants and batch-size must be positive")
+    if (prior_adapter is None) != (expected_prior_sha256 is None):
+        raise ValueError("The prior adapter and its expected weight hash must be supplied together")
 
     receipt = json.loads(selection.read_text(encoding="utf-8"))
     if receipt.get("schema") != SELECTION_SCHEMA or receipt.get("variants") != variants:
@@ -420,29 +478,36 @@ def evaluate(
     if shared:
         raise ValueError(f"Test cases reuse validation IDs: {sorted(shared)}")
 
-    output.mkdir(parents=True, exist_ok=False)  # new directory exclusively
+    output.mkdir(parents=True, exist_ok=False)
     blind_rows = [_blind(row) for row in rows]
+    scorer_args = (model_path, adapter / "adapter_config.json", checkpoint, blind_rows, variants, batch_size)
+    prior_args = {"prior_adapter": prior_adapter, "expected_prior_sha256": expected_prior_sha256}
+    fallback = None
+    try:
+        scores = _infer_pair(*scorer_args, reuse_frozen_prefix=reuse_frozen_prefix, **prior_args)
+    except (RuntimeError, ValueError) as exc:
+        if not reuse_frozen_prefix:
+            raise
+        fallback = str(exc)
+        print(f"Repeating both primary models using full forwards: {fallback}", flush=True)
+    if fallback is not None:
+        import mlx.core as mx
 
-    # Base first: no adapter installed, so the base graph is never perturbed.
-    print("Scoring frozen unadapted base", flush=True)
-    base_started = time.perf_counter()
-    base_model, tokenizer = _load(model_path, None)
-    base = list(_score_rows(base_model, tokenizer, blind_rows, variants, batch_size))
-    base_seconds = time.perf_counter() - base_started
-    _write_predictions(output / "base.jsonl", base)
-
-    # Install the selected checkpoint after all base predictions are fixed.
-    print(f"Scoring selected tuned model at step {step}", flush=True)
-    tuned_started = time.perf_counter()
-    _install_lora(base_model, adapter / "adapter_config.json")
-    _swap_lora_weights(base_model, checkpoint)
-    tuned = list(_score_rows(base_model, tokenizer, blind_rows, variants, batch_size))
-    tuned_seconds = time.perf_counter() - tuned_started
-    _write_predictions(output / "tuned.jsonl", tuned)
+        gc.collect()
+        mx.clear_cache()
+        scores = _infer_pair(*scorer_args, reuse_frozen_prefix=False, **prior_args)
+    base, tuned, prior, prior_meta, timings, parity, peak_memory = scores
 
     from .choice_report import compare
 
     report = compare(rows, base, tuned)
+    report["improvement_sources"] = {
+        status: sorted({SHARED_SOURCES.get(name, name) for name, panel in report["panels"].items()
+                        if panel[f"{status}_improvement"]})
+        for status in ("observed", "confirmed")
+    }
+    _write_predictions(output / "base.jsonl", base)
+    _write_predictions(output / "tuned.jsonl", tuned)
     report["selection"] = {
         "selected_step": step,
         "selected_weights_sha256": receipt["selected_weights_sha256"],
@@ -454,10 +519,29 @@ def evaluate(
         "tuned_predictions_sha256": _file_sha256(output / "tuned.jsonl"),
         "selection_sha256": _file_sha256(selection),
     }
-    report["timing_seconds"] = {
-        "base": base_seconds, "tuned": tuned_seconds, "variants": variants,
+    report["scoring"] = {
+        "timing_seconds": timings,
+        "variants": variants,
         "batch_size": batch_size,
+        "frozen_prefix_max_probability_error": parity or None,
+        "frozen_prefix_fallback": fallback,
+        "peak_mlx_bytes": peak_memory,
     }
+    if prior is not None:
+        _write_predictions(output / "prior.jsonl", prior)
+        previous = compare(rows, base, prior)["panels"]
+        prior_meta.update({
+            "status": "secondary_diagnostic",
+            "predictions_sha256": _file_sha256(output / "prior.jsonl"),
+            "panels": {name: {
+                "primary": row["candidate"]["primary"],
+                "accuracy": row["candidate"]["accuracy"],
+                "gain_vs_base": row["gain"],
+                "selected_gain_vs_prior": report["panels"][name]["gain"] - row["gain"],
+            } for name, row in previous.items()},
+        })
+    if prior_meta is not None:
+        report["prior_diagnostic"] = prior_meta
     report["schema_evaluation"] = EVALUATION_SCHEMA
     with (output / "paired-report.json").open("x", encoding="utf-8") as stream:
         stream.write(json.dumps(report, allow_nan=False, sort_keys=True, indent=2) + "\n")
@@ -508,6 +592,10 @@ def build_parser() -> argparse.ArgumentParser:
     ev.add_argument("--output", type=Path, required=True)
     ev.add_argument("--variants", type=_positive_int, default=2)
     ev.add_argument("--batch-size", type=_positive_int, default=8)
+    ev.add_argument("--reuse-frozen-prefix", action="store_true",
+                    help="Reuse frozen Qwen3 layers after checking probability parity")
+    ev.add_argument("--prior-adapter", type=Path, help="Optional previous release for a secondary diagnostic")
+    ev.add_argument("--expected-prior-sha256", help="Published sha256 of the prior adapter tensors")
     return parser
 
 
@@ -527,8 +615,10 @@ def main(argv: list[str] | None = None) -> None:
             args.cases, args.model, args.adapter, args.selection, args.output,
             expected_cases_sha256=args.expected_cases_sha256,
             variants=args.variants, batch_size=args.batch_size,
+            reuse_frozen_prefix=args.reuse_frozen_prefix,
+            prior_adapter=args.prior_adapter, expected_prior_sha256=args.expected_prior_sha256,
         )
-        print(json.dumps({"confirmed_improvements": report["confirmed_improvements"],
+        print(json.dumps({"improvement_sources": report["improvement_sources"],
                           "output": str(args.output)}, indent=2))
 
 

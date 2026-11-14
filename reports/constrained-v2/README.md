@@ -84,10 +84,13 @@ python -u -m gradient_desk.choice_campaign evaluate \
   b29b8149e140374b1a1a8e58e4b228b77ab6e2ee346725fcec8e5075735eba05 \
   --model models/Qwen3-8B-MLX-4bit --adapter adapters/choice-v2-campaign-01 \
   --selection .work/v2/choice-selection.json --variants 2 --batch-size 8 \
+  --reuse-frozen-prefix \
   --output .work/v2/choice-heldout
 ```
 
-The optional frozen-prefix cache reuses the unchanged Qwen3 layers during development selection. It checks direct versus cached predictions on the shortest and longest prompts in both option layouts, for the pinned base and first checkpoint. Test scoring runs the full transformer forwards.
+The optional frozen-prefix cache reuses unchanged Qwen3 layers. During selection, it checks direct and cached probabilities at both prompt-length extremes and in both layouts, on the pinned base and first checkpoint. The test repeats that check on the base and selected step. A failure triggers full forwards for both primary models on every test row.
+
+To add a historical diagnostic, unpack the published `gradient-desk-mixed-step-180.tar.gz` release and pass `--prior-adapter path/to/m4-mixed-step-180 --expected-prior-sha256 96d6e260118caea855974d3007e4090314cf021a85e24b9a5c6bf12febc179b6` to `evaluate`. It uses the same test inputs and passes the same base lineage, adapter layout, and probability parity checks. It contributes no test selection or source-level gain claim. [Prior release](https://github.com/Noptus/gradient-desk/releases/tag/v0.1.0)
 
 ## CPU control results
 

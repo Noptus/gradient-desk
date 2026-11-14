@@ -91,6 +91,23 @@
     "minimum_observed_gain": 0.02,
     "one_sided_holm_alpha": 0.05,
     "option_orders": 2,
+    "optional_acceleration": {
+      "fallback": "Re-score both primary models without cache before writing any prediction or paired result.",
+      "parity_check": "Probability agreement and exact label match on the shortest and longest blinded prompts in both layouts. Verify each primary model and any optional prior.",
+      "scope": "Reusable Qwen3 prefix activations across models with identical bodies up to the final LoRA layers.",
+      "tolerances": {
+        "maximum_absolute_floor": 1e-07,
+        "relative": 1e-06
+      }
+    },
+    "optional_prior_diagnostic": {
+      "checkpoint_step": 180,
+      "config_sha256": "946650060426c961ef016f4a47a0f7b74626f5cba328c0f4a552e6acfd16256c",
+      "provenance_sha256": "f808a1c9c49475c41108472302e2f42f4fe8d218d9fb8ae8e14694e635f1c5cd",
+      "release": "v0.1.0",
+      "role": "Secondary same-scorer diagnostic after the fixed primary pair; excluded from checkpoint selection, primary Holm family and improvement-source counts.",
+      "weights_sha256": "96d6e260118caea855974d3007e4090314cf021a85e24b9a5c6bf12febc179b6"
+    },
     "paired_block_resamples": 6000,
     "primary_comparison": "Selected QLoRA against the same frozen Qwen3 model with identical input and scoring.",
     "resample_seed": 7121,

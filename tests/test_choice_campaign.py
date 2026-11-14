@@ -13,12 +13,14 @@ import pytest
 
 from gradient_desk.choice_campaign import (
     MAX_PER_BENCHMARK,
+    SELECTION_SCHEMA,
     _FrozenPrefix,
     _blind,
     _equal_weight_mean,
     _swap_lora_weights,
     _verify_receipt,
     case_utility,
+    evaluate,
     panel_utilities,
     select_cases,
 )
@@ -259,3 +261,33 @@ def test_frozen_prefix_matches_qwen_with_right_padding_and_adapters():
     tuned = candidate_logits(model, *tensors)
     assert not mx.array_equal(base, tuned).item()
     assert mx.allclose(tuned, cache(model, *tensors), atol=1e-7, rtol=1e-6).item()
+
+
+def test_evaluation_writes_complete_pair_after_full_forward_fallback(tmp_path, monkeypatch):
+    mx = pytest.importorskip("mlx.core")
+    receipt, cases, adapter, model = _campaign_tree(tmp_path)
+    receipt.update({"schema": SELECTION_SCHEMA, "variants": 2})
+    selection = tmp_path / "selection.json"
+    selection.write_text(json.dumps(receipt), encoding="utf-8")
+    output = tmp_path / "run"
+    attempts = []
+
+    def infer_pair(_, __, ___, rows, variants, batch_size, *, reuse_frozen_prefix, **kwargs):
+        attempts.append(reuse_frozen_prefix)
+        assert not (output / "base.jsonl").exists()
+        assert len(rows) == 1 and "label" not in rows[0]
+        assert variants == 2 and batch_size == 8
+        if reuse_frozen_prefix:
+            raise RuntimeError("parity fixture")
+        base = [{"case_id": rows[0]["case_id"], "prediction": "no"}]
+        tuned = [{"case_id": rows[0]["case_id"], "prediction": "yes"}]
+        return base, tuned, None, None, {}, {}, 0
+
+    monkeypatch.setattr(mx, "clear_cache", lambda: None)
+    monkeypatch.setattr("gradient_desk.choice_campaign._infer_pair", infer_pair)
+    result = evaluate(cases, model, adapter, selection, output,
+                      expected_cases_sha256=_file_sha256(cases), variants=2, batch_size=8,
+                      reuse_frozen_prefix=True)
+    assert attempts == [True, False]
+    assert result["scoring"]["frozen_prefix_fallback"] == "parity fixture"
+    assert {path.name for path in output.iterdir()} == {"base.jsonl", "tuned.jsonl", "paired-report.json"}
