@@ -31,6 +31,10 @@ PRIMARY_DOC = "https://www.sec.gov/files/form8-k.pdf"
 DUPLICATE_HASH = re.compile(r"\d+|[^\w\s]+", flags=re.UNICODE)
 HEADING = re.compile(r"^\s*Item\s*\d{1,2}\.\d{2}(?:\s|[.:—-])*", re.I)
 LEAK = re.compile(r"\bitem\s+\d{1,2}\.\d{2}\b", re.I)
+PROMPT_PREFIX = (
+    "Which Form 8-K section did the issuer use for the following excerpt? "
+    "The original section heading and any numeric references to other items were removed.\n\n"
+)
 
 
 def fold(cik: str) -> str:
@@ -52,24 +56,30 @@ def snippet(body: str, heading: str, company: str) -> tuple[str, str]:
     return excerpt, sha256(template.encode()).hexdigest()
 
 
-def prepare(raw: Path, output: Path) -> dict:
+def source_rows(paths: list[Path], start: date, end: date) -> list[tuple]:
     import duckdb
 
-    output.mkdir(parents=True, exist_ok=True)
     columns = "event_id, cik, accession_no, filing_date, item_code, item_text, item_title, company_name, primary_document_url"
     labels = list(CHOICES)
-    paths = [raw / f"sec-item-{part}.parquet" for part in PARTS]
-    source = duckdb.execute(
+    return duckdb.execute(
         f"""SELECT {columns}
         FROM read_parquet(?)
         WHERE status = 'parsed' AND form = '8-K' AND NOT is_amendment
           AND item_code IN ({", ".join("?" for _ in labels)})
           AND length(item_text) BETWEEN 180 AND 15000
-          AND filing_date >= DATE '2026-01-02' AND filing_date <= DATE '2026-11-13'
+          AND filing_date BETWEEN ? AND ?
         ORDER BY filing_date, cik, accession_no, item_code""",
-        [[str(path) for path in paths], *labels],
+        [[str(path) for path in paths], *labels, start, end],
     ).fetchall()
 
+
+def prepare(raw: Path, output: Path) -> dict:
+    import duckdb
+
+    output.mkdir(parents=True, exist_ok=True)
+    labels = list(CHOICES)
+    paths = [raw / f"sec-item-{part}.parquet" for part in PARTS]
+    source = source_rows(paths, date(2026, 1, 2), date(2026, 11, 13))
     candidates = defaultdict(list)
     template_folds = defaultdict(set)
     rejected = Counter()
@@ -120,11 +130,7 @@ def prepare(raw: Path, output: Path) -> dict:
                     "track": TRACK, "family": f"cik-{cik}", "evaluation_block": f"cik-{cik}",
                     "split": split, "label": label, "choices": CHOICES,
                     "source_id": accession, "source_url": url,
-                    "prompt": (
-                        "Which Form 8-K section did the issuer use for the following excerpt? "
-                        "The original section heading and any numeric references to other items were removed.\n\n"
-                        f"{excerpt}"
-                    ),
+                    "prompt": PROMPT_PREFIX + excerpt,
                 })
                 used_accessions.add(accession)
                 used_templates.add(template)
