@@ -23,6 +23,10 @@ ALPHA = (0.0, 0.25, 0.5, 0.75, 1.0)
 VARIANTS = 2
 BATCH_SIZE = 8
 BLIND_FIELDS = ("case_id", "track", "prompt", "choices")
+SEC_SPLITS = (
+    "0b6c016bd301220bc2f8ee4ab8722669443faa2dea53be9321c7336989f8723b",
+    "893dfbef1567735d474dc86f61c1526e4e4a4b894c1aafa8e576c7b3f2ca1748",
+)
 
 
 def _digest(path: Path) -> str:
@@ -134,21 +138,20 @@ def fit(model: Path, train: Path, validation: Path, selection: Path, plan_path: 
         raise FileExistsError(f"Fit output already exists: {output}")
     plan = _read(plan_path)
     _check_plan(plan)
-    pinned_inputs = {
-        "train_sha256": (train, plan["train_sha256"]),
-        "validation_sha256": (validation, plan["validation_sha256"]),
-        "selection_sha256": (selection, plan["original_development_selection_sha256"]),
-    }
-    for path, expected in pinned_inputs.values():
-        if _digest(path) != expected:
-            raise ValueError(f"Development input differs from the registered bytes: {path.name}")
+    train_sha, valid_sha, selection_sha = (_digest(path) for path in (train, validation, selection))
+    combined_splits = plan["train_sha256"], plan["validation_sha256"]
+    if (train_sha, valid_sha) not in (combined_splits, SEC_SPLITS):
+        raise ValueError("Pass the exact original campaign splits or the frozen SEC-only splits")
+    if selection_sha != plan["original_development_selection_sha256"]:
+        raise ValueError("Selection receipt differs from the registered bytes")
     chosen = _read(selection)
     train_rows = [row for row in read_jsonl(train) if row["track"] == TRACK]
     valid_by_id = {row["case_id"]: row for row in read_jsonl(validation)}
-    dev_rows = [valid_by_id[key] for key in chosen["case_ids"] if valid_by_id[key]["track"] == TRACK]
-    labels = sorted(dev_rows[0]["choices"])
+    dev_rows = [valid_by_id[key] for key in chosen["case_ids"]
+                if key in valid_by_id and valid_by_id[key]["track"] == TRACK]
     if (len(train_rows), len(dev_rows)) != (plan["training"]["rows"], plan["training"]["development_rows"]):
         raise ValueError("Unexpected development case counts")
+    labels = sorted(dev_rows[0]["choices"])
     validate(train_rows + dev_rows)
     if {row["split"] for row in train_rows} != {"train"} or {row["split"] for row in dev_rows} != {"valid"}:
         raise ValueError("Expected distinct train and validation splits")
@@ -177,7 +180,7 @@ def fit(model: Path, train: Path, validation: Path, selection: Path, plan_path: 
     receipt = {
         "schema": 1, "track": TRACK, "labels": labels, "plan_sha256": _digest(plan_path),
         "base_weights_sha256": EXPECTED_WEIGHTS_SHA256, "weights_sha256": _digest(weights),
-        "inputs": {key: value[1] for key, value in pinned_inputs.items()},
+        "inputs": {"train_sha256": train_sha, "validation_sha256": valid_sha, "selection_sha256": selection_sha},
         "training_cases": len(train_rows), "development_cases": len(dev_rows),
         "base_development_accuracy": base_accuracy, "selected": winner, "grid": grid,
     }

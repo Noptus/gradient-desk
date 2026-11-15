@@ -1,12 +1,46 @@
 # Gradient Desk
 
-A local QLoRA research coach that chooses bounded neural-training interventions from checkpoint telemetry and prioritizes the next step in fictional investment research reviews. Each training label comes from running the candidate actions from the same checkpoint and measuring their effect.
+Gradient Desk evaluates local language models for two decisions. One policy suggests a bounded optimizer intervention from checkpoint telemetry. A separate classifier routes SEC Form 8-K sections into eight item categories. The training intervention labels come from running all candidate actions from the same checkpoint and measuring terminal loss.
 
-The coach outputs a single action for a researcher to inspect and test.
+## Held-out results
 
-## Start with the learned CPU policy
+| Benchmark | Frozen Qwen3-8B | Adapted policy | Adaptation |
+| --- | ---: | ---: | --- |
+| FinQA operator routing, accuracy | 86.41% | 89.32% | QLoRA |
+| Treasury optimizer intervention, normalized regret ↓ | 0.4669 | 0.3870 | QLoRA |
+| Fresh SEC 8-K routing, accuracy | 67.91% | 78.88% | Supervised readout on frozen activations |
 
-In the primary comparison, the CPU telemetry and retrieval policies scored higher than the frozen base and mixed adapter across both tracks. They select neighborhood sizes on development data before applying the resulting policy to a new case.
+All three improvements exceeded the registered minimum gain of 0.02. The SEC gain was statistically confirmed on 374 previously unused issuers. The TF-IDF control on those filings scored 78.61%. The two QLoRA gains fell short of the original multiplicity-adjusted confirmation threshold. Its Taiwan transfer regret increased from 0.4244 to 0.5273. The [original paired report](reports/constrained-v2/heldout-first/README.md) and [SEC follow-up](reports/constrained-v2/filing-readout/README.md) include case-aligned predictions and controls.
+
+## Run the checkpoint advisor
+
+Use Python 3.12 on Apple Silicon. The pinned 4-bit Qwen snapshot needs about 5 GB of disk space.
+
+```sh
+git clone --branch v0.2.0 https://github.com/Noptus/gradient-desk.git
+cd gradient-desk
+python3.12 -m venv .venv
+source .venv/bin/activate
+python -m pip install -e '.[mlx]' -r requirements-apple.txt
+gradient-desk download --output models/Qwen3-8B-MLX-4bit
+```
+
+Download `gradient-desk-warmup-step-180.tar.gz` from the [v0.2.0 release](https://github.com/Noptus/gradient-desk/releases/tag/v0.2.0).
+
+```sh
+mkdir -p adapters
+tar -xzf gradient-desk-warmup-step-180.tar.gz -C adapters
+gradient-desk advise --constrained \
+  --model models/Qwen3-8B-MLX-4bit \
+  --adapter adapters/gradient-desk-warmup-step-180 \
+  --telemetry data/telemetry.example.json
+```
+
+The advisor returns one suggested action and probabilities over the four legal options. Use the result to choose an intervention to test. The [registered protocol](reports/constrained-v2/README.md) explains training and the held-out score. The release also ships `gradient-desk-sec-filing-head.tar.gz` with a [separate reproduction workflow](reports/constrained-v2/filing-readout/README.md).
+
+## Learned CPU policy from v0.1
+
+In the original v0.1 comparison, the CPU telemetry and retrieval policies scored higher than the frozen base and mixed adapter across both tracks. They select neighborhood sizes on development data before applying the resulting policy to a new case.
 
 ```sh
 python3.12 -m venv .venv
@@ -23,7 +57,7 @@ gradient-desk advise --policy learned \
 
 For a research proposal, use `--scenario 'Your fictional research case'` in place of `--telemetry`. The JSON output records the action, policy, and selected neighborhood size. The `learned-eval` report includes validation scores for the candidate sizes. Prepare once and reuse the train and validation manifests for later requests.
 
-## Inspect the local QLoRA experiments
+## Inspect the original v0.1 QLoRA experiments
 
 The [model card](MODEL_CARD.md) reports the mixed adapter and a second methodology-only run. On the 144 synthetic training cases the mixed adapter always selected `resume`. The separate industry-return benchmark exposed a large increase in regret that the synthetic average concealed.
 

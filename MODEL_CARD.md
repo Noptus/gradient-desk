@@ -1,8 +1,16 @@
 # Gradient Desk model card
 
-Gradient Desk is an Apache-2.0 LoRA adapter project for an 8B-parameter quantized Qwen model. It chooses an action for a bounded checkpoint experiment or prioritizes one of six investment research review steps. Its output is a suggestion for a researcher to inspect. The training labels measure counterfactual checkpoint loss. The review labels express an expert-style judgment on fictional or source-anchored proposals.
+## Version 0.2.0
 
-## Reference run
+Gradient Desk uses the pinned `Qwen/Qwen3-8B-MLX-4bit` snapshot. The checkpoint advisor scores four bounded optimizer actions from pre-action telemetry. The SEC classifier uses an eight-class linear readout fitted on average normalized Qwen hidden states. Both return distributions over fixed candidate menus. Their recorded probabilities depend on the input and answer layout.
+
+The final LoRA run used 180 Adam updates with a 20-step learning-rate ramp to 0.00003. It took 29 minutes 59 seconds at 12.58 GB peak MLX allocation on an Apple M4 with 16 GB. An eligibility-first rule was adopted after reviewing the development results and published before initial test inference. Step 180 was the only checkpoint that improved all three development sources at the registered threshold. The [training protocol](reports/constrained-v2/README.md) preserves the original failed run, the mean-first checkpoint and the residual blend experiment.
+
+In the 637-case blind trial, LoRA improved FinQA operator accuracy by 2.91 points and reduced Treasury intervention regret by 0.0799 against frozen Qwen. The Treasury paired 95% interval for the regret gain was 0.0161 to 0.1477, with Holm-adjusted p of 0.0858. The original five comparisons fell short of the confirmation rule. Taiwan bankruptcy intervention regret increased from 0.4244 to 0.5273 across 28 source-row groups. The exact calculator identified all 150 Treasury audit cases, and the CPU telemetry policy achieved 0.1321 regret on the Treasury intervention panel. The [complete matched report](reports/constrained-v2/heldout-first/README.md) gives all five endpoints and the controls.
+
+The SEC follow-up fitted the head on 320 original filing sections and selected its hyperparameters on 32 original development cases. On 374 fresh sections from distinct issuers, accuracy improved from 67.91% to 78.88%, with a paired 95% interval of 6.42 to 15.51 points for the gain and preregistered p of 0.0001666. The same-filing TF-IDF baseline got 78.61%. The [SEC follow-up report](reports/constrained-v2/filing-readout/README.md) includes the source cutoffs, paired predictions and fit receipt.
+
+## Version 0.1.0 reference run
 
 The Apple M4 host had 16 GB of unified memory. The 4-bit base weights, datasets, checkpoints and evidence were kept on Tsunami. An internal temporary Python environment avoided initialization delays from binary packages on the external disk. The run adapted 4.85 million parameters in the last eight transformer layers. Wall time is measured after base load, includes validation and checkpoint writes, and is separate from GPU utilization. From prepared mixed-training file to final checkpoint took 1106s in this run.
 
