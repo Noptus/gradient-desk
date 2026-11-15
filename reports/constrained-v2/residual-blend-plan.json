@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "trigger": "The pure warmup checkpoint selected by the registered development rule falls short of the three-source gate.",
+  "original_protocol_sha256": "acd46b0d83dcaba8d8f13fe8590a69e4486db0f8775d82f09e91cae9e54f2176",
+  "warmup_plan_sha256": "3e2f728ebcff55b1f95a2c2ccef06d90f2b85b876cf6351b32bff3033d9ba6dc",
+  "development_case_ids_sha256": "514a651415318ebd3ef8474f3836165b8f1a2333af06fae01df1718ae6ec08b7",
+  "heldout_cases_sha256": "b29b8149e140374b1a1a8e58e4b228b77ab6e2ee346725fcec8e5075735eba05",
+  "checkpoints": [60, 120, 180],
+  "adapter_weights_grid": [0.0, 0.1, 0.25, 0.5, 0.75, 1.0],
+  "conditional_probabilities": "For each canonical option ID, add the base probability times one minus the adapter weight to the adapted probability times the adapter weight. Use the lexicographically larger option ID on an exact tie.",
+  "development_selection": "For each checkpoint choose one weight per track using the original panel utility. The lowest weight wins a tie. Choose one shared checkpoint by mean utility over the four development panels with equal weights. The earliest checkpoint wins a tie.",
+  "minimum_utility_gain_per_source": 0.02,
+  "required_development_sources": 3,
+  "source_gate": "FinQA, SEC and U.S. Treasury must each show a gain at the threshold. At least one of the Treasury audit and intervention panels must qualify for the Treasury archive to count.",
+  "taiwan_transfer": "Use the fixed weight for the training track, chosen on the Treasury intervention development panel.",
+  "heldout_contract": "Keep the original frozen suite, paired baseline, group intervals, Holm family and source counting rule. Include both untouched base and pure adapter predictions. Apply a single selected blend before opening transformer test results."
+}
