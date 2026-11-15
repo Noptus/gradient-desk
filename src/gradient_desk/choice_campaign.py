@@ -227,8 +227,9 @@ def select(
         raise ValueError("Duplicate checkpoint steps requested")
     if variants < 1 or batch_size < 1:
         raise ValueError("variants and batch-size must be positive")
-    if output.exists():
-        raise FileExistsError(f"Selection output already exists: {output}")
+    prediction_dir = output.with_name(output.stem + "-predictions")
+    if output.exists() or prediction_dir.exists():
+        raise FileExistsError(f"Selection output or its prediction directory already exists: {output}")
 
     rows = read_jsonl(validation)
     if not rows:
@@ -283,8 +284,10 @@ def select(
             model, tokenizer, blind_cases, variants, batch_size, logits_fn,
         )
         print("Verified frozen-prefix parity on the base model", flush=True)
-    base_predictions = {rec["case_id"]: rec["prediction"] for rec in
-                        _score_rows(model, tokenizer, blind_cases, variants, batch_size, logits_fn=logits_fn)}
+    prediction_files = {"base.jsonl": list(
+        _score_rows(model, tokenizer, blind_cases, variants, batch_size, logits_fn=logits_fn)
+    )}
+    base_predictions = {row["case_id"]: row["prediction"] for row in prediction_files["base.jsonl"]}
     base_utility = panel_utilities(cases, base_predictions)
 
     _install_lora(model, config_path)
@@ -297,7 +300,8 @@ def select(
                 model, tokenizer, blind_cases, variants, batch_size, logits_fn,
             )
             print("Verified frozen-prefix parity on the first trained checkpoint", flush=True)
-        records = _score_rows(model, tokenizer, blind_cases, variants, batch_size, logits_fn=logits_fn)
+        records = list(_score_rows(model, tokenizer, blind_cases, variants, batch_size, logits_fn=logits_fn))
+        prediction_files[f"step-{step}.jsonl"] = records
         predictions = {rec["case_id"]: rec["prediction"] for rec in records}
         panels = panel_utilities(cases, predictions)
         scored[step] = {
@@ -310,6 +314,9 @@ def select(
     # Highest equal-weight mean; earliest step wins an exact tie.
     chosen = min(steps, key=lambda step: (-scored[step]["mean_panel_utility"], step))
 
+    prediction_dir.mkdir(parents=True, exist_ok=False)
+    for name, records in prediction_files.items():
+        _write_predictions(prediction_dir / name, records)
     receipt = {
         "schema": SELECTION_SCHEMA,
         "selected_step": chosen,
@@ -329,6 +336,10 @@ def select(
         "case_ids_sha256": hashlib.sha256("\n".join(case_ids).encode()).hexdigest(),
         "labels_per_benchmark": _labels_per_benchmark(by_id, case_ids),
         "steps": {str(step): scored[step] for step in steps},
+        "blinded_predictions": {
+            "directory": prediction_dir.name,
+            "sha256": {name: _file_sha256(prediction_dir / name) for name in prediction_files},
+        },
         "elapsed_seconds": time.monotonic() - started,
     }
     output.parent.mkdir(parents=True, exist_ok=True)

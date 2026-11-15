@@ -23,6 +23,7 @@ from gradient_desk.choice_campaign import (
     case_utility,
     evaluate,
     panel_utilities,
+    select,
     select_cases,
 )
 from gradient_desk.choice_model import _file_sha256, candidate_logits
@@ -307,3 +308,35 @@ def test_reference_protocol_rejects_a_missing_dependence_block(tmp_path):
     rows[1]["evaluation_block"] = "different"
     assert _check_protocol(protocol, "published", rows, variants=2,
                            batch_size=8) == _file_sha256(protocol)
+
+
+def test_selection_persists_label_blind_predictions(tmp_path, monkeypatch):
+    _, _, adapter, model = _campaign_tree(tmp_path)
+    valid = tmp_path / "valid.jsonl"
+    valid.write_text(json.dumps(label_case("v1")) + "\n", encoding="utf-8")
+    base_sha = _file_sha256(model / "model.safetensors")
+    (adapter / "provenance.json").write_text(json.dumps({
+        "weights_sha256": base_sha,
+        "config_sha256": _file_sha256(adapter / "adapter_config.json"),
+        "dataset_sha256": {"valid": _file_sha256(valid)},
+    }), encoding="utf-8")
+    module = "gradient_desk.choice_campaign"
+    monkeypatch.setattr(f"{module}.EXPECTED_WEIGHTS_SHA256", base_sha)
+    monkeypatch.setattr(f"{module}._load", lambda *args: (object(), object()))
+    monkeypatch.setattr(f"{module}._install_lora", lambda *args: None)
+    monkeypatch.setattr(f"{module}._swap_lora_weights", lambda *args: None)
+
+    def score(model, tokenizer, rows, variants, batch_size, **kwargs):
+        assert "label" not in rows[0]
+        yield {"case_id": rows[0]["case_id"], "prediction": "yes",
+               "probabilities": {"yes": 0.75, "no": 0.25}}
+
+    monkeypatch.setattr(f"{module}._score_rows", score)
+    output = tmp_path / "selection.json"
+    receipt = select(valid, model, adapter, output, steps=[120], variants=2, batch_size=8)
+    predictions = tmp_path / receipt["blinded_predictions"]["directory"]
+    digests = receipt["blinded_predictions"]["sha256"]
+    assert set(digests) == {"base.jsonl", "step-120.jsonl"}
+    for name, digest in digests.items():
+        assert _file_sha256(predictions / name) == digest
+        assert "label" not in json.loads((predictions / name).read_text(encoding="utf-8"))
