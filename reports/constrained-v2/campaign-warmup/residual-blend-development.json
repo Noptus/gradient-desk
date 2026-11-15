@@ -1,0 +1,480 @@
+{
+  "alpha_grid": [
+    0.0,
+    0.1,
+    0.25,
+    0.5,
+    0.75,
+    1.0
+  ],
+  "diagnostic": "preregistered residual blend (1-alpha)*base + alpha*candidate",
+  "distinct_sources": [
+    "finqa_operator",
+    "sec8k_item_routing",
+    "us_treasury_daily_par_curve"
+  ],
+  "gain_threshold": 0.02,
+  "note": "The training track's fixed alpha would eventually route unchanged to the unseen Taiwanese intervention panel on the frozen test suite.",
+  "panels": [
+    "finqa_operator",
+    "sec8k_item_routing",
+    "treasury_curve_audit",
+    "treasury_intervention"
+  ],
+  "plan": "pure-LoRA plan unchanged; blend is a read-only development what-if",
+  "provenance": {
+    "case_ids_sha256": "514a651415318ebd3ef8474f3836165b8f1a2333af06fae01df1718ae6ec08b7",
+    "plan_sha256": "5500991f914053db0c335fd71c358ad366ed403723574289d500154421b00775",
+    "selected_step_in_receipt": 120,
+    "selection": "choice-selection-warmup.json",
+    "selection_sha256": "03e30f743e789b1a7efa8e1643e944c3742cb606f8c5f485607018b5dacea909",
+    "validation_sha256": "3c8fb2e2059f527fc0350583c0e2cedcf4fc3214fd4df7a01cbcd603d819db0f"
+  },
+  "qualification": {
+    "qualifies": false,
+    "qualifying_sources": [
+      "sec8k_item_routing",
+      "us_treasury_daily_par_curve"
+    ],
+    "rule": "qualifies only if gains >= 0.02 occur in all three distinct original dev sources"
+  },
+  "schema": 1,
+  "selected_checkpoint": {
+    "alphas": {
+      "finqa_operator": 0.0,
+      "sec8k_item_routing": 1.0,
+      "treasury_curve_audit": 1.0,
+      "treasury_intervention": 1.0
+    },
+    "alphas_by_track": {
+      "finqa_operator": 0.0,
+      "sec8k_item_routing": 1.0,
+      "training": 1.0,
+      "treasury_curve_audit": 1.0
+    },
+    "base_predictions_sha256": "b58b5a01489f15ccb01522f885a6fa80373c405f2a9e4ecbe084997b87ddb532",
+    "candidate_predictions_sha256": "5e036f9d57d418d0d29597cc6488a2f6a051096b11149ac7332cff4895db0522",
+    "gains": {
+      "finqa_operator": 0.0,
+      "sec8k_item_routing": 0.0625,
+      "treasury_curve_audit": 0.21875,
+      "treasury_intervention": 0.012888736328729333
+    },
+    "mean_blended_utility": 0.6421577852422843,
+    "step": 120,
+    "validation_sha256": "3c8fb2e2059f527fc0350583c0e2cedcf4fc3214fd4df7a01cbcd603d819db0f",
+    "weights_sha256": "eb961c5e5d51fc3a36d501887bcce07824e547fd872787abf70f15d690a764ca"
+  },
+  "source_of_panel": {
+    "finqa_operator": "finqa_operator",
+    "sec8k_item_routing": "sec8k_item_routing",
+    "treasury_curve_audit": "us_treasury_daily_par_curve",
+    "treasury_intervention": "us_treasury_daily_par_curve"
+  },
+  "steps": {
+    "120": {
+      "mean_blended_utility": 0.6421577852422843,
+      "tracks": {
+        "finqa_operator": {
+          "alpha": 0.0,
+          "base_utility": 0.78125,
+          "blended_utility": 0.78125,
+          "gain": 0.0,
+          "grid": [
+            {
+              "alpha": 0.0,
+              "utility": 0.78125
+            },
+            {
+              "alpha": 0.1,
+              "utility": 0.75
+            },
+            {
+              "alpha": 0.25,
+              "utility": 0.75
+            },
+            {
+              "alpha": 0.5,
+              "utility": 0.75
+            },
+            {
+              "alpha": 0.75,
+              "utility": 0.75
+            },
+            {
+              "alpha": 1.0,
+              "utility": 0.78125
+            }
+          ]
+        },
+        "sec8k_item_routing": {
+          "alpha": 1.0,
+          "base_utility": 0.75,
+          "blended_utility": 0.8125,
+          "gain": 0.0625,
+          "grid": [
+            {
+              "alpha": 0.0,
+              "utility": 0.75
+            },
+            {
+              "alpha": 0.1,
+              "utility": 0.75
+            },
+            {
+              "alpha": 0.25,
+              "utility": 0.75
+            },
+            {
+              "alpha": 0.5,
+              "utility": 0.75
+            },
+            {
+              "alpha": 0.75,
+              "utility": 0.75
+            },
+            {
+              "alpha": 1.0,
+              "utility": 0.8125
+            }
+          ]
+        },
+        "treasury_curve_audit": {
+          "alpha": 1.0,
+          "base_utility": 0.1875,
+          "blended_utility": 0.40625,
+          "gain": 0.21875,
+          "grid": [
+            {
+              "alpha": 0.0,
+              "utility": 0.1875
+            },
+            {
+              "alpha": 0.1,
+              "utility": 0.1875
+            },
+            {
+              "alpha": 0.25,
+              "utility": 0.1875
+            },
+            {
+              "alpha": 0.5,
+              "utility": 0.21875
+            },
+            {
+              "alpha": 0.75,
+              "utility": 0.1875
+            },
+            {
+              "alpha": 1.0,
+              "utility": 0.40625
+            }
+          ]
+        },
+        "treasury_intervention": {
+          "alpha": 1.0,
+          "base_utility": 0.5557424046404077,
+          "blended_utility": 0.568631140969137,
+          "gain": 0.012888736328729333,
+          "grid": [
+            {
+              "alpha": 0.0,
+              "utility": 0.5557424046404077
+            },
+            {
+              "alpha": 0.1,
+              "utility": 0.5244924046404078
+            },
+            {
+              "alpha": 0.25,
+              "utility": 0.5093302548091602
+            },
+            {
+              "alpha": 0.5,
+              "utility": 0.5340451712436701
+            },
+            {
+              "alpha": 0.75,
+              "utility": 0.5589193353333697
+            },
+            {
+              "alpha": 1.0,
+              "utility": 0.568631140969137
+            }
+          ]
+        }
+      }
+    },
+    "180": {
+      "mean_blended_utility": 0.6156847148841136,
+      "tracks": {
+        "finqa_operator": {
+          "alpha": 0.25,
+          "base_utility": 0.78125,
+          "blended_utility": 0.8125,
+          "gain": 0.03125,
+          "grid": [
+            {
+              "alpha": 0.0,
+              "utility": 0.78125
+            },
+            {
+              "alpha": 0.1,
+              "utility": 0.78125
+            },
+            {
+              "alpha": 0.25,
+              "utility": 0.8125
+            },
+            {
+              "alpha": 0.5,
+              "utility": 0.8125
+            },
+            {
+              "alpha": 0.75,
+              "utility": 0.8125
+            },
+            {
+              "alpha": 1.0,
+              "utility": 0.8125
+            }
+          ]
+        },
+        "sec8k_item_routing": {
+          "alpha": 1.0,
+          "base_utility": 0.75,
+          "blended_utility": 0.78125,
+          "gain": 0.03125,
+          "grid": [
+            {
+              "alpha": 0.0,
+              "utility": 0.75
+            },
+            {
+              "alpha": 0.1,
+              "utility": 0.75
+            },
+            {
+              "alpha": 0.25,
+              "utility": 0.75
+            },
+            {
+              "alpha": 0.5,
+              "utility": 0.75
+            },
+            {
+              "alpha": 0.75,
+              "utility": 0.75
+            },
+            {
+              "alpha": 1.0,
+              "utility": 0.78125
+            }
+          ]
+        },
+        "treasury_curve_audit": {
+          "alpha": 0.25,
+          "base_utility": 0.1875,
+          "blended_utility": 0.21875,
+          "gain": 0.03125,
+          "grid": [
+            {
+              "alpha": 0.0,
+              "utility": 0.1875
+            },
+            {
+              "alpha": 0.1,
+              "utility": 0.1875
+            },
+            {
+              "alpha": 0.25,
+              "utility": 0.21875
+            },
+            {
+              "alpha": 0.5,
+              "utility": 0.21875
+            },
+            {
+              "alpha": 0.75,
+              "utility": 0.21875
+            },
+            {
+              "alpha": 1.0,
+              "utility": 0.09375
+            }
+          ]
+        },
+        "treasury_intervention": {
+          "alpha": 1.0,
+          "base_utility": 0.5557424046404077,
+          "blended_utility": 0.6502388595364541,
+          "gain": 0.09449645489604641,
+          "grid": [
+            {
+              "alpha": 0.0,
+              "utility": 0.5557424046404077
+            },
+            {
+              "alpha": 0.1,
+              "utility": 0.5557424046404077
+            },
+            {
+              "alpha": 0.25,
+              "utility": 0.5557424046404077
+            },
+            {
+              "alpha": 0.5,
+              "utility": 0.5244924046404078
+            },
+            {
+              "alpha": 0.75,
+              "utility": 0.5804573202426763
+            },
+            {
+              "alpha": 1.0,
+              "utility": 0.6502388595364541
+            }
+          ]
+        }
+      }
+    },
+    "60": {
+      "mean_blended_utility": 0.5979593476248244,
+      "tracks": {
+        "finqa_operator": {
+          "alpha": 1.0,
+          "base_utility": 0.78125,
+          "blended_utility": 0.8125,
+          "gain": 0.03125,
+          "grid": [
+            {
+              "alpha": 0.0,
+              "utility": 0.78125
+            },
+            {
+              "alpha": 0.1,
+              "utility": 0.75
+            },
+            {
+              "alpha": 0.25,
+              "utility": 0.75
+            },
+            {
+              "alpha": 0.5,
+              "utility": 0.78125
+            },
+            {
+              "alpha": 0.75,
+              "utility": 0.78125
+            },
+            {
+              "alpha": 1.0,
+              "utility": 0.8125
+            }
+          ]
+        },
+        "sec8k_item_routing": {
+          "alpha": 0.0,
+          "base_utility": 0.75,
+          "blended_utility": 0.75,
+          "gain": 0.0,
+          "grid": [
+            {
+              "alpha": 0.0,
+              "utility": 0.75
+            },
+            {
+              "alpha": 0.1,
+              "utility": 0.75
+            },
+            {
+              "alpha": 0.25,
+              "utility": 0.75
+            },
+            {
+              "alpha": 0.5,
+              "utility": 0.75
+            },
+            {
+              "alpha": 0.75,
+              "utility": 0.75
+            },
+            {
+              "alpha": 1.0,
+              "utility": 0.75
+            }
+          ]
+        },
+        "treasury_curve_audit": {
+          "alpha": 0.1,
+          "base_utility": 0.1875,
+          "blended_utility": 0.21875,
+          "gain": 0.03125,
+          "grid": [
+            {
+              "alpha": 0.0,
+              "utility": 0.1875
+            },
+            {
+              "alpha": 0.1,
+              "utility": 0.21875
+            },
+            {
+              "alpha": 0.25,
+              "utility": 0.21875
+            },
+            {
+              "alpha": 0.5,
+              "utility": 0.21875
+            },
+            {
+              "alpha": 0.75,
+              "utility": 0.1875
+            },
+            {
+              "alpha": 1.0,
+              "utility": 0.21875
+            }
+          ]
+        },
+        "treasury_intervention": {
+          "alpha": 0.75,
+          "base_utility": 0.5557424046404077,
+          "blended_utility": 0.6105873904992974,
+          "gain": 0.05484498585888975,
+          "grid": [
+            {
+              "alpha": 0.0,
+              "utility": 0.5557424046404077
+            },
+            {
+              "alpha": 0.1,
+              "utility": 0.49324245054902827
+            },
+            {
+              "alpha": 0.25,
+              "utility": 0.5244924505490283
+            },
+            {
+              "alpha": 0.5,
+              "utility": 0.541968954229453
+            },
+            {
+              "alpha": 0.75,
+              "utility": 0.6105873904992974
+            },
+            {
+              "alpha": 1.0,
+              "utility": 0.5535790425804566
+            }
+          ]
+        }
+      }
+    }
+  },
+  "tie_breaks": {
+    "alpha": "smallest alpha on exact utility tie",
+    "checkpoint": "earliest step on exact mean-utility tie",
+    "prediction": "lexicographically-largest class ID on exact probability tie"
+  }
+}

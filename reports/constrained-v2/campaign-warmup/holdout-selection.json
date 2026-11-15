@@ -1,0 +1,311 @@
+{
+  "adapter_config_sha256": "0bea83188a5f25215e089023f2b8bd1ce21af47c2a1e2cbea230107dd287f92d",
+  "base_panel_utility": {
+    "finqa_operator": 0.78125,
+    "sec8k_item_routing": 0.75,
+    "treasury_curve_audit": 0.1875,
+    "treasury_intervention": 0.5557424046404077
+  },
+  "base_weights_sha256": "fcc83d7537bee76cc143be3e25f8954b816798f93528103db1cddb02977c5617",
+  "batch_size": 8,
+  "benchmarks": [
+    "finqa_operator",
+    "sec8k_item_routing",
+    "treasury_curve_audit",
+    "treasury_intervention"
+  ],
+  "blinded_predictions": {
+    "directory": "choice-selection-warmup-predictions",
+    "sha256": {
+      "base.jsonl": "b58b5a01489f15ccb01522f885a6fa80373c405f2a9e4ecbe084997b87ddb532",
+      "step-120.jsonl": "5e036f9d57d418d0d29597cc6488a2f6a051096b11149ac7332cff4895db0522",
+      "step-180.jsonl": "5bd42294dd89a69c861e73aae9d4d9a03bddfc79890f62a38be8cbff0a03f2d4",
+      "step-60.jsonl": "b97ffd4df53628476814cf381cd0b87c24c713e91b9ef16e3b14ac18d6a0accc"
+    }
+  },
+  "case_ids": [
+    "finqa-07ae14011928375f",
+    "finqa-099548d9886692b9",
+    "finqa-1b123a627f4e0972",
+    "finqa-229edc702dcf56b1",
+    "finqa-42b0864ad2da35b7",
+    "finqa-4609601dd7213269",
+    "finqa-4f8a1876de2c66d5",
+    "finqa-51cb3f84d1459701",
+    "finqa-5435b251b562f5a7",
+    "finqa-569c3913f1a33a9d",
+    "finqa-630cf4b856c385e4",
+    "finqa-6ee67166ca54916c",
+    "finqa-72053980a2b37ae4",
+    "finqa-7c2c048ed82c4e78",
+    "finqa-7e0b9aa0ef0d7387",
+    "finqa-91c5d4bdb0adcbcd",
+    "finqa-9ae873bdf884121c",
+    "finqa-a42e73db5554f630",
+    "finqa-a8fb11ecad443514",
+    "finqa-b39e383f5f158a2e",
+    "finqa-b6da8160796b34dc",
+    "finqa-bd27ec92fb5860da",
+    "finqa-bf2a670ebd140b82",
+    "finqa-bff25c35016deb8b",
+    "finqa-c05c249b7cc65518",
+    "finqa-c56f7e3986a491f2",
+    "finqa-c82dce373236b8ab",
+    "finqa-cb375aae7cad7fd6",
+    "finqa-ce68a44864e6de2a",
+    "finqa-e1dc0cf0166deb91",
+    "finqa-e6e410574eb0516f",
+    "finqa-f10a6ffeddcd001c",
+    "sec8k-0531f62e68885013810f76a7",
+    "sec8k-067d9b5852038ef832e46885",
+    "sec8k-06cbdbe12dec335d35884f44",
+    "sec8k-0d5af4a0d0c7217328adab22",
+    "sec8k-1a831e6f91358935379945bc",
+    "sec8k-1fedb7901bc2e22a4ef7dc2f",
+    "sec8k-30c720cacfe540ba4e76d19f",
+    "sec8k-318963d7f9905b90f3a64724",
+    "sec8k-33601f0478e923273363400b",
+    "sec8k-59623044cad8a8486b6b1a0e",
+    "sec8k-5c9c541e4ebfdaf05472f521",
+    "sec8k-6819bc16252b18231c5beb26",
+    "sec8k-841679c922186d95e8977fa6",
+    "sec8k-85ce118a63b0c07abbb43559",
+    "sec8k-8d8b39d9a6db94a1520b07d3",
+    "sec8k-8dd233d17d64b8f3045647a2",
+    "sec8k-90a05c3a3af1fc7ba49b0307",
+    "sec8k-95ac1b80a5f57adeb7bee758",
+    "sec8k-9a834066a95873baf68c3e66",
+    "sec8k-a6e3ea003e8c726ef87b301b",
+    "sec8k-b80580976796f899630b7746",
+    "sec8k-be26ace5d49cbcf126cab39e",
+    "sec8k-c87ebfbb4cc9450b2b030748",
+    "sec8k-c9d06d64f6f221e51eea4573",
+    "sec8k-d0014312fe6c79d67a445392",
+    "sec8k-d2e9b818b1a8b46e3b731cfd",
+    "sec8k-e7d9ee4cad0e20ab49be3e1a",
+    "sec8k-e9eebf1459d744a15e0a6062",
+    "sec8k-ef178abf93eff97f50e2a065",
+    "sec8k-f763ca6e799382edebf02e0d",
+    "sec8k-f980f6fa5e72e5286d6b0950",
+    "sec8k-fbe5f7ed585c97242c9116ad",
+    "treasury-audit-2014-02-21",
+    "treasury-audit-2014-06-26",
+    "treasury-audit-2014-07-10",
+    "treasury-audit-2014-08-18",
+    "treasury-audit-2014-09-17",
+    "treasury-audit-2014-10-17",
+    "treasury-audit-2014-11-18",
+    "treasury-audit-2015-01-05",
+    "treasury-audit-2015-02-26",
+    "treasury-audit-2015-04-01",
+    "treasury-audit-2015-06-04",
+    "treasury-audit-2015-08-28",
+    "treasury-audit-2015-10-13",
+    "treasury-audit-2015-12-17",
+    "treasury-audit-2016-01-13",
+    "treasury-audit-2016-03-29",
+    "treasury-audit-2016-07-11",
+    "treasury-audit-2016-10-13",
+    "treasury-audit-2016-11-22",
+    "treasury-audit-2017-01-09",
+    "treasury-audit-2017-02-08",
+    "treasury-audit-2017-03-07",
+    "treasury-audit-2017-04-19",
+    "treasury-audit-2017-06-27",
+    "treasury-audit-2017-12-05",
+    "treasury-audit-2018-01-30",
+    "treasury-audit-2018-02-02",
+    "treasury-audit-2018-04-02",
+    "treasury-audit-2018-05-25",
+    "treasury-audit-2018-07-26",
+    "treasury-audit-2018-10-25",
+    "treasury-audit-2018-12-24",
+    "treasury_yield_mlp-valid-b0-p0",
+    "treasury_yield_mlp-valid-b0-p1",
+    "treasury_yield_mlp-valid-b0-p4",
+    "treasury_yield_mlp-valid-b1-p2",
+    "treasury_yield_mlp-valid-b1-p3",
+    "treasury_yield_mlp-valid-b10-p1",
+    "treasury_yield_mlp-valid-b10-p4",
+    "treasury_yield_mlp-valid-b11-p3",
+    "treasury_yield_mlp-valid-b11-p4",
+    "treasury_yield_mlp-valid-b12-p0",
+    "treasury_yield_mlp-valid-b12-p3",
+    "treasury_yield_mlp-valid-b12-p4",
+    "treasury_yield_mlp-valid-b13-p0",
+    "treasury_yield_mlp-valid-b13-p2",
+    "treasury_yield_mlp-valid-b2-p0",
+    "treasury_yield_mlp-valid-b2-p3",
+    "treasury_yield_mlp-valid-b3-p1",
+    "treasury_yield_mlp-valid-b3-p3",
+    "treasury_yield_mlp-valid-b4-p0",
+    "treasury_yield_mlp-valid-b4-p4",
+    "treasury_yield_mlp-valid-b5-p1",
+    "treasury_yield_mlp-valid-b5-p2",
+    "treasury_yield_mlp-valid-b5-p3",
+    "treasury_yield_mlp-valid-b6-p0",
+    "treasury_yield_mlp-valid-b6-p1",
+    "treasury_yield_mlp-valid-b7-p2",
+    "treasury_yield_mlp-valid-b7-p3",
+    "treasury_yield_mlp-valid-b8-p0",
+    "treasury_yield_mlp-valid-b8-p1",
+    "treasury_yield_mlp-valid-b8-p3",
+    "treasury_yield_mlp-valid-b9-p1",
+    "treasury_yield_mlp-valid-b9-p2"
+  ],
+  "case_ids_sha256": "514a651415318ebd3ef8474f3836165b8f1a2333af06fae01df1718ae6ec08b7",
+  "criterion": "Development-informed eligibility-first policy. Require gain of at least 0.02 on each of three sources. Among eligible pure warmup checkpoints select maximum mean panel utility, earliest step breaks ties.",
+  "elapsed_seconds": 608.5108525829855,
+  "eligibility_first": {
+    "adopted_after_development": true,
+    "frozen_protocol_sha256": "acd46b0d83dcaba8d8f13fe8590a69e4486db0f8775d82f09e91cae9e54f2176",
+    "mean_first_checkpoint": 120,
+    "mean_first_selection_sha256": "03e30f743e789b1a7efa8e1643e944c3742cb606f8c5f485607018b5dacea909",
+    "minimum_utility_gain_per_source": 0.02,
+    "primary_test_scored_to_date": false,
+    "required_sources": 3,
+    "residual_blend_development_sha256": "42f656c9246223be8ed6febd4bd3c090fcc172c9fe586992940c664b0dbed31c",
+    "residual_blend_qualifying_sources": [
+      "sec8k_item_routing",
+      "us_treasury_daily_par_curve"
+    ],
+    "steps": {
+      "120": {
+        "eligible": false,
+        "mean_panel_utility": 0.6421577852422843,
+        "panel_gains": {
+          "finqa_operator": 0.0,
+          "sec8k_item_routing": 0.0625,
+          "treasury_curve_audit": 0.21875,
+          "treasury_intervention": 0.012888736328729333
+        },
+        "qualifying_sources": [
+          "sec8k_item_routing",
+          "us_treasury_daily_par_curve"
+        ],
+        "source_gains": {
+          "finqa_operator": 0.0,
+          "sec8k_item_routing": 0.0625,
+          "us_treasury_daily_par_curve": 0.21875
+        },
+        "weights_sha256": "eb961c5e5d51fc3a36d501887bcce07824e547fd872787abf70f15d690a764ca"
+      },
+      "180": {
+        "eligible": true,
+        "mean_panel_utility": 0.5844347148841136,
+        "panel_gains": {
+          "finqa_operator": 0.03125,
+          "sec8k_item_routing": 0.03125,
+          "treasury_curve_audit": -0.09375,
+          "treasury_intervention": 0.09449645489604641
+        },
+        "qualifying_sources": [
+          "finqa_operator",
+          "sec8k_item_routing",
+          "us_treasury_daily_par_curve"
+        ],
+        "source_gains": {
+          "finqa_operator": 0.03125,
+          "sec8k_item_routing": 0.03125,
+          "us_treasury_daily_par_curve": 0.09449645489604641
+        },
+        "weights_sha256": "f0d726b56c5f837857068e9d5ff1fcb91cc1924625121bef9bd2ee6478f9c427"
+      },
+      "60": {
+        "eligible": false,
+        "mean_panel_utility": 0.5837072606451141,
+        "panel_gains": {
+          "finqa_operator": 0.03125,
+          "sec8k_item_routing": 0.0,
+          "treasury_curve_audit": 0.03125,
+          "treasury_intervention": -0.002163362059951046
+        },
+        "qualifying_sources": [
+          "finqa_operator",
+          "us_treasury_daily_par_curve"
+        ],
+        "source_gains": {
+          "finqa_operator": 0.03125,
+          "sec8k_item_routing": 0.0,
+          "us_treasury_daily_par_curve": 0.03125
+        },
+        "weights_sha256": "0a8a0089abc4cd7489010fc18b95e130b87ebb15f2f57577fbced8f862726008"
+      }
+    },
+    "test_sha256": "b29b8149e140374b1a1a8e58e4b228b77ab6e2ee346725fcec8e5075735eba05"
+  },
+  "frozen_prefix_parity": {
+    "adapted_max_probability_error": 0.0,
+    "base_max_probability_error": 0.0
+  },
+  "labels_per_benchmark": {
+    "finqa_operator": {
+      "add": 1,
+      "divide": 16,
+      "multiply": 4,
+      "subtract": 11
+    },
+    "sec8k_item_routing": {
+      "1.01": 4,
+      "1.02": 4,
+      "2.02": 4,
+      "2.03": 3,
+      "3.02": 5,
+      "5.02": 5,
+      "7.01": 5,
+      "8.01": 2
+    },
+    "treasury_curve_audit": {
+      "reversed_sign": 7,
+      "supported": 5,
+      "wrong_session": 6,
+      "wrong_tenor": 9,
+      "wrong_units": 5
+    },
+    "treasury_intervention": {
+      "accumulate": 3,
+      "clip_grad": 1,
+      "lower_lr": 24,
+      "resume": 4
+    }
+  },
+  "limit_per_benchmark": 32,
+  "schema": 2,
+  "selected_step": 180,
+  "selected_weights_sha256": "f0d726b56c5f837857068e9d5ff1fcb91cc1924625121bef9bd2ee6478f9c427",
+  "steps": {
+    "120": {
+      "mean_panel_utility": 0.6421577852422843,
+      "panel_utility": {
+        "finqa_operator": 0.78125,
+        "sec8k_item_routing": 0.8125,
+        "treasury_curve_audit": 0.40625,
+        "treasury_intervention": 0.568631140969137
+      },
+      "weights_sha256": "eb961c5e5d51fc3a36d501887bcce07824e547fd872787abf70f15d690a764ca"
+    },
+    "180": {
+      "mean_panel_utility": 0.5844347148841136,
+      "panel_utility": {
+        "finqa_operator": 0.8125,
+        "sec8k_item_routing": 0.78125,
+        "treasury_curve_audit": 0.09375,
+        "treasury_intervention": 0.6502388595364541
+      },
+      "weights_sha256": "f0d726b56c5f837857068e9d5ff1fcb91cc1924625121bef9bd2ee6478f9c427"
+    },
+    "60": {
+      "mean_panel_utility": 0.5837072606451141,
+      "panel_utility": {
+        "finqa_operator": 0.8125,
+        "sec8k_item_routing": 0.75,
+        "treasury_curve_audit": 0.21875,
+        "treasury_intervention": 0.5535790425804566
+      },
+      "weights_sha256": "0a8a0089abc4cd7489010fc18b95e130b87ebb15f2f57577fbced8f862726008"
+    }
+  },
+  "validation": "valid.jsonl",
+  "validation_sha256": "3c8fb2e2059f527fc0350583c0e2cedcf4fc3214fd4df7a01cbcd603d819db0f",
+  "variants": 2
+}
