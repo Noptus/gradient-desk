@@ -1,0 +1,202 @@
+{
+  "base_panel_parity": {
+    "max_abs_error": 0.0,
+    "receipt": {
+      "sec8k_item_routing": 0.75
+    }
+  },
+  "base_panel_utility": {
+    "sec8k_item_routing": 0.75
+  },
+  "config": {
+    "alphas": [
+      0.0,
+      0.25,
+      0.5,
+      0.75,
+      1.0
+    ],
+    "batch_size": 8,
+    "layouts": [
+      0,
+      1
+    ],
+    "projection": "clamp ridge scores to the non-negative orthant and renormalize (softmax only if all scores are non-positive)",
+    "regularizations": [
+      0.001,
+      0.01,
+      0.1,
+      1.0,
+      10.0
+    ],
+    "tie_break": "maximize dev utility; then prefer the smallest alpha (closest to the frozen base), then the largest regularization, then grid order"
+  },
+  "grids": {
+    "sec8k_item_routing": [
+      {
+        "alpha": 0.0,
+        "dev_utility": 0.75,
+        "regularization": 0.001
+      },
+      {
+        "alpha": 0.25,
+        "dev_utility": 0.75,
+        "regularization": 0.001
+      },
+      {
+        "alpha": 0.5,
+        "dev_utility": 0.78125,
+        "regularization": 0.001
+      },
+      {
+        "alpha": 0.75,
+        "dev_utility": 0.8125,
+        "regularization": 0.001
+      },
+      {
+        "alpha": 1.0,
+        "dev_utility": 0.8125,
+        "regularization": 0.001
+      },
+      {
+        "alpha": 0.0,
+        "dev_utility": 0.75,
+        "regularization": 0.01
+      },
+      {
+        "alpha": 0.25,
+        "dev_utility": 0.75,
+        "regularization": 0.01
+      },
+      {
+        "alpha": 0.5,
+        "dev_utility": 0.75,
+        "regularization": 0.01
+      },
+      {
+        "alpha": 0.75,
+        "dev_utility": 0.8125,
+        "regularization": 0.01
+      },
+      {
+        "alpha": 1.0,
+        "dev_utility": 0.8125,
+        "regularization": 0.01
+      },
+      {
+        "alpha": 0.0,
+        "dev_utility": 0.75,
+        "regularization": 0.1
+      },
+      {
+        "alpha": 0.25,
+        "dev_utility": 0.75,
+        "regularization": 0.1
+      },
+      {
+        "alpha": 0.5,
+        "dev_utility": 0.75,
+        "regularization": 0.1
+      },
+      {
+        "alpha": 0.75,
+        "dev_utility": 0.8125,
+        "regularization": 0.1
+      },
+      {
+        "alpha": 1.0,
+        "dev_utility": 0.84375,
+        "regularization": 0.1
+      },
+      {
+        "alpha": 0.0,
+        "dev_utility": 0.75,
+        "regularization": 1.0
+      },
+      {
+        "alpha": 0.25,
+        "dev_utility": 0.75,
+        "regularization": 1.0
+      },
+      {
+        "alpha": 0.5,
+        "dev_utility": 0.75,
+        "regularization": 1.0
+      },
+      {
+        "alpha": 0.75,
+        "dev_utility": 0.75,
+        "regularization": 1.0
+      },
+      {
+        "alpha": 1.0,
+        "dev_utility": 0.78125,
+        "regularization": 1.0
+      },
+      {
+        "alpha": 0.0,
+        "dev_utility": 0.75,
+        "regularization": 10.0
+      },
+      {
+        "alpha": 0.25,
+        "dev_utility": 0.75,
+        "regularization": 10.0
+      },
+      {
+        "alpha": 0.5,
+        "dev_utility": 0.75,
+        "regularization": 10.0
+      },
+      {
+        "alpha": 0.75,
+        "dev_utility": 0.75,
+        "regularization": 10.0
+      },
+      {
+        "alpha": 1.0,
+        "dev_utility": 0.5625,
+        "regularization": 10.0
+      }
+    ]
+  },
+  "inputs": {
+    "base_weights_sha256": "fcc83d7537bee76cc143be3e25f8954b816798f93528103db1cddb02977c5617",
+    "selection": "choice-selection-warmup.json",
+    "selection_case_ids_sha256": "514a651415318ebd3ef8474f3836165b8f1a2333af06fae01df1718ae6ec08b7",
+    "selection_sha256": "03e30f743e789b1a7efa8e1643e944c3742cb606f8c5f485607018b5dacea909",
+    "train": "train.jsonl",
+    "train_sha256": "f0be5723a3f9c74831be1742fe842b1d689bf833fa14837368a75f4bbfb5419f",
+    "validation": "valid.jsonl",
+    "validation_sha256": "3c8fb2e2059f527fc0350583c0e2cedcf4fc3214fd4df7a01cbcd603d819db0f"
+  },
+  "reporting_correction": "The original summary counted available rows across tracks instead of the 320 SEC rows passed to extraction. The extraction log counted 640 layouts. Weights and development accuracy are unchanged.",
+  "role": "development-only ridge choice-readout diagnostic; no holdout evaluation",
+  "schema": 1,
+  "selected": {
+    "sec8k_item_routing": {
+      "alpha": 1.0,
+      "base_dev_utility": 0.75,
+      "criterion": "exact accuracy",
+      "dev_gain": 0.09375,
+      "readout_dev_utility": 0.84375,
+      "regularization": 0.1
+    }
+  },
+  "shapes": {
+    "dev_cases": 32,
+    "hidden_dim": 4096,
+    "tracks": {
+      "sec8k_item_routing": {
+        "choices": 8,
+        "dev_cases": 32,
+        "train_rows": 320
+      }
+    },
+    "train_cases": 1401,
+    "train_cases_scored": 320
+  },
+  "weights_digests": {
+    "sec8k_item_routing": "6e9a37d6b01998c610477298ef047dcfd49efb87fb8b4636586e74390aba22ff"
+  }
+}

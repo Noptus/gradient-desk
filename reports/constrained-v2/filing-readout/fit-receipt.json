@@ -1,0 +1,158 @@
+{
+  "base_development_accuracy": 0.75,
+  "base_weights_sha256": "fcc83d7537bee76cc143be3e25f8954b816798f93528103db1cddb02977c5617",
+  "development_cases": 32,
+  "development_receipt_original_sha256": "3fe6ed69492b9d7a199cdeb7554528bcc09083fc68f8da02e22694b6ceaa3436",
+  "grid": [
+    {
+      "accuracy": 0.75,
+      "alpha": 0.0,
+      "regularization": 0.001
+    },
+    {
+      "accuracy": 0.75,
+      "alpha": 0.25,
+      "regularization": 0.001
+    },
+    {
+      "accuracy": 0.78125,
+      "alpha": 0.5,
+      "regularization": 0.001
+    },
+    {
+      "accuracy": 0.8125,
+      "alpha": 0.75,
+      "regularization": 0.001
+    },
+    {
+      "accuracy": 0.8125,
+      "alpha": 1.0,
+      "regularization": 0.001
+    },
+    {
+      "accuracy": 0.75,
+      "alpha": 0.0,
+      "regularization": 0.01
+    },
+    {
+      "accuracy": 0.75,
+      "alpha": 0.25,
+      "regularization": 0.01
+    },
+    {
+      "accuracy": 0.75,
+      "alpha": 0.5,
+      "regularization": 0.01
+    },
+    {
+      "accuracy": 0.8125,
+      "alpha": 0.75,
+      "regularization": 0.01
+    },
+    {
+      "accuracy": 0.8125,
+      "alpha": 1.0,
+      "regularization": 0.01
+    },
+    {
+      "accuracy": 0.75,
+      "alpha": 0.0,
+      "regularization": 0.1
+    },
+    {
+      "accuracy": 0.75,
+      "alpha": 0.25,
+      "regularization": 0.1
+    },
+    {
+      "accuracy": 0.75,
+      "alpha": 0.5,
+      "regularization": 0.1
+    },
+    {
+      "accuracy": 0.8125,
+      "alpha": 0.75,
+      "regularization": 0.1
+    },
+    {
+      "accuracy": 0.84375,
+      "alpha": 1.0,
+      "regularization": 0.1
+    },
+    {
+      "accuracy": 0.75,
+      "alpha": 0.0,
+      "regularization": 1.0
+    },
+    {
+      "accuracy": 0.75,
+      "alpha": 0.25,
+      "regularization": 1.0
+    },
+    {
+      "accuracy": 0.75,
+      "alpha": 0.5,
+      "regularization": 1.0
+    },
+    {
+      "accuracy": 0.75,
+      "alpha": 0.75,
+      "regularization": 1.0
+    },
+    {
+      "accuracy": 0.78125,
+      "alpha": 1.0,
+      "regularization": 1.0
+    },
+    {
+      "accuracy": 0.75,
+      "alpha": 0.0,
+      "regularization": 10.0
+    },
+    {
+      "accuracy": 0.75,
+      "alpha": 0.25,
+      "regularization": 10.0
+    },
+    {
+      "accuracy": 0.75,
+      "alpha": 0.5,
+      "regularization": 10.0
+    },
+    {
+      "accuracy": 0.75,
+      "alpha": 0.75,
+      "regularization": 10.0
+    },
+    {
+      "accuracy": 0.5625,
+      "alpha": 1.0,
+      "regularization": 10.0
+    }
+  ],
+  "inputs": {
+    "selection_sha256": "03e30f743e789b1a7efa8e1643e944c3742cb606f8c5f485607018b5dacea909",
+    "train_sha256": "f0be5723a3f9c74831be1742fe842b1d689bf833fa14837368a75f4bbfb5419f",
+    "validation_sha256": "3c8fb2e2059f527fc0350583c0e2cedcf4fc3214fd4df7a01cbcd603d819db0f"
+  },
+  "labels": [
+    "1.01",
+    "1.02",
+    "2.02",
+    "2.03",
+    "3.02",
+    "5.02",
+    "7.01",
+    "8.01"
+  ],
+  "plan_sha256": "0b44d1a2c50ab71b0fba2b83137b4ab6c7aec0e812ad286d98a3a7c3a6d8775a",
+  "schema": 1,
+  "selected": {
+    "accuracy": 0.84375,
+    "alpha": 1.0,
+    "regularization": 0.1
+  },
+  "track": "sec8k_item_routing",
+  "training_cases": 320,
+  "weights_sha256": "6028c48ba1629579414463d1a92b0906dd5fb183994a1011b09c8e38d8da09f4"
+}
