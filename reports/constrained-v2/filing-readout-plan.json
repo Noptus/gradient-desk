@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "scope": "A targeted SEC filing follow-up conceived after opening the initial QLoRA trial. The original five results remain public. Only the SEC routing policy changes.",
+  "first_holdout_report_sha256": "1d8ca63a99747d92a4f08ca19b170d8b8c0bcce270bf027a7c47e1bc1acc8bb7",
+  "frozen_base_weights_sha256": "fcc83d7537bee76cc143be3e25f8954b816798f93528103db1cddb02977c5617",
+  "train_sha256": "f0be5723a3f9c74831be1742fe842b1d689bf833fa14837368a75f4bbfb5419f",
+  "validation_sha256": "3c8fb2e2059f527fc0350583c0e2cedcf4fc3214fd4df7a01cbcd603d819db0f",
+  "original_development_selection_sha256": "03e30f743e789b1a7efa8e1643e944c3742cb606f8c5f485607018b5dacea909",
+  "training": {
+    "rows": 320,
+    "development_rows": 32,
+    "track": "sec8k_item_routing",
+    "layouts": 2,
+    "batch_size": 8,
+    "features": "Final real-token Qwen hidden state for each legal menu layout, L2-normalized separately and averaged.",
+    "head": "Centered dual ridge fit on development-independent training rows and one-hot filing labels, then project scores onto a nonnegative normalized distribution.",
+    "ridge_grid": [0.001, 0.01, 0.1, 1, 10],
+    "head_probability_weights": [0, 0.25, 0.5, 0.75, 1],
+    "selection": "Maximum exact accuracy on the locked original development IDs. Prefer the smaller readout weight and larger regularization on ties."
+  },
+  "evaluation": {
+    "cases_sha256": "24fc7a7215d03fadfebf555ca619894712a8f82266ff70c744f22648dac534ef",
+    "source_receipt_sha256": "18fd3a08d306b827c264306a3a87a03b74221d0ec8a6655f6467c97a9fcbec14",
+    "rows": 374,
+    "primary": "Paired change in exact 8-K section accuracy versus the unadapted base with the same two option layouts.",
+    "blocks": "Previously unused SEC CIK. One section per issuer.",
+    "minimum_observed_gain": 0.02,
+    "confirmation": "Positive paired 95% block-bootstrap interval and one-sided paired block sign-flip p below 0.05 for this single preregistered panel.",
+    "secondary": "Validation-selected TF-IDF word or word plus character logistic baseline on the same fresh cases. If this stronger reference wins, report it.",
+    "reference_retention": "FinQA and the optimizer intervention routes keep the previously evaluated QLoRA weights and scorer. Do not retune them on the initial held-out predictions."
+  }
+}
