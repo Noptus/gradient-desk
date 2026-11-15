@@ -1,0 +1,840 @@
+{
+  "cases_sha256": "b29b8149e140374b1a1a8e58e4b228b77ab6e2ee346725fcec8e5075735eba05",
+  "controls": {
+    "fixed_resume": {
+      "comparison": {
+        "confirmed_improvements": 1,
+        "observed_improvements": 1,
+        "panels": {
+          "taiwan_bankruptcy_intervention": {
+            "base": {
+              "accuracy": 0.5357142857142857,
+              "action_counts": {
+                "resume": 140
+              },
+              "confusion_reference_by_prediction": {
+                "accumulate": {
+                  "resume": 10
+                },
+                "clip_grad": {
+                  "resume": 15
+                },
+                "lower_lr": {
+                  "resume": 40
+                },
+                "resume": {
+                  "resume": 75
+                }
+              },
+              "macro_accuracy": 0.25,
+              "mean_raw_regret": 0.25681423140423637,
+              "primary": 0.33689897018937326
+            },
+            "candidate": {
+              "accuracy": 0.19285714285714287,
+              "action_counts": {
+                "accumulate": 1,
+                "clip_grad": 83,
+                "lower_lr": 38,
+                "resume": 18
+              },
+              "confusion_reference_by_prediction": {
+                "accumulate": {
+                  "clip_grad": 4,
+                  "lower_lr": 5,
+                  "resume": 1
+                },
+                "clip_grad": {
+                  "clip_grad": 9,
+                  "lower_lr": 4,
+                  "resume": 2
+                },
+                "lower_lr": {
+                  "accumulate": 1,
+                  "clip_grad": 26,
+                  "lower_lr": 8,
+                  "resume": 5
+                },
+                "resume": {
+                  "clip_grad": 44,
+                  "lower_lr": 21,
+                  "resume": 10
+                }
+              },
+              "log_loss": 1.3930717776495074,
+              "macro_accuracy": 0.23333333333333334,
+              "mean_raw_regret": 0.17674825361796787,
+              "primary": 0.5272645975782514
+            },
+            "confirmed_improvement": false,
+            "dependence_blocks": 28,
+            "gain": -0.19036562738887808,
+            "gain_direction": "positive favors candidate",
+            "labels": {
+              "accumulate": 10,
+              "clip_grad": 15,
+              "lower_lr": 40,
+              "resume": 75
+            },
+            "n": 140,
+            "observed_improvement": false,
+            "p_block_one_sided": 0.9995000833194467,
+            "p_holm": 0.9995000833194467,
+            "paired_block_bootstrap95": [
+              -0.29319840005003783,
+              -0.0815926292281154
+            ],
+            "primary_metric": "mean_normalized_regret"
+          },
+          "treasury_intervention": {
+            "base": {
+              "accuracy": 0.18823529411764706,
+              "action_counts": {
+                "resume": 85
+              },
+              "confusion_reference_by_prediction": {
+                "accumulate": {
+                  "resume": 12
+                },
+                "clip_grad": {
+                  "resume": 7
+                },
+                "lower_lr": {
+                  "resume": 50
+                },
+                "resume": {
+                  "resume": 16
+                }
+              },
+              "macro_accuracy": 0.25,
+              "mean_raw_regret": 3.1924554432033085e+27,
+              "primary": 0.5804473742834171
+            },
+            "candidate": {
+              "accuracy": 0.24705882352941178,
+              "action_counts": {
+                "clip_grad": 58,
+                "lower_lr": 25,
+                "resume": 2
+              },
+              "confusion_reference_by_prediction": {
+                "accumulate": {
+                  "clip_grad": 8,
+                  "lower_lr": 3,
+                  "resume": 1
+                },
+                "clip_grad": {
+                  "clip_grad": 6,
+                  "lower_lr": 1
+                },
+                "lower_lr": {
+                  "clip_grad": 34,
+                  "lower_lr": 15,
+                  "resume": 1
+                },
+                "resume": {
+                  "clip_grad": 10,
+                  "lower_lr": 6
+                }
+              },
+              "log_loss": 1.379559687828112,
+              "macro_accuracy": 0.28928571428571426,
+              "mean_raw_regret": 2367503689992382.5,
+              "primary": 0.38697577516598647
+            },
+            "confirmed_improvement": true,
+            "dependence_blocks": 17,
+            "gain": 0.1934715991174307,
+            "gain_direction": "positive favors candidate",
+            "labels": {
+              "accumulate": 12,
+              "clip_grad": 7,
+              "lower_lr": 50,
+              "resume": 16
+            },
+            "n": 85,
+            "observed_improvement": true,
+            "p_block_one_sided": 0.010831528078653558,
+            "p_holm": 0.021663056157307115,
+            "paired_block_bootstrap95": [
+              0.04611927686930415,
+              0.3378098778731954
+            ],
+            "primary_metric": "mean_normalized_regret"
+          }
+        },
+        "resamples": 6000,
+        "schema": 1,
+        "seed": 7121
+      },
+      "control_predictions_sha256": "90ff82cde09e064b00531d8cd9cfaaa53d65ce21328e4e3fe42059051677ddde"
+    },
+    "learned_telemetry": {
+      "comparison": {
+        "confirmed_improvements": 0,
+        "observed_improvements": 0,
+        "panels": {
+          "taiwan_bankruptcy_intervention": {
+            "base": {
+              "accuracy": 0.38571428571428573,
+              "action_counts": {
+                "accumulate": 1,
+                "clip_grad": 51,
+                "lower_lr": 26,
+                "resume": 62
+              },
+              "confusion_reference_by_prediction": {
+                "accumulate": {
+                  "clip_grad": 10
+                },
+                "clip_grad": {
+                  "clip_grad": 7,
+                  "lower_lr": 3,
+                  "resume": 5
+                },
+                "lower_lr": {
+                  "clip_grad": 20,
+                  "lower_lr": 5,
+                  "resume": 15
+                },
+                "resume": {
+                  "accumulate": 1,
+                  "clip_grad": 14,
+                  "lower_lr": 18,
+                  "resume": 42
+                }
+              },
+              "macro_accuracy": 0.2879166666666667,
+              "mean_raw_regret": 0.19539046585559844,
+              "primary": 0.429715047453311
+            },
+            "candidate": {
+              "accuracy": 0.19285714285714287,
+              "action_counts": {
+                "accumulate": 1,
+                "clip_grad": 83,
+                "lower_lr": 38,
+                "resume": 18
+              },
+              "confusion_reference_by_prediction": {
+                "accumulate": {
+                  "clip_grad": 4,
+                  "lower_lr": 5,
+                  "resume": 1
+                },
+                "clip_grad": {
+                  "clip_grad": 9,
+                  "lower_lr": 4,
+                  "resume": 2
+                },
+                "lower_lr": {
+                  "accumulate": 1,
+                  "clip_grad": 26,
+                  "lower_lr": 8,
+                  "resume": 5
+                },
+                "resume": {
+                  "clip_grad": 44,
+                  "lower_lr": 21,
+                  "resume": 10
+                }
+              },
+              "log_loss": 1.3930717776495074,
+              "macro_accuracy": 0.23333333333333334,
+              "mean_raw_regret": 0.17674825361796787,
+              "primary": 0.5272645975782514
+            },
+            "confirmed_improvement": false,
+            "dependence_blocks": 28,
+            "gain": -0.0975495501249403,
+            "gain_direction": "positive favors candidate",
+            "labels": {
+              "accumulate": 10,
+              "clip_grad": 15,
+              "lower_lr": 40,
+              "resume": 75
+            },
+            "n": 140,
+            "observed_improvement": false,
+            "p_block_one_sided": 0.9818363606065655,
+            "p_holm": 1.0,
+            "paired_block_bootstrap95": [
+              -0.1811585298535181,
+              -0.009794433130811962
+            ],
+            "primary_metric": "mean_normalized_regret"
+          },
+          "treasury_intervention": {
+            "base": {
+              "accuracy": 0.5176470588235295,
+              "action_counts": {
+                "accumulate": 15,
+                "clip_grad": 3,
+                "lower_lr": 65,
+                "resume": 2
+              },
+              "confusion_reference_by_prediction": {
+                "accumulate": {
+                  "accumulate": 3,
+                  "clip_grad": 1,
+                  "lower_lr": 7,
+                  "resume": 1
+                },
+                "clip_grad": {
+                  "accumulate": 1,
+                  "clip_grad": 1,
+                  "lower_lr": 5
+                },
+                "lower_lr": {
+                  "accumulate": 8,
+                  "clip_grad": 1,
+                  "lower_lr": 40,
+                  "resume": 1
+                },
+                "resume": {
+                  "accumulate": 3,
+                  "lower_lr": 13
+                }
+              },
+              "macro_accuracy": 0.2982142857142857,
+              "mean_raw_regret": 0.34420055694439833,
+              "primary": 0.13205808725457535
+            },
+            "candidate": {
+              "accuracy": 0.24705882352941178,
+              "action_counts": {
+                "clip_grad": 58,
+                "lower_lr": 25,
+                "resume": 2
+              },
+              "confusion_reference_by_prediction": {
+                "accumulate": {
+                  "clip_grad": 8,
+                  "lower_lr": 3,
+                  "resume": 1
+                },
+                "clip_grad": {
+                  "clip_grad": 6,
+                  "lower_lr": 1
+                },
+                "lower_lr": {
+                  "clip_grad": 34,
+                  "lower_lr": 15,
+                  "resume": 1
+                },
+                "resume": {
+                  "clip_grad": 10,
+                  "lower_lr": 6
+                }
+              },
+              "log_loss": 1.379559687828112,
+              "macro_accuracy": 0.28928571428571426,
+              "mean_raw_regret": 2367503689992382.5,
+              "primary": 0.38697577516598647
+            },
+            "confirmed_improvement": false,
+            "dependence_blocks": 17,
+            "gain": -0.2549176879114111,
+            "gain_direction": "positive favors candidate",
+            "labels": {
+              "accumulate": 12,
+              "clip_grad": 7,
+              "lower_lr": 50,
+              "resume": 16
+            },
+            "n": 85,
+            "observed_improvement": false,
+            "p_block_one_sided": 1.0,
+            "p_holm": 1.0,
+            "paired_block_bootstrap95": [
+              -0.34425490473444587,
+              -0.1595197264122892
+            ],
+            "primary_metric": "mean_normalized_regret"
+          }
+        },
+        "resamples": 6000,
+        "schema": 1,
+        "seed": 7121
+      },
+      "control_predictions_sha256": "95e2933f96a279a11c5ac2af36a8a78fdf408df115d5325828ce7a01fe33cb50"
+    },
+    "lexical": {
+      "comparison": {
+        "confirmed_improvements": 1,
+        "observed_improvements": 1,
+        "panels": {
+          "finqa_operator": {
+            "base": {
+              "accuracy": 0.6893203883495146,
+              "action_counts": {
+                "add": 23,
+                "divide": 34,
+                "multiply": 16,
+                "subtract": 30
+              },
+              "confusion_reference_by_prediction": {
+                "add": {
+                  "add": 10,
+                  "divide": 1,
+                  "subtract": 1
+                },
+                "divide": {
+                  "add": 6,
+                  "divide": 32,
+                  "multiply": 8,
+                  "subtract": 7
+                },
+                "multiply": {
+                  "add": 2,
+                  "multiply": 7
+                },
+                "subtract": {
+                  "add": 5,
+                  "divide": 1,
+                  "multiply": 1,
+                  "subtract": 22
+                }
+              },
+              "log_loss": 0.799949760500794,
+              "macro_accuracy": 0.743376346417986,
+              "primary": 0.6893203883495146
+            },
+            "candidate": {
+              "accuracy": 0.8932038834951457,
+              "action_counts": {
+                "add": 10,
+                "divide": 48,
+                "multiply": 10,
+                "subtract": 35
+              },
+              "confusion_reference_by_prediction": {
+                "add": {
+                  "add": 7,
+                  "subtract": 5
+                },
+                "divide": {
+                  "add": 2,
+                  "divide": 48,
+                  "multiply": 1,
+                  "subtract": 2
+                },
+                "multiply": {
+                  "multiply": 9
+                },
+                "subtract": {
+                  "add": 1,
+                  "subtract": 28
+                }
+              },
+              "log_loss": 0.36766329810102594,
+              "macro_accuracy": 0.8636277380177836,
+              "primary": 0.8932038834951457
+            },
+            "confirmed_improvement": true,
+            "dependence_blocks": 15,
+            "gain": 0.20388349514563106,
+            "gain_direction": "positive favors candidate",
+            "labels": {
+              "add": 12,
+              "divide": 53,
+              "multiply": 9,
+              "subtract": 29
+            },
+            "n": 103,
+            "observed_improvement": true,
+            "p_block_one_sided": 0.0126953125,
+            "p_holm": 0.0380859375,
+            "paired_block_bootstrap95": [
+              0.08333333333333333,
+              0.325
+            ],
+            "primary_metric": "accuracy"
+          },
+          "sec8k_item_routing": {
+            "base": {
+              "accuracy": 0.8616352201257862,
+              "action_counts": {
+                "1.01": 27,
+                "1.02": 19,
+                "2.02": 17,
+                "2.03": 20,
+                "3.02": 19,
+                "5.02": 19,
+                "7.01": 21,
+                "8.01": 17
+              },
+              "confusion_reference_by_prediction": {
+                "1.01": {
+                  "1.01": 18,
+                  "1.02": 1,
+                  "3.02": 1
+                },
+                "1.02": {
+                  "1.01": 2,
+                  "1.02": 16,
+                  "2.03": 1
+                },
+                "2.02": {
+                  "2.02": 16,
+                  "7.01": 2,
+                  "8.01": 2
+                },
+                "2.03": {
+                  "1.01": 2,
+                  "1.02": 1,
+                  "2.03": 17
+                },
+                "3.02": {
+                  "1.01": 2,
+                  "3.02": 18
+                },
+                "5.02": {
+                  "2.03": 1,
+                  "5.02": 19
+                },
+                "7.01": {
+                  "1.01": 1,
+                  "2.02": 1,
+                  "7.01": 18
+                },
+                "8.01": {
+                  "1.01": 2,
+                  "1.02": 1,
+                  "2.03": 1,
+                  "7.01": 1,
+                  "8.01": 15
+                }
+              },
+              "log_loss": 0.5491509432961111,
+              "macro_accuracy": 0.8615131578947368,
+              "primary": 0.8616352201257862
+            },
+            "candidate": {
+              "accuracy": 0.710691823899371,
+              "action_counts": {
+                "1.01": 37,
+                "1.02": 16,
+                "2.02": 18,
+                "2.03": 12,
+                "3.02": 20,
+                "5.02": 20,
+                "7.01": 10,
+                "8.01": 26
+              },
+              "confusion_reference_by_prediction": {
+                "1.01": {
+                  "1.01": 17,
+                  "3.02": 1,
+                  "8.01": 2
+                },
+                "1.02": {
+                  "1.01": 4,
+                  "1.02": 15
+                },
+                "2.02": {
+                  "2.02": 14,
+                  "7.01": 5,
+                  "8.01": 1
+                },
+                "2.03": {
+                  "1.01": 8,
+                  "2.03": 12
+                },
+                "3.02": {
+                  "1.01": 1,
+                  "3.02": 18,
+                  "8.01": 1
+                },
+                "5.02": {
+                  "1.01": 1,
+                  "5.02": 19
+                },
+                "7.01": {
+                  "1.01": 2,
+                  "2.02": 3,
+                  "5.02": 1,
+                  "7.01": 5,
+                  "8.01": 9
+                },
+                "8.01": {
+                  "1.01": 4,
+                  "1.02": 1,
+                  "2.02": 1,
+                  "3.02": 1,
+                  "8.01": 13
+                }
+              },
+              "log_loss": 0.9398566775222715,
+              "macro_accuracy": 0.7111842105263158,
+              "primary": 0.710691823899371
+            },
+            "confirmed_improvement": false,
+            "dependence_blocks": 136,
+            "gain": -0.1509433962264151,
+            "gain_direction": "positive favors candidate",
+            "labels": {
+              "1.01": 20,
+              "1.02": 19,
+              "2.02": 20,
+              "2.03": 20,
+              "3.02": 20,
+              "5.02": 20,
+              "7.01": 20,
+              "8.01": 20
+            },
+            "n": 159,
+            "observed_improvement": false,
+            "p_block_one_sided": 1.0,
+            "p_holm": 1.0,
+            "paired_block_bootstrap95": [
+              -0.22435897435897437,
+              -0.07643312101910828
+            ],
+            "primary_metric": "accuracy"
+          },
+          "treasury_curve_audit": {
+            "base": {
+              "accuracy": 0.32,
+              "action_counts": {
+                "reversed_sign": 38,
+                "supported": 28,
+                "wrong_session": 28,
+                "wrong_tenor": 33,
+                "wrong_units": 23
+              },
+              "confusion_reference_by_prediction": {
+                "reversed_sign": {
+                  "reversed_sign": 11,
+                  "supported": 5,
+                  "wrong_session": 6,
+                  "wrong_tenor": 6,
+                  "wrong_units": 2
+                },
+                "supported": {
+                  "reversed_sign": 11,
+                  "supported": 5,
+                  "wrong_session": 5,
+                  "wrong_tenor": 8,
+                  "wrong_units": 1
+                },
+                "wrong_session": {
+                  "reversed_sign": 8,
+                  "supported": 6,
+                  "wrong_session": 8,
+                  "wrong_tenor": 5,
+                  "wrong_units": 3
+                },
+                "wrong_tenor": {
+                  "reversed_sign": 6,
+                  "supported": 8,
+                  "wrong_session": 7,
+                  "wrong_tenor": 8,
+                  "wrong_units": 1
+                },
+                "wrong_units": {
+                  "reversed_sign": 2,
+                  "supported": 4,
+                  "wrong_session": 2,
+                  "wrong_tenor": 6,
+                  "wrong_units": 16
+                }
+              },
+              "log_loss": 1.5315276471306285,
+              "macro_accuracy": 0.31999999999999995,
+              "primary": 0.32
+            },
+            "candidate": {
+              "accuracy": 0.18666666666666668,
+              "action_counts": {
+                "reversed_sign": 18,
+                "supported": 7,
+                "wrong_session": 90,
+                "wrong_tenor": 23,
+                "wrong_units": 12
+              },
+              "confusion_reference_by_prediction": {
+                "reversed_sign": {
+                  "reversed_sign": 4,
+                  "wrong_session": 19,
+                  "wrong_tenor": 5,
+                  "wrong_units": 2
+                },
+                "supported": {
+                  "reversed_sign": 2,
+                  "supported": 2,
+                  "wrong_session": 18,
+                  "wrong_tenor": 5,
+                  "wrong_units": 3
+                },
+                "wrong_session": {
+                  "reversed_sign": 6,
+                  "supported": 2,
+                  "wrong_session": 16,
+                  "wrong_tenor": 4,
+                  "wrong_units": 2
+                },
+                "wrong_tenor": {
+                  "reversed_sign": 2,
+                  "supported": 2,
+                  "wrong_session": 19,
+                  "wrong_tenor": 4,
+                  "wrong_units": 3
+                },
+                "wrong_units": {
+                  "reversed_sign": 4,
+                  "supported": 1,
+                  "wrong_session": 18,
+                  "wrong_tenor": 5,
+                  "wrong_units": 2
+                }
+              },
+              "log_loss": 1.6167671010133706,
+              "macro_accuracy": 0.18666666666666668,
+              "primary": 0.18666666666666668
+            },
+            "confirmed_improvement": false,
+            "dependence_blocks": 60,
+            "gain": -0.13333333333333333,
+            "gain_direction": "positive favors candidate",
+            "labels": {
+              "reversed_sign": 30,
+              "supported": 30,
+              "wrong_session": 30,
+              "wrong_tenor": 30,
+              "wrong_units": 30
+            },
+            "n": 150,
+            "observed_improvement": false,
+            "p_block_one_sided": 0.9995000833194467,
+            "p_holm": 1.0,
+            "paired_block_bootstrap95": [
+              -0.21739130434782608,
+              -0.04895104895104895
+            ],
+            "primary_metric": "accuracy"
+          }
+        },
+        "resamples": 6000,
+        "schema": 1,
+        "seed": 7121
+      },
+      "control_predictions_sha256": "8feb0719653d746a799c16056a882249a21bbd4c47c61878e6d3df3f8b9ea948"
+    },
+    "treasury_exact_oracle": {
+      "comparison": {
+        "confirmed_improvements": 0,
+        "observed_improvements": 0,
+        "panels": {
+          "treasury_curve_audit": {
+            "base": {
+              "accuracy": 1.0,
+              "action_counts": {
+                "reversed_sign": 30,
+                "supported": 30,
+                "wrong_session": 30,
+                "wrong_tenor": 30,
+                "wrong_units": 30
+              },
+              "confusion_reference_by_prediction": {
+                "reversed_sign": {
+                  "reversed_sign": 30
+                },
+                "supported": {
+                  "supported": 30
+                },
+                "wrong_session": {
+                  "wrong_session": 30
+                },
+                "wrong_tenor": {
+                  "wrong_tenor": 30
+                },
+                "wrong_units": {
+                  "wrong_units": 30
+                }
+              },
+              "macro_accuracy": 1.0,
+              "primary": 1.0
+            },
+            "candidate": {
+              "accuracy": 0.18666666666666668,
+              "action_counts": {
+                "reversed_sign": 18,
+                "supported": 7,
+                "wrong_session": 90,
+                "wrong_tenor": 23,
+                "wrong_units": 12
+              },
+              "confusion_reference_by_prediction": {
+                "reversed_sign": {
+                  "reversed_sign": 4,
+                  "wrong_session": 19,
+                  "wrong_tenor": 5,
+                  "wrong_units": 2
+                },
+                "supported": {
+                  "reversed_sign": 2,
+                  "supported": 2,
+                  "wrong_session": 18,
+                  "wrong_tenor": 5,
+                  "wrong_units": 3
+                },
+                "wrong_session": {
+                  "reversed_sign": 6,
+                  "supported": 2,
+                  "wrong_session": 16,
+                  "wrong_tenor": 4,
+                  "wrong_units": 2
+                },
+                "wrong_tenor": {
+                  "reversed_sign": 2,
+                  "supported": 2,
+                  "wrong_session": 19,
+                  "wrong_tenor": 4,
+                  "wrong_units": 3
+                },
+                "wrong_units": {
+                  "reversed_sign": 4,
+                  "supported": 1,
+                  "wrong_session": 18,
+                  "wrong_tenor": 5,
+                  "wrong_units": 2
+                }
+              },
+              "log_loss": 1.6167671010133706,
+              "macro_accuracy": 0.18666666666666668,
+              "primary": 0.18666666666666668
+            },
+            "confirmed_improvement": false,
+            "dependence_blocks": 60,
+            "gain": -0.8133333333333334,
+            "gain_direction": "positive favors candidate",
+            "labels": {
+              "reversed_sign": 30,
+              "supported": 30,
+              "wrong_session": 30,
+              "wrong_tenor": 30,
+              "wrong_units": 30
+            },
+            "n": 150,
+            "observed_improvement": false,
+            "p_block_one_sided": 1.0,
+            "p_holm": 1.0,
+            "paired_block_bootstrap95": [
+              -0.869281045751634,
+              -0.756578947368421
+            ],
+            "primary_metric": "accuracy"
+          }
+        },
+        "resamples": 6000,
+        "schema": 1,
+        "seed": 7121
+      },
+      "control_predictions_sha256": "abf4019cf08f8b26887492970538afdb61cd3f9253f21f04b1e9f954ae4f6fdd"
+    }
+  },
+  "relationship": "secondary, comparison base is the named control",
+  "schema": 1,
+  "tuned_predictions_sha256": "db55f1e192ccb376da3836a6c1e6473d3529049d816b4b4b48ac81a0c19853c5"
+}

@@ -1,0 +1,602 @@
+{
+  "checksums": {
+    "base_predictions_sha256": "c70a480f68bc02312c8b314edfc379177863b972d94f8156c514c926b436f8d9",
+    "cases_sha256": "b29b8149e140374b1a1a8e58e4b228b77ab6e2ee346725fcec8e5075735eba05",
+    "protocol_sha256": "acd46b0d83dcaba8d8f13fe8590a69e4486db0f8775d82f09e91cae9e54f2176",
+    "selection_sha256": "29ade56c3f66bc54fdae71ada32c0f8bc8524c23d0a4e946cd6c62f479b4874b",
+    "tuned_predictions_sha256": "db55f1e192ccb376da3836a6c1e6473d3529049d816b4b4b48ac81a0c19853c5"
+  },
+  "confirmed_improvements": 0,
+  "improvement_sources": {
+    "confirmed": [],
+    "observed": [
+      "finqa_operator",
+      "us_treasury_daily_par_curve"
+    ]
+  },
+  "observed_improvements": 2,
+  "panels": {
+    "finqa_operator": {
+      "base": {
+        "accuracy": 0.8640776699029126,
+        "action_counts": {
+          "add": 10,
+          "divide": 45,
+          "multiply": 10,
+          "subtract": 38
+        },
+        "confusion_reference_by_prediction": {
+          "add": {
+            "add": 7,
+            "subtract": 5
+          },
+          "divide": {
+            "add": 2,
+            "divide": 45,
+            "multiply": 1,
+            "subtract": 5
+          },
+          "multiply": {
+            "multiply": 9
+          },
+          "subtract": {
+            "add": 1,
+            "subtract": 28
+          }
+        },
+        "log_loss": 0.673994471275662,
+        "macro_accuracy": 0.8494767946215571,
+        "primary": 0.8640776699029126
+      },
+      "candidate": {
+        "accuracy": 0.8932038834951457,
+        "action_counts": {
+          "add": 10,
+          "divide": 48,
+          "multiply": 10,
+          "subtract": 35
+        },
+        "confusion_reference_by_prediction": {
+          "add": {
+            "add": 7,
+            "subtract": 5
+          },
+          "divide": {
+            "add": 2,
+            "divide": 48,
+            "multiply": 1,
+            "subtract": 2
+          },
+          "multiply": {
+            "multiply": 9
+          },
+          "subtract": {
+            "add": 1,
+            "subtract": 28
+          }
+        },
+        "log_loss": 0.36766329810102594,
+        "macro_accuracy": 0.8636277380177836,
+        "primary": 0.8932038834951457
+      },
+      "confirmed_improvement": false,
+      "dependence_blocks": 15,
+      "gain": 0.02912621359223301,
+      "gain_direction": "positive favors candidate",
+      "labels": {
+        "add": 12,
+        "divide": 53,
+        "multiply": 9,
+        "subtract": 29
+      },
+      "n": 103,
+      "observed_improvement": true,
+      "p_block_one_sided": 0.125,
+      "p_holm": 0.5,
+      "paired_block_bootstrap95": [
+        0.0,
+        0.07017543859649122
+      ],
+      "primary_metric": "accuracy"
+    },
+    "sec8k_item_routing": {
+      "base": {
+        "accuracy": 0.7044025157232704,
+        "action_counts": {
+          "1.01": 36,
+          "1.02": 16,
+          "2.02": 14,
+          "2.03": 11,
+          "3.02": 19,
+          "5.02": 20,
+          "7.01": 12,
+          "8.01": 31
+        },
+        "confusion_reference_by_prediction": {
+          "1.01": {
+            "1.01": 18,
+            "8.01": 2
+          },
+          "1.02": {
+            "1.01": 4,
+            "1.02": 15
+          },
+          "2.02": {
+            "2.02": 12,
+            "7.01": 5,
+            "8.01": 3
+          },
+          "2.03": {
+            "1.01": 7,
+            "2.03": 11,
+            "8.01": 2
+          },
+          "3.02": {
+            "1.01": 1,
+            "3.02": 18,
+            "8.01": 1
+          },
+          "5.02": {
+            "1.01": 1,
+            "5.02": 19
+          },
+          "7.01": {
+            "1.01": 1,
+            "2.02": 2,
+            "5.02": 1,
+            "7.01": 6,
+            "8.01": 10
+          },
+          "8.01": {
+            "1.01": 4,
+            "1.02": 1,
+            "3.02": 1,
+            "7.01": 1,
+            "8.01": 13
+          }
+        },
+        "log_loss": 3.2455179696565564,
+        "macro_accuracy": 0.7049342105263158,
+        "primary": 0.7044025157232704
+      },
+      "candidate": {
+        "accuracy": 0.710691823899371,
+        "action_counts": {
+          "1.01": 37,
+          "1.02": 16,
+          "2.02": 18,
+          "2.03": 12,
+          "3.02": 20,
+          "5.02": 20,
+          "7.01": 10,
+          "8.01": 26
+        },
+        "confusion_reference_by_prediction": {
+          "1.01": {
+            "1.01": 17,
+            "3.02": 1,
+            "8.01": 2
+          },
+          "1.02": {
+            "1.01": 4,
+            "1.02": 15
+          },
+          "2.02": {
+            "2.02": 14,
+            "7.01": 5,
+            "8.01": 1
+          },
+          "2.03": {
+            "1.01": 8,
+            "2.03": 12
+          },
+          "3.02": {
+            "1.01": 1,
+            "3.02": 18,
+            "8.01": 1
+          },
+          "5.02": {
+            "1.01": 1,
+            "5.02": 19
+          },
+          "7.01": {
+            "1.01": 2,
+            "2.02": 3,
+            "5.02": 1,
+            "7.01": 5,
+            "8.01": 9
+          },
+          "8.01": {
+            "1.01": 4,
+            "1.02": 1,
+            "2.02": 1,
+            "3.02": 1,
+            "8.01": 13
+          }
+        },
+        "log_loss": 0.9398566775222715,
+        "macro_accuracy": 0.7111842105263158,
+        "primary": 0.710691823899371
+      },
+      "confirmed_improvement": false,
+      "dependence_blocks": 136,
+      "gain": 0.006289308176100629,
+      "gain_direction": "positive favors candidate",
+      "labels": {
+        "1.01": 20,
+        "1.02": 19,
+        "2.02": 20,
+        "2.03": 20,
+        "3.02": 20,
+        "5.02": 20,
+        "7.01": 20,
+        "8.01": 20
+      },
+      "n": 159,
+      "observed_improvement": false,
+      "p_block_one_sided": 0.5,
+      "p_holm": 1.0,
+      "paired_block_bootstrap95": [
+        -0.025157232704402517,
+        0.04
+      ],
+      "primary_metric": "accuracy"
+    },
+    "taiwan_bankruptcy_intervention": {
+      "base": {
+        "accuracy": 0.3,
+        "action_counts": {
+          "accumulate": 1,
+          "clip_grad": 74,
+          "lower_lr": 15,
+          "resume": 50
+        },
+        "confusion_reference_by_prediction": {
+          "accumulate": {
+            "clip_grad": 5,
+            "lower_lr": 2,
+            "resume": 3
+          },
+          "clip_grad": {
+            "clip_grad": 10,
+            "lower_lr": 1,
+            "resume": 4
+          },
+          "lower_lr": {
+            "accumulate": 1,
+            "clip_grad": 20,
+            "lower_lr": 4,
+            "resume": 15
+          },
+          "resume": {
+            "clip_grad": 39,
+            "lower_lr": 8,
+            "resume": 28
+          }
+        },
+        "log_loss": 1.8377472078963815,
+        "macro_accuracy": 0.285,
+        "mean_raw_regret": 0.16998166676078524,
+        "primary": 0.4244143085231611
+      },
+      "candidate": {
+        "accuracy": 0.19285714285714287,
+        "action_counts": {
+          "accumulate": 1,
+          "clip_grad": 83,
+          "lower_lr": 38,
+          "resume": 18
+        },
+        "confusion_reference_by_prediction": {
+          "accumulate": {
+            "clip_grad": 4,
+            "lower_lr": 5,
+            "resume": 1
+          },
+          "clip_grad": {
+            "clip_grad": 9,
+            "lower_lr": 4,
+            "resume": 2
+          },
+          "lower_lr": {
+            "accumulate": 1,
+            "clip_grad": 26,
+            "lower_lr": 8,
+            "resume": 5
+          },
+          "resume": {
+            "clip_grad": 44,
+            "lower_lr": 21,
+            "resume": 10
+          }
+        },
+        "log_loss": 1.3930717776495074,
+        "macro_accuracy": 0.23333333333333334,
+        "mean_raw_regret": 0.17674825361796787,
+        "primary": 0.5272645975782514
+      },
+      "confirmed_improvement": false,
+      "dependence_blocks": 28,
+      "gain": -0.10285028905509024,
+      "gain_direction": "positive favors candidate",
+      "labels": {
+        "accumulate": 10,
+        "clip_grad": 15,
+        "lower_lr": 40,
+        "resume": 75
+      },
+      "n": 140,
+      "observed_improvement": false,
+      "p_block_one_sided": 0.9985002499583403,
+      "p_holm": 1.0,
+      "paired_block_bootstrap95": [
+        -0.1650070554757096,
+        -0.04499854184222004
+      ],
+      "primary_metric": "mean_normalized_regret"
+    },
+    "treasury_curve_audit": {
+      "base": {
+        "accuracy": 0.18666666666666668,
+        "action_counts": {
+          "reversed_sign": 7,
+          "supported": 1,
+          "wrong_session": 136,
+          "wrong_tenor": 6
+        },
+        "confusion_reference_by_prediction": {
+          "reversed_sign": {
+            "reversed_sign": 1,
+            "wrong_session": 29
+          },
+          "supported": {
+            "reversed_sign": 1,
+            "supported": 1,
+            "wrong_session": 26,
+            "wrong_tenor": 2
+          },
+          "wrong_session": {
+            "reversed_sign": 2,
+            "wrong_session": 25,
+            "wrong_tenor": 3
+          },
+          "wrong_tenor": {
+            "reversed_sign": 1,
+            "wrong_session": 28,
+            "wrong_tenor": 1
+          },
+          "wrong_units": {
+            "reversed_sign": 2,
+            "wrong_session": 28
+          }
+        },
+        "log_loss": 5.306005956658058,
+        "macro_accuracy": 0.18666666666666668,
+        "primary": 0.18666666666666668
+      },
+      "candidate": {
+        "accuracy": 0.18666666666666668,
+        "action_counts": {
+          "reversed_sign": 18,
+          "supported": 7,
+          "wrong_session": 90,
+          "wrong_tenor": 23,
+          "wrong_units": 12
+        },
+        "confusion_reference_by_prediction": {
+          "reversed_sign": {
+            "reversed_sign": 4,
+            "wrong_session": 19,
+            "wrong_tenor": 5,
+            "wrong_units": 2
+          },
+          "supported": {
+            "reversed_sign": 2,
+            "supported": 2,
+            "wrong_session": 18,
+            "wrong_tenor": 5,
+            "wrong_units": 3
+          },
+          "wrong_session": {
+            "reversed_sign": 6,
+            "supported": 2,
+            "wrong_session": 16,
+            "wrong_tenor": 4,
+            "wrong_units": 2
+          },
+          "wrong_tenor": {
+            "reversed_sign": 2,
+            "supported": 2,
+            "wrong_session": 19,
+            "wrong_tenor": 4,
+            "wrong_units": 3
+          },
+          "wrong_units": {
+            "reversed_sign": 4,
+            "supported": 1,
+            "wrong_session": 18,
+            "wrong_tenor": 5,
+            "wrong_units": 2
+          }
+        },
+        "log_loss": 1.6167671010133706,
+        "macro_accuracy": 0.18666666666666668,
+        "primary": 0.18666666666666668
+      },
+      "confirmed_improvement": false,
+      "dependence_blocks": 60,
+      "gain": 0.0,
+      "gain_direction": "positive favors candidate",
+      "labels": {
+        "reversed_sign": 30,
+        "supported": 30,
+        "wrong_session": 30,
+        "wrong_tenor": 30,
+        "wrong_units": 30
+      },
+      "n": 150,
+      "observed_improvement": false,
+      "p_block_one_sided": 0.5719046825529078,
+      "p_holm": 1.0,
+      "paired_block_bootstrap95": [
+        -0.07272727272727272,
+        0.07432432432432433
+      ],
+      "primary_metric": "accuracy"
+    },
+    "treasury_intervention": {
+      "base": {
+        "accuracy": 0.2,
+        "action_counts": {
+          "accumulate": 1,
+          "clip_grad": 55,
+          "lower_lr": 14,
+          "resume": 15
+        },
+        "confusion_reference_by_prediction": {
+          "accumulate": {
+            "clip_grad": 7,
+            "lower_lr": 3,
+            "resume": 2
+          },
+          "clip_grad": {
+            "clip_grad": 4,
+            "resume": 3
+          },
+          "lower_lr": {
+            "accumulate": 1,
+            "clip_grad": 34,
+            "lower_lr": 9,
+            "resume": 6
+          },
+          "resume": {
+            "clip_grad": 10,
+            "lower_lr": 2,
+            "resume": 4
+          }
+        },
+        "log_loss": 2.050751315181754,
+        "macro_accuracy": 0.25035714285714283,
+        "mean_raw_regret": 1.1835292625549362e+25,
+        "primary": 0.4668940503424679
+      },
+      "candidate": {
+        "accuracy": 0.24705882352941178,
+        "action_counts": {
+          "clip_grad": 58,
+          "lower_lr": 25,
+          "resume": 2
+        },
+        "confusion_reference_by_prediction": {
+          "accumulate": {
+            "clip_grad": 8,
+            "lower_lr": 3,
+            "resume": 1
+          },
+          "clip_grad": {
+            "clip_grad": 6,
+            "lower_lr": 1
+          },
+          "lower_lr": {
+            "clip_grad": 34,
+            "lower_lr": 15,
+            "resume": 1
+          },
+          "resume": {
+            "clip_grad": 10,
+            "lower_lr": 6
+          }
+        },
+        "log_loss": 1.379559687828112,
+        "macro_accuracy": 0.28928571428571426,
+        "mean_raw_regret": 2367503689992382.5,
+        "primary": 0.38697577516598647
+      },
+      "confirmed_improvement": false,
+      "dependence_blocks": 17,
+      "gain": 0.07991827517648144,
+      "gain_direction": "positive favors candidate",
+      "labels": {
+        "accumulate": 12,
+        "clip_grad": 7,
+        "lower_lr": 50,
+        "resume": 16
+      },
+      "n": 85,
+      "observed_improvement": true,
+      "p_block_one_sided": 0.01715087890625,
+      "p_holm": 0.08575439453125,
+      "paired_block_bootstrap95": [
+        0.01611976284446953,
+        0.1477086543460542
+      ],
+      "primary_metric": "mean_normalized_regret"
+    }
+  },
+  "prior_diagnostic": {
+    "checkpoint_step": 180,
+    "config_sha256": "946650060426c961ef016f4a47a0f7b74626f5cba328c0f4a552e6acfd16256c",
+    "panels": {
+      "finqa_operator": {
+        "accuracy": 0.883495145631068,
+        "gain_vs_base": 0.019417475728155338,
+        "primary": 0.883495145631068,
+        "selected_gain_vs_prior": 0.009708737864077673
+      },
+      "sec8k_item_routing": {
+        "accuracy": 0.6981132075471698,
+        "gain_vs_base": -0.006289308176100629,
+        "primary": 0.6981132075471698,
+        "selected_gain_vs_prior": 0.012578616352201259
+      },
+      "taiwan_bankruptcy_intervention": {
+        "accuracy": 0.4,
+        "gain_vs_base": 0.023416272749707742,
+        "primary": 0.40099803577345333,
+        "selected_gain_vs_prior": -0.12626656180479798
+      },
+      "treasury_curve_audit": {
+        "accuracy": 0.16666666666666666,
+        "gain_vs_base": -0.02,
+        "primary": 0.16666666666666666,
+        "selected_gain_vs_prior": 0.02
+      },
+      "treasury_intervention": {
+        "accuracy": 0.16470588235294117,
+        "gain_vs_base": -0.05626781269416022,
+        "primary": 0.5231618630366281,
+        "selected_gain_vs_prior": 0.13618608787064165
+      }
+    },
+    "predictions_sha256": "e7de29d27b297790a807baf54367f2e8f03c0f4bd51052220dea6837c95a8c32",
+    "provenance_sha256": "f808a1c9c49475c41108472302e2f42f4fe8d218d9fb8ae8e14694e635f1c5cd",
+    "status": "secondary_diagnostic",
+    "weights_sha256": "96d6e260118caea855974d3007e4090314cf021a85e24b9a5c6bf12febc179b6"
+  },
+  "resamples": 6000,
+  "schema": 1,
+  "schema_evaluation": 2,
+  "scoring": {
+    "batch_size": 8,
+    "frozen_prefix_fallback": null,
+    "frozen_prefix_max_probability_error": {
+      "base": 0.0,
+      "prior": 0.0,
+      "tuned": 0.0
+    },
+    "peak_mlx_bytes": 8778461016,
+    "timing_seconds": {
+      "base": 1571.6882228340255,
+      "model_load": 5.156263750046492,
+      "prior": 417.6643342919997,
+      "tuned": 413.9290219169925
+    },
+    "variants": 2
+  },
+  "seed": 7121,
+  "selection": {
+    "adapter_config_sha256": "0bea83188a5f25215e089023f2b8bd1ce21af47c2a1e2cbea230107dd287f92d",
+    "selected_step": 180,
+    "selected_weights_sha256": "f0d726b56c5f837857068e9d5ff1fcb91cc1924625121bef9bd2ee6478f9c427"
+  }
+}
